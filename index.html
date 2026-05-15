@@ -379,6 +379,39 @@
     border: 1px solid rgba(255,255,255,0.1);
   }
 
+  /* ===================== INSIGHT CARD ===================== */
+  .insight-card {
+    width: 92%;
+    align-self: center;
+    background: rgba(253,224,71,0.88);
+    border: 1px solid #fde047;
+    border-left: 4px solid #b8960a;
+    border-radius: 10px;
+    padding: 13px 15px 11px;
+    animation: pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    box-shadow: 0 4px 16px rgba(253,224,71,0.1), 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .insight-card .insight-label {
+    font-size: 9.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #6b5b00;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .insight-card .insight-quote {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #1a1200;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .insight-card .insight-author {
+    font-size: 10px;
+    color: rgba(0,0,0,0.45);
+    letter-spacing: 0.2px;
+  }
+
   /* ===================== BOOKSHELF ===================== */
   .bookshelf {
     position: absolute;
@@ -756,7 +789,7 @@
     <div class="hub-head">
       <div class="brand">🍵 Trà đá vỉa hè</div>
       <h1>Chọn chuyện trà đá hôm nay</h1>
-      <div class="sub">Series chuyện sếp — kể bằng giọng đồng nghiệp ngồi vỉa hè, không phải bài blog.</div>
+      <div class="sub">Series chuyện sếp, kể bằng giọng đồng nghiệp ngồi vỉa hè, không phải bài blog.</div>
     </div>
     <div class="story-list" id="storyList"></div>
     <div class="hub-foot">
@@ -813,7 +846,7 @@
       <h2>📚 Đọc sách để như Ních</h2>
       <button class="bookshelf-close" id="closeBookshelf">✕</button>
     </div>
-    <div class="bookshelf-sub">Insight trong chuyện trà đá có nguồn gốc từ đây. Không bắt buộc đọc — nhưng đọc thì hiểu sâu hơn.</div>
+    <div class="bookshelf-sub">Insight trong chuyện trà đá có nguồn gốc từ đây. Không bắt buộc đọc, nhưng đọc thì hiểu sâu hơn.</div>
 
     <div class="book-item">
       <div class="book-tag">Đàm phán · Ranh giới</div>
@@ -830,7 +863,7 @@
       <div class="book-tag">Visibility · Chia sẻ công việc</div>
       <div class="book-title">Show Your Work</div>
       <div class="book-author">Austin Kleon</div>
-      <div class="book-desc">Làm tốt mà không nói = vô hình. Chia sẻ công việc không phải khoe — đó là cách để tồn tại và được nhìn thấy trong hệ thống.</div>
+      <div class="book-desc">Làm tốt mà không nói = vô hình. Chia sẻ công việc không phải khoe, đó là cách để người ta biết mình tồn tại.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="1">→ Chuyện #02</button>
         <button class="book-goto-btn" data-story-idx="6">→ Chuyện #07</button>
@@ -841,7 +874,7 @@
       <div class="book-tag">Trust Trap · Cho đi</div>
       <div class="book-title">Give and Take</div>
       <div class="book-author">Adam Grant</div>
-      <div class="book-desc">Người cho đi vô điều kiện thường kết thúc ở đáy — hoặc trên đỉnh. Biết khi nào cần dừng lại là kỹ năng, không phải ích kỷ.</div>
+      <div class="book-desc">Người cho đi vô điều kiện thường kết thúc ở đáy, hoặc trên đỉnh. Biết khi nào cần dừng lại là kỹ năng, không phải ích kỷ.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="2">→ Chuyện #03</button>
       </div>
@@ -851,7 +884,7 @@
       <div class="book-tag">Thăng tiến · Hành vi</div>
       <div class="book-title">What Got You Here Won't Get You There</div>
       <div class="book-author">Marshall Goldsmith</div>
-      <div class="book-desc">Thói quen đưa bạn lên vị trí hiện tại thường là thứ ngăn bạn tiến xa hơn. Promote không phải thưởng quá khứ — là đặt cược vào tương lai.</div>
+      <div class="book-desc">Thói quen đưa bạn lên vị trí hiện tại thường là thứ ngăn bạn tiến xa hơn. Promote không phải thưởng quá khứ, là đặt cược vào tương lai.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="3">→ Chuyện #04</button>
       </div>
@@ -861,7 +894,7 @@
       <div class="book-tag">Phản hồi · Lãnh đạo</div>
       <div class="book-title">Radical Candor</div>
       <div class="book-author">Kim Scott</div>
-      <div class="book-desc">Phê bình đúng cách = care personally + challenge directly. Mắng trước đám đông không phải thẳng thắn — đó là nhục mạ.</div>
+      <div class="book-desc">Phê bình đúng cách = care personally + challenge directly. Mắng trước đám đông không phải thẳng thắn, đó là nhục mạ.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="5">→ Chuyện #06</button>
       </div>
@@ -871,7 +904,7 @@
       <div class="book-tag">Tin tưởng · Thuộc về</div>
       <div class="book-title">Braving the Wilderness</div>
       <div class="book-author">Brené Brown</div>
-      <div class="book-desc">Không phải ai trong văn phòng cũng xứng đáng nghe câu chuyện của bạn. Biết ai earn the right — đó là kỹ năng, không phải lạnh lùng.</div>
+      <div class="book-desc">Không phải ai trong văn phòng cũng xứng đáng nghe câu chuyện của bạn. Biết ai earn the right, đó là kỹ năng, không phải lạnh lùng.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="7">→ Chuyện #08</button>
       </div>
@@ -881,7 +914,7 @@
       <div class="book-tag">Đam mê · Kỹ năng</div>
       <div class="book-title">So Good They Can't Ignore You</div>
       <div class="book-author">Cal Newport</div>
-      <div class="book-desc">"Follow your passion" là lời khuyên nguy hiểm. Đam mê đến SAU khi bạn giỏi — không phải trước. Ai dùng chữ đam mê để yêu cầu OT thường là người hưởng lợi từ sự hi sinh đó.</div>
+      <div class="book-desc">"Follow your passion" là lời khuyên nguy hiểm. Đam mê đến SAU khi bạn giỏi, không phải trước. Ai dùng chữ đam mê để yêu cầu OT thường là người hưởng lợi từ sự hi sinh đó.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="8">→ Chuyện #09</button>
       </div>
@@ -891,7 +924,7 @@
       <div class="book-tag">Hướng nội · Sức mạnh</div>
       <div class="book-title">Quiet: The Power of Introverts</div>
       <div class="book-author">Susan Cain</div>
-      <div class="book-desc">Hướng nội không phải yếu điểm — là khác biệt. Không có tương quan nào giữa nói nhiều và có ý tưởng tốt.</div>
+      <div class="book-desc">Hướng nội không phải yếu điểm, là khác biệt. Không có tương quan nào giữa nói nhiều và có ý tưởng tốt.</div>
       <div class="book-goto">
         <button class="book-goto-btn" data-story-idx="9">→ Chuyện #10</button>
       </div>
@@ -905,7 +938,7 @@ const stories = [
   {
     id: '01',
     title: 'Bị sếp ping trong kỳ nghỉ',
-    hook: '"Em xử lý nhanh giúp anh nhé, gấp!" — và bạn đang ở Đà Lạt.',
+    hook: '"Em xử lý nhanh giúp anh nhé, gấp!" và bạn đang ở Đà Lạt.',
     rulesLabel: 'Đặt ranh giới',
     endTitle: 'Hết chuyện kỳ nghỉ 🍵',
     screens: [
@@ -939,7 +972,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày biết ông Chris Voss không? FBI, thương thuyết con tin 24 năm.' },
           { who: 'tuan', name: 'Ních', text: 'Ổng nói việc đầu tiên khi đàm phán là... lùi 1 bước. Chưa nói gì cả.' },
           { who: 'linh', name: 'Sen', text: 'À 💡 mình đang đàm phán với sếp về thời gian nghỉ của mình chứ gì nữa nhỉ.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Never Split the Difference" — Chris Voss' },
+          { who: 'bookinsight', quote: 'Trước bất kỳ cuộc đàm phán nào, việc đầu tiên không phải nói — mà là lùi lại. Người đặt câu hỏi kiểm soát cuộc trò chuyện, không phải người nói nhiều nhất.', source: 'Never Split the Difference · Chris Voss' },
         ]
       },
       {
@@ -970,7 +1003,7 @@ const stories = [
         messages: [
           { who: 'linh', name: 'Sen', text: 'Mày có template không, gửi tao xin với 🙏' },
           { who: 'tuan', name: 'Ních', text: 'Để tao copy cho. Điền vô là xong:' },
-          { who: 'template', html: '<div class="template-head">📋 Note bàn giao — điền 4 ô</div>📅 NGHỈ TỪ — ĐẾN\n   [ngày] → [ngày]\n   Rep tin nhắn từ [giờ ngày về]\n\n📋 TASK ĐANG CHẠY\n   [Task A] → cover: [tên — Slack]\n   [Task B] → chờ em về\n\n⚡ "GẤP" NGHĨA LÀ\n   ✓ Lỗi prod / deadline đã chốt với KH\n   ✗ Review nội bộ / approval\n\n📞 LÚC THẬT SỰ CHÁY\n   Ping: [Zalo cá nhân — số]\n   Rep trong [X tiếng]' },
+          { who: 'template', html: '<div class="template-head">📋 Note bàn giao: điền 4 ô</div>📅 NGHỈ TỪ → ĐẾN\n   [ngày] → [ngày]\n   Rep tin nhắn từ [giờ ngày về]\n\n📋 TASK ĐANG CHẠY\n   [Task A] → cover: [tên, Slack]\n   [Task B] → chờ em về\n\n⚡ "GẤP" NGHĨA LÀ\n   ✓ Lỗi prod / deadline đã chốt với KH\n   ✗ Review nội bộ / approval\n\n📞 LÚC THẬT SỰ CHÁY\n   Ping: [Zalo cá nhân, số]\n   Rep trong [X tiếng]' },
           { who: 'tuan', name: 'Ních', text: 'Lần sau sếp ping kỳ nghỉ, nhớ 3 điều thôi nha:' },
           { who: 'recap', html: '<div class="recap-head">★ Ghi nhớ</div><ol><li>Đặt máy xuống. 20 phút.</li><li>Hỏi: "Việc cần xong hôm nay, hay chờ em về?"</li><li>Lần sau nữa: note bàn giao 3 ngày trước.</li></ol>' },
         ]
@@ -1004,7 +1037,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Còn nữa: mày có hay vá lỗ hổng trước khi nó bung bét không?' },
           { who: 'linh', name: 'Sen', text: 'Ờ tao toàn xử lý xong trước khi sự cố xảy ra.' },
           { who: 'tuan', name: 'Ních', text: 'Người dập lửa được khen to hơn người xây tường chống cháy. Vì lửa thì ai cũng thấy.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Show Your Work" — Austin Kleon' },
+          { who: 'bookinsight', quote: 'Bạn không cần phải hoàn hảo mới được chia sẻ. Share công việc khi đang làm — không phải sau khi xong. Không ai biết bạn tồn tại nếu bạn không nói gì.', source: 'Show Your Work · Austin Kleon' },
         ]
       },
       {
@@ -1034,7 +1067,7 @@ const stories = [
         messages: [
           { who: 'linh', name: 'Sen', text: 'Hiểu rồi. Vừa làm vừa kể vừa đo.' },
           { who: 'tuan', name: 'Ních', text: 'Và phải gắn tên. 4 cái này thiếu 1 là rớt.' },
-          { who: 'recap', html: '<div class="recap-head">★ 4 quy tắc visibility</div><ol><li>Công ty thưởng GIÁ TRỊ NHÌN THẤY, không thưởng nỗ lực</li><li>Việc bạn ngăn (vô hình) ≠ việc bạn dập (hữu hình)</li><li>Gắn TÊN mình vào kết quả — đừng để người khác kể thay</li><li>Đo bằng CON SỐ, không phải "em chăm chỉ lắm"</li></ol>' },
+          { who: 'recap', html: '<div class="recap-head">★ 4 quy tắc visibility</div><ol><li>Công ty thưởng GIÁ TRỊ NHÌN THẤY, không thưởng nỗ lực</li><li>Việc bạn ngăn (vô hình) ≠ việc bạn dập (hữu hình)</li><li>Gắn TÊN mình vào kết quả: đừng để người khác kể thay</li><li>Đo bằng CON SỐ, không phải "em chăm chỉ lắm"</li></ol>' },
         ]
       },
     ]
@@ -1042,7 +1075,7 @@ const stories = [
   {
     id: '03',
     title: 'Đáng tin xong tự nhiên thành "phương án nhân sự"',
-    hook: '"Chỉ có em anh mới yên tâm" — và bạn nghe lần thứ 4.',
+    hook: '"Chỉ có em anh mới yên tâm" và bạn nghe lần thứ 4.',
     rulesLabel: 'Quy tắc 5-8 · Trust Trap',
     endTitle: 'Hết chuyện về RANH GIỚI 🍵',
     screens: [
@@ -1064,7 +1097,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Đáng tin là tài sản quý. Không có ranh giới, nó thành tờ giấy trắng để người khác điền chi phí lên vai mày.' },
           { who: 'linh', name: 'Sen', text: 'Nhưng họ đâu có xấu...' },
           { who: 'tuan', name: 'Ních', text: 'Không. Hệ thống chỉ cần ai đó lấp vào chỗ trống. Hôm nay là mày. Ngày mai là người khác.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Give and Take" — Adam Grant' },
+          { who: 'bookinsight', quote: 'Người cho đi vô điều kiện thường kết thúc ở đáy hoặc trên đỉnh. Điểm khác biệt duy nhất: họ có biết khi nào cần nói không không.', source: 'Give and Take · Adam Grant' },
         ]
       },
       {
@@ -1102,7 +1135,7 @@ const stories = [
   {
     id: '04',
     title: 'Sao thằng kia được promote còn tao thì không?',
-    hook: 'Sếp ký giấy promote không phải vì người giỏi nhất — mà vì người ít rủi ro nhất.',
+    hook: 'Sếp ký giấy promote không phải vì người giỏi nhất, mà vì người ít rủi ro nhất.',
     rulesLabel: 'Quy tắc 9-12 · Promotion',
     endTitle: 'Hết chuyện về THĂNG TIẾN 🍵',
     screens: [
@@ -1124,7 +1157,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày làm rối trong họp với sếp lớn, ổng cũng bị liên đới.' },
           { who: 'linh', name: 'Sen', text: 'Nhưng tao đâu có làm rối, tao chỉ chỉ ra cái sai...' },
           { who: 'tuan', name: 'Ních', text: 'Đó là góc nhìn của mày. Góc nhìn của sếp: "thằng này hay xù lông, giao lên cao thì mệt".' },
-          { who: 'source', text: '📖 Ních đọc thêm: "What Got You Here Won\'t Get You There" — Marshall Goldsmith' },
+          { who: 'bookinsight', quote: 'Hành vi đưa bạn đến vị trí hiện tại có thể chính là thứ cản bạn tiến xa hơn. Mỗi lần thăng chức là bắt đầu học lại — không phải phần thưởng cho những gì đã làm.', source: 'What Got You Here Won\'t Get You There · Marshall Goldsmith' },
         ]
       },
       {
@@ -1191,7 +1224,7 @@ const stories = [
           { who: 'linh', name: 'Sen', text: 'Vậy tao không kể cảm xúc à?' },
           { who: 'tuan', name: 'Ních', text: 'Cảm xúc thì người ta nghe. Công ty thì không. Công ty tin số liệu.' },
           { who: 'tuan', name: 'Ních', text: 'In sẵn email xác nhận, bảng mục tiêu đã ký, chứng từ đóng góp. Mang đi họp.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Never Split the Difference" — Chris Voss' },
+          { who: 'bookinsight', quote: 'Trong đàm phán, cảm xúc là của bạn. Số liệu mới là ngôn ngữ mà đối phương thực sự nghe được.', source: 'Never Split the Difference · Chris Voss' },
         ]
       },
       {
@@ -1228,7 +1261,7 @@ const stories = [
   },
   {
     id: '06',
-    title: 'Sếp mắng trước cả phòng — con có sai không?',
+    title: 'Sếp mắng trước cả phòng, con có sai không?',
     hook: 'Làm đúng quy trình. Sếp bảo sai. Giải thích thì bị bảo cãi.',
     rulesLabel: 'Xử lý bị mắng',
     endTitle: 'Hết chuyện về BỊ MẮNG 🍵',
@@ -1254,7 +1287,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Ừ. Cái đó thì không đúng. Nhưng mày đang tức vì nội dung hay vì cách?' },
           { who: 'linh', name: 'Sen', text: '...Cách.' },
           { who: 'note', text: 'Tức vì cách, có lý. Nhưng xử cũng phải xử đúng lúc, đúng chỗ.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Radical Candor" — Kim Scott' },
+          { who: 'bookinsight', quote: 'Phản hồi thực sự đòi hỏi cả hai: thực sự quan tâm tới người đó, và đủ dũng cảm để nói thẳng. Thiếu một trong hai thì không phải feedback — là kiểm soát hoặc né tránh.', source: 'Radical Candor · Kim Scott' },
         ]
       },
       {
@@ -1292,15 +1325,15 @@ const stories = [
       {
         label: 'CHỐT',
         messages: [
-          { who: 'recap', html: '<div class="recap-head">★ 3 bước khi bị mắng trước đám đông</div><ol><li>Xác định: tức vì NỘI DUNG hay vì CÁCH? — nguồn gốc khác nhau, xử khác nhau</li><li>Không phản ứng ngay — để nguội, tránh tranh luận trước đám đông</li><li>Xin gặp riêng, hỏi thẳng không hằn học: "Em chưa hiểu em sai chỗ nào"</li></ol>' },
+          { who: 'recap', html: '<div class="recap-head">★ 3 bước khi bị mắng trước đám đông</div><ol><li>Xác định: tức vì NỘI DUNG hay vì CÁCH? Nguồn gốc khác nhau, xử khác nhau.</li><li>Không phản ứng ngay: để nguội, tránh tranh luận trước đám đông</li><li>Xin gặp riêng, hỏi thẳng không hằn học: "Em chưa hiểu em sai chỗ nào"</li></ol>' },
         ]
       },
     ]
   },
   {
     id: '07',
-    title: 'Tôi làm 80% dự án — sao thằng kia lại được khen?',
-    hook: 'Data, phân tích, báo cáo chi tiết — 80% là mình. Người làm slide và đi họp thì đứng nhận khen.',
+    title: 'Tôi làm 80% dự án, sao thằng kia lại được khen?',
+    hook: 'Data, phân tích, báo cáo chi tiết: 80% là mình. Người làm slide và đi họp thì đứng nhận khen.',
     rulesLabel: 'Visibility · Trồng lúa',
     endTitle: 'Hết chuyện về VISIBILITY 🍵',
     screens: [
@@ -1325,7 +1358,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày trồng lúa. Nó bưng cơm lên bàn.' },
           { who: 'tuan', name: 'Ních', text: 'Người ngồi ăn thấy ai bưng thì cảm ơn người đó. Họ đâu có xuống ruộng.' },
           { who: 'note', text: 'Không phải bất công. Là vô hình. Mà vô hình thì phải tự xử, không phải chờ công bằng tự đến.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Show Your Work" — Austin Kleon' },
+          { who: 'bookinsight', quote: 'Hệ thống không thưởng nỗ lực trong bóng tối. Nó thưởng bằng chứng của nỗ lực đó.', source: 'Show Your Work · Austin Kleon' },
         ]
       },
       {
@@ -1354,7 +1387,7 @@ const stories = [
         messages: [
           { who: 'linh', name: 'Sen', text: 'Vẫn tức 😤' },
           { who: 'tuan', name: 'Ních', text: 'Tức thì cứ tức. Tức xong thì làm. Đừng chỉ tức rồi thôi. Phí.' },
-          { who: 'recap', html: '<div class="recap-head">★ 4 quy tắc để được nhìn thấy</div><ol><li>Công ty thưởng GIÁ TRỊ NHÌN THẤY, không thưởng nỗ lực trong bóng tối</li><li>Gắn TÊN mình vào kết quả — 1 câu trong họp cũng được, nhưng phải có</li><li>Email update ngắn sau milestone — không phải khoe, là để người ta biết mình tồn tại</li><li>Đo bằng CON SỐ từ đầu năm, đừng chờ đến review mới nhớ ra</li></ol>' },
+          { who: 'recap', html: '<div class="recap-head">★ 4 quy tắc để được nhìn thấy</div><ol><li>Công ty thưởng GIÁ TRỊ NHÌN THẤY, không thưởng nỗ lực trong bóng tối</li><li>Gắn TÊN mình vào kết quả: 1 câu trong họp cũng được, nhưng phải có</li><li>Email update ngắn sau milestone, không phải khoe, là để người ta biết mình tồn tại</li><li>Đo bằng CON SỐ từ đầu năm, đừng chờ đến review mới nhớ ra</li></ol>' },
         ]
       },
     ]
@@ -1387,7 +1420,7 @@ const stories = [
           { who: 'linh', name: 'Sen', text: 'Vậy chị đó có lỗi không?' },
           { who: 'tuan', name: 'Ních', text: 'Có. Nhưng mày cũng có lỗi. Mày đưa dao cho người ta, rồi giận người ta vì họ dùng dao.' },
           { who: 'note', text: 'Văn phòng không có chỗ nào an toàn để phàn nàn. Đó là luật, không phải bất công.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Braving the Wilderness" — Brené Brown' },
+          { who: 'bookinsight', quote: 'Không phải ai cũng xứng đáng nghe câu chuyện của bạn. Vulnerability là dành cho người đã prove they deserve it — không phải cho tất cả mọi người.', source: 'Braving the Wilderness · Brené Brown' },
         ]
       },
       {
@@ -1426,8 +1459,8 @@ const stories = [
       {
         label: 'CHỐT',
         messages: [
-          { who: 'bigquote', text: 'Văn phòng không có chỗ nào an toàn để phàn nàn — kể cả với người thân nhất.' },
-          { who: 'recap', html: '<div class="recap-head">★ 3 quy tắc khi muốn nói chuyện công ty</div><ol><li>PHÀN NÀN thì đừng nói ở công ty — kể cả với người thân nhất</li><li>ĐỀ XUẤT thì nói thẳng với sếp — cùng vấn đề, khác kết quả trời đất</li><li>Với người kể chuyện: không lạnh không đối đầu — nhưng biết GIỚI HẠN chia sẻ đến đâu</li></ol>' },
+          { who: 'bigquote', text: 'Văn phòng không có chỗ nào an toàn để phàn nàn, kể cả với người thân nhất.' },
+          { who: 'recap', html: '<div class="recap-head">★ 3 quy tắc khi muốn nói chuyện công ty</div><ol><li>PHÀN NÀN thì đừng nói ở công ty, kể cả với người thân nhất</li><li>ĐỀ XUẤT thì nói thẳng với sếp, cùng vấn đề, khác kết quả trời đất</li><li>Với người kể chuyện: không lạnh không đối đầu, nhưng biết GIỚI HẠN chia sẻ đến đâu</li></ol>' },
         ]
       },
     ]
@@ -1435,7 +1468,7 @@ const stories = [
   {
     id: '09',
     title: 'OT không lương. Sếp gọi là đam mê startup.',
-    hook: '"Tụi mình làm vì đam mê, startup mà." — 8 tháng OT, không đồng phụ cấp nào.',
+    hook: '"Tụi mình làm vì đam mê, startup mà." Rồi 8 tháng OT, không đồng phụ cấp nào.',
     rulesLabel: 'Học phí hay bóc lột',
     endTitle: 'Hết chuyện về OT STARTUP 🍵',
     screens: [
@@ -1460,7 +1493,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày đang trả học phí bằng giờ OT.' },
           { who: 'tuan', name: 'Ních', text: 'Bóc lột là mày không lớn được, chỉ làm rồi thôi. Học phí là đổi thời gian lấy thứ tiền không mua được ở tuổi 25.' },
           { who: 'note', text: 'Nhãn "đam mê" hay "học phí": mày tự đặt, không phải để công ty đặt.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "So Good They Can\'t Ignore You" — Cal Newport' },
+          { who: 'bookinsight', quote: '"Follow your passion" giả định đam mê đã có sẵn. Sự thật: đam mê đến sau khi bạn đủ giỏi — không phải trước. Ai dùng chữ đó để yêu cầu OT thường là người hưởng lợi từ sự nhiệt tình của bạn.', source: 'So Good They Can\'t Ignore You · Cal Newport' },
         ]
       },
       {
@@ -1487,7 +1520,7 @@ const stories = [
       {
         label: 'CHỐT',
         messages: [
-          { who: 'bigquote', text: 'Đứa nào biết mình đang đổi gì lấy gì — ổn. Đứa nào không biết — hay khổ.' },
+          { who: 'bigquote', text: 'Đứa nào biết mình đang đổi gì lấy gì, ổn. Đứa nào không biết, hay khổ.' },
           { who: 'recap', html: '<div class="recap-head">★ 3 câu tự hỏi trước khi OT</div><ol><li>Mình đang TRỒNG LÚA hay bị BÓC LỘT? (kiểm tra: mình có lớn lên không?)</li><li>Thực chất này có LỢI cho mình không? (tỉnh xong mới đánh giá, không phải lúc đang bực)</li><li>Mình ở thêm bao lâu, học xong gì, rồi làm gì tiếp? (tự đặt DEADLINE, không chờ công ty)</li></ol>' },
         ]
       },
@@ -1496,7 +1529,7 @@ const stories = [
   {
     id: '10',
     title: 'Cả team có nhóm Zalo không có mình',
-    hook: '4 tháng đi làm, ăn trưa một mình mỗi ngày. Hôm nay phát hiện cả team có nhóm chat — không có mình.',
+    hook: '4 tháng đi làm, ăn trưa một mình mỗi ngày. Hôm nay phát hiện cả team có nhóm chat, không có mình.',
     rulesLabel: 'Hướng nội · Thuộc về',
     endTitle: 'Hết chuyện về THUỘC VỀ 🍵',
     screens: [
@@ -1520,7 +1553,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Họ kết nhóm từ trước. Mày là người mới. Phải tự bước vào, người ta không tự nhiên mời.' },
           { who: 'linh', name: 'Sen', text: 'Tao hướng nội lắm. Tao không biết bắt chuyện.' },
           { who: 'note', text: 'Hướng nội không có nghĩa là không nói được, chỉ là tốn sức hơn. Vẫn làm được.' },
-          { who: 'source', text: '📖 Ních đọc thêm: "Quiet: The Power of Introverts" — Susan Cain' },
+          { who: 'bookinsight', quote: 'Introvert không phải nhút nhát. Họ chỉ tái nạp khi ở một mình. Và không có tương quan nào giữa nói nhiều với có ý tưởng tốt.', source: 'Quiet: The Power of Introverts · Susan Cain' },
         ]
       },
       {
@@ -1549,7 +1582,7 @@ const stories = [
         messages: [
           { who: 'linh', name: 'Sen', text: '(lần đầu mỉm cười nhẹ) Mày nói chuyện hay thật.' },
           { who: 'tuan', name: 'Ních', text: 'Ngồi đây lâu thì hay thôi. Uống xong chưa trả tiền đấy.' },
-          { who: 'recap', html: '<div class="recap-head">★ 3 điều về thuộc về</div><ol><li>Không phải BỊ LOẠI — là CHƯA ĐƯỢC NHỚ. Hai cái khác nhau, giải pháp khác nhau</li><li>Hướng nội không có nghĩa là không nói được — chỉ là TỐN SỨC HƠN, vẫn làm được</li><li>THUỘC VỀ không phải chờ người ta cho — phải tự bước vào, dù chỉ là 1 câu hỏi ăn trưa</li></ol>' },
+          { who: 'recap', html: '<div class="recap-head">★ 3 điều về thuộc về</div><ol><li>Không phải BỊ LOẠI, là CHƯA ĐƯỢC NHỚ. Hai cái khác nhau, giải pháp khác nhau.</li><li>Hướng nội không có nghĩa là không nói được, chỉ là TỐN SỨC HƠN, vẫn làm được</li><li>THUỘC VỀ không phải chờ người ta cho, phải tự bước vào, dù chỉ là 1 câu hỏi ăn trưa</li></ol>' },
         ]
       },
     ]
@@ -1668,6 +1701,12 @@ function lastBubbleWho() {
 }
 
 function buildBubble(msg) {
+  if (msg.who === 'bookinsight') {
+    const card = document.createElement('div');
+    card.className = 'insight-card';
+    card.innerHTML = `<div class="insight-label">📚 NÍCH HỌC LỎM TỪ</div><div class="insight-quote">${escapeHtml(msg.quote)}</div><div class="insight-author">${escapeHtml(msg.source)}</div>`;
+    return card;
+  }
   const bubble = document.createElement('div');
   bubble.className = `bubble ${msg.who}`;
   if (msg.html) {
