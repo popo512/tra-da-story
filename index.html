@@ -362,8 +362,145 @@
     border-left: 4px solid #fde047;
     box-shadow: 0 6px 18px rgba(0,0,0,0.5);
   }
-  .bubble.bigquote::before { content: '“'; font-size: 30px; line-height: 0; vertical-align: -8px; opacity: 0.5; margin-right: 4px; }
+  .bubble.bigquote::before { content: '”'; font-size: 30px; line-height: 0; vertical-align: -8px; opacity: 0.5; margin-right: 4px; }
   .bubble.bigquote::after { content: '”'; font-size: 30px; line-height: 0; vertical-align: -16px; opacity: 0.5; margin-left: 4px; }
+
+  .bubble.source {
+    max-width: 88%;
+    align-self: center;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.48);
+    font-size: 10.5px;
+    border-radius: 8px;
+    padding: 5px 12px;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* ===================== BOOKSHELF ===================== */
+  .bookshelf {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    background: rgba(20,14,8,0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 18px 28px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: #fff;
+  }
+  .bookshelf::-webkit-scrollbar { display: none; }
+  .bookshelf.hidden { display: none; }
+  .bookshelf-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .bookshelf-head h2 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #fde047;
+  }
+  .bookshelf-close {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    flex-shrink: 0;
+    box-shadow: none;
+  }
+  .bookshelf-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.42);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .book-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .book-tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fde047;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .book-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+    line-height: 1.25;
+  }
+  .book-author {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+  }
+  .book-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.5;
+  }
+  .hub-topbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .bookshelf-btn {
+    background: #fde047;
+    color: #1a1200;
+    border: none;
+    border-radius: 20px;
+    padding: 9px 20px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.4px;
+    display: block;
+    margin: 0;
+    box-shadow: 0 2px 12px rgba(253,224,71,0.45);
+  }
+  .bookshelf-btn:active { transform: scale(0.97); opacity: 0.85; }
+  .book-goto {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .book-goto-btn {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #fde047;
+    background: rgba(253,224,71,0.1);
+    border: 1px solid rgba(253,224,71,0.25);
+    border-radius: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    box-shadow: none;
+  }
+  .book-goto-btn:active { opacity: 0.7; transform: scale(0.96); }
 
   /* Typing indicator */
   .typing {
@@ -613,13 +750,18 @@
 
   <!-- ===== HUB ===== -->
   <div class="hub" id="hub">
+    <div class="hub-topbar">
+      <button class="bookshelf-btn" id="openBookshelf">📚 Đọc sách để như Ních</button>
+    </div>
     <div class="hub-head">
       <div class="brand">🍵 Trà đá vỉa hè</div>
       <h1>Chọn chuyện trà đá hôm nay</h1>
       <div class="sub">Series chuyện sếp — kể bằng giọng đồng nghiệp ngồi vỉa hè, không phải bài blog.</div>
     </div>
     <div class="story-list" id="storyList"></div>
-    <div class="hub-foot">Sen & Ních · Trà đá vỉa hè · 2026</div>
+    <div class="hub-foot">
+      Sen & Ních · Trà đá vỉa hè · 2026
+    </div>
   </div>
 
   <!-- ===== STORY VIEW ===== -->
@@ -664,6 +806,97 @@
 
     <div class="copied-toast" id="toast">Đã copy ✓</div>
   </div>
+
+  <!-- ===== BOOKSHELF ===== -->
+  <div class="bookshelf hidden" id="bookshelf">
+    <div class="bookshelf-head">
+      <h2>📚 Đọc sách để như Ních</h2>
+      <button class="bookshelf-close" id="closeBookshelf">✕</button>
+    </div>
+    <div class="bookshelf-sub">Insight trong chuyện trà đá có nguồn gốc từ đây. Không bắt buộc đọc — nhưng đọc thì hiểu sâu hơn.</div>
+
+    <div class="book-item">
+      <div class="book-tag">Đàm phán · Ranh giới</div>
+      <div class="book-title">Never Split the Difference</div>
+      <div class="book-author">Chris Voss</div>
+      <div class="book-desc">Cựu chuyên gia thương thuyết con tin FBI. Dạy cách đặt ranh giới và đàm phán bằng câu hỏi thay vì đối đầu trực tiếp.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="0">→ Chuyện #01</button>
+        <button class="book-goto-btn" data-story-idx="4">→ Chuyện #05</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Visibility · Chia sẻ công việc</div>
+      <div class="book-title">Show Your Work</div>
+      <div class="book-author">Austin Kleon</div>
+      <div class="book-desc">Làm tốt mà không nói = vô hình. Chia sẻ công việc không phải khoe — đó là cách để tồn tại và được nhìn thấy trong hệ thống.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="1">→ Chuyện #02</button>
+        <button class="book-goto-btn" data-story-idx="6">→ Chuyện #07</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Trust Trap · Cho đi</div>
+      <div class="book-title">Give and Take</div>
+      <div class="book-author">Adam Grant</div>
+      <div class="book-desc">Người cho đi vô điều kiện thường kết thúc ở đáy — hoặc trên đỉnh. Biết khi nào cần dừng lại là kỹ năng, không phải ích kỷ.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="2">→ Chuyện #03</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Thăng tiến · Hành vi</div>
+      <div class="book-title">What Got You Here Won't Get You There</div>
+      <div class="book-author">Marshall Goldsmith</div>
+      <div class="book-desc">Thói quen đưa bạn lên vị trí hiện tại thường là thứ ngăn bạn tiến xa hơn. Promote không phải thưởng quá khứ — là đặt cược vào tương lai.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="3">→ Chuyện #04</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Phản hồi · Lãnh đạo</div>
+      <div class="book-title">Radical Candor</div>
+      <div class="book-author">Kim Scott</div>
+      <div class="book-desc">Phê bình đúng cách = care personally + challenge directly. Mắng trước đám đông không phải thẳng thắn — đó là nhục mạ.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="5">→ Chuyện #06</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Tin tưởng · Thuộc về</div>
+      <div class="book-title">Braving the Wilderness</div>
+      <div class="book-author">Brené Brown</div>
+      <div class="book-desc">Không phải ai trong văn phòng cũng xứng đáng nghe câu chuyện của bạn. Biết ai earn the right — đó là kỹ năng, không phải lạnh lùng.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="7">→ Chuyện #08</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Đam mê · Kỹ năng</div>
+      <div class="book-title">So Good They Can't Ignore You</div>
+      <div class="book-author">Cal Newport</div>
+      <div class="book-desc">"Follow your passion" là lời khuyên nguy hiểm. Đam mê đến SAU khi bạn giỏi — không phải trước. Ai dùng chữ đam mê để yêu cầu OT thường là người hưởng lợi từ sự hi sinh đó.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="8">→ Chuyện #09</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-tag">Hướng nội · Sức mạnh</div>
+      <div class="book-title">Quiet: The Power of Introverts</div>
+      <div class="book-author">Susan Cain</div>
+      <div class="book-desc">Hướng nội không phải yếu điểm — là khác biệt. Không có tương quan nào giữa nói nhiều và có ý tưởng tốt.</div>
+      <div class="book-goto">
+        <button class="book-goto-btn" data-story-idx="9">→ Chuyện #10</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -706,6 +939,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày biết ông Chris Voss không? FBI, thương thuyết con tin 24 năm.' },
           { who: 'tuan', name: 'Ních', text: 'Ổng nói việc đầu tiên khi đàm phán là... lùi 1 bước. Chưa nói gì cả.' },
           { who: 'linh', name: 'Sen', text: 'À 💡 mình đang đàm phán với sếp về thời gian nghỉ của mình chứ gì nữa nhỉ.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Never Split the Difference" — Chris Voss' },
         ]
       },
       {
@@ -770,6 +1004,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Còn nữa: mày có hay vá lỗ hổng trước khi nó bung bét không?' },
           { who: 'linh', name: 'Sen', text: 'Ờ tao toàn xử lý xong trước khi sự cố xảy ra.' },
           { who: 'tuan', name: 'Ních', text: 'Người dập lửa được khen to hơn người xây tường chống cháy. Vì lửa thì ai cũng thấy.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Show Your Work" — Austin Kleon' },
         ]
       },
       {
@@ -829,6 +1064,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Đáng tin là tài sản quý. Không có ranh giới, nó thành tờ giấy trắng để người khác điền chi phí lên vai mày.' },
           { who: 'linh', name: 'Sen', text: 'Nhưng họ đâu có xấu...' },
           { who: 'tuan', name: 'Ních', text: 'Không. Hệ thống chỉ cần ai đó lấp vào chỗ trống. Hôm nay là mày. Ngày mai là người khác.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Give and Take" — Adam Grant' },
         ]
       },
       {
@@ -888,6 +1124,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày làm rối trong họp với sếp lớn, ổng cũng bị liên đới.' },
           { who: 'linh', name: 'Sen', text: 'Nhưng tao đâu có làm rối, tao chỉ chỉ ra cái sai...' },
           { who: 'tuan', name: 'Ních', text: 'Đó là góc nhìn của mày. Góc nhìn của sếp: "thằng này hay xù lông, giao lên cao thì mệt".' },
+          { who: 'source', text: '📖 Ních đọc thêm: "What Got You Here Won\'t Get You There" — Marshall Goldsmith' },
         ]
       },
       {
@@ -954,6 +1191,7 @@ const stories = [
           { who: 'linh', name: 'Sen', text: 'Vậy tao không kể cảm xúc à?' },
           { who: 'tuan', name: 'Ních', text: 'Cảm xúc thì người ta nghe. Công ty thì không. Công ty tin số liệu.' },
           { who: 'tuan', name: 'Ních', text: 'In sẵn email xác nhận, bảng mục tiêu đã ký, chứng từ đóng góp. Mang đi họp.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Never Split the Difference" — Chris Voss' },
         ]
       },
       {
@@ -1016,6 +1254,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Ừ. Cái đó thì không đúng. Nhưng mày đang tức vì nội dung hay vì cách?' },
           { who: 'linh', name: 'Sen', text: '...Cách.' },
           { who: 'note', text: 'Tức vì cách, có lý. Nhưng xử cũng phải xử đúng lúc, đúng chỗ.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Radical Candor" — Kim Scott' },
         ]
       },
       {
@@ -1086,6 +1325,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày trồng lúa. Nó bưng cơm lên bàn.' },
           { who: 'tuan', name: 'Ních', text: 'Người ngồi ăn thấy ai bưng thì cảm ơn người đó. Họ đâu có xuống ruộng.' },
           { who: 'note', text: 'Không phải bất công. Là vô hình. Mà vô hình thì phải tự xử, không phải chờ công bằng tự đến.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Show Your Work" — Austin Kleon' },
         ]
       },
       {
@@ -1147,6 +1387,7 @@ const stories = [
           { who: 'linh', name: 'Sen', text: 'Vậy chị đó có lỗi không?' },
           { who: 'tuan', name: 'Ních', text: 'Có. Nhưng mày cũng có lỗi. Mày đưa dao cho người ta, rồi giận người ta vì họ dùng dao.' },
           { who: 'note', text: 'Văn phòng không có chỗ nào an toàn để phàn nàn. Đó là luật, không phải bất công.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Braving the Wilderness" — Brené Brown' },
         ]
       },
       {
@@ -1219,6 +1460,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Mày đang trả học phí bằng giờ OT.' },
           { who: 'tuan', name: 'Ních', text: 'Bóc lột là mày không lớn được, chỉ làm rồi thôi. Học phí là đổi thời gian lấy thứ tiền không mua được ở tuổi 25.' },
           { who: 'note', text: 'Nhãn "đam mê" hay "học phí": mày tự đặt, không phải để công ty đặt.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "So Good They Can\'t Ignore You" — Cal Newport' },
         ]
       },
       {
@@ -1278,6 +1520,7 @@ const stories = [
           { who: 'tuan', name: 'Ních', text: 'Họ kết nhóm từ trước. Mày là người mới. Phải tự bước vào, người ta không tự nhiên mời.' },
           { who: 'linh', name: 'Sen', text: 'Tao hướng nội lắm. Tao không biết bắt chuyện.' },
           { who: 'note', text: 'Hướng nội không có nghĩa là không nói được, chỉ là tốn sức hơn. Vẫn làm được.' },
+          { who: 'source', text: '📖 Ních đọc thêm: "Quiet: The Power of Introverts" — Susan Cain' },
         ]
       },
       {
@@ -1622,6 +1865,19 @@ introScreen.classList.remove('hidden');
 
 introDoneBtn.addEventListener('click', () => {
   introScreen.classList.add('hidden');
+});
+
+// ===================== BOOKSHELF =====================
+const bookshelf = document.getElementById('bookshelf');
+const openBookshelfBtn = document.getElementById('openBookshelf');
+const closeBookshelfBtn = document.getElementById('closeBookshelf');
+openBookshelfBtn.addEventListener('click', (e) => { e.stopPropagation(); bookshelf.classList.remove('hidden'); });
+closeBookshelfBtn.addEventListener('click', (e) => { e.stopPropagation(); bookshelf.classList.add('hidden'); });
+bookshelf.addEventListener('click', (e) => {
+  const btn = e.target.closest('.book-goto-btn');
+  if (!btn) return;
+  bookshelf.classList.add('hidden');
+  openStory(parseInt(btn.dataset.storyIdx, 10));
 });
 </script>
 </body>
