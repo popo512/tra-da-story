@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sao đồng nghiệp được sếp ưu ái hơn còn tôi thì không? · Trà đá vỉa hè</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf6ee;
+    --bg-warm: #f4ecdc;
+    --paper: #fffdf8;
+    --ink: #2d2419;
+    --ink-soft: #5a4a38;
+    --ink-mute: #8a7960;
+    --line: #e8dcc4;
+    --line-soft: #f0e6d3;
+    --accent: #8b5a2b;
+    --accent-soft: #c8923a;
+    --accent-bg: #fef5e3;
+    --citation: #2c6b6b;
+    --citation-bg: #ebf5f4;
+    --warning-bg: #fdf1e3;
+    --warning-border: #d97706;
+    --shadow: 0 4px 16px rgba(91, 64, 33, 0.08);
+    --shadow-lg: 0 12px 32px rgba(91, 64, 33, 0.16);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  /* ============ TOP BAR (progress + brand) ============ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 246, 238, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    z-index: 50;
+  }
+  .progress-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  /* ============ TAB NAVIGATION ============ */
+  .tab-nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-nav-brand {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid var(--line);
+    padding-right: 12px;
+    margin-right: 4px;
+  }
+  .tab-btn {
+    background: transparent;
+    border: 1.5px solid transparent;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+  .tab-btn:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+  .tab-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .tab-btn .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+    flex-shrink: 0;
+  }
+  .tab-btn.visited .dot { background: var(--accent-soft); }
+  .tab-btn.active .dot { background: white; }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, #f4ecdc 0%, #ead9b8 100%);
+    padding: 56px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(200, 146, 58, 0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(139, 90, 43, 0.1), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: rgba(255, 253, 248, 0.7);
+    padding: 6px 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 4.5vw, 38px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .hero-insight {
+    background: var(--paper);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .hero-insight strong { color: var(--ink); }
+  .hero-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+
+  /* ============ MAIN / TAB PANELS ============ */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+  }
+  .tab-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-number {
+    display: inline-block;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .tab-panel > h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--line);
+  }
+  .tab-panel h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 32px 0 14px;
+    color: var(--ink);
+  }
+  .tab-panel p {
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .tab-panel p em {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .tab-panel p strong { color: var(--ink); font-weight: 600; }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .standout {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--accent);
+    text-align: center;
+    padding: 24px 20px;
+    margin: 24px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* ============ TABLES ============ */
+  .table-wrap {
+    margin: 20px -8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--paper);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    font-size: 15px;
+  }
+  thead th {
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-weight: 700;
+    text-align: left;
+    padding: 13px 14px;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--line);
+  }
+  tbody td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) td { background: rgba(250, 246, 238, 0.5); }
+  tbody td:first-child { font-weight: 600; color: var(--ink); }
+
+  /* ============ CITATION CHIP (inline) ============ */
+  .cite {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--citation-bg);
+    border: 1px solid #c5dedb;
+    color: var(--citation);
+    padding: 2px 9px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    line-height: 1.4;
+    vertical-align: baseline;
+    text-decoration: none;
+  }
+  .cite::before {
+    content: '📚';
+    font-size: 11px;
+  }
+  .cite:hover {
+    background: var(--citation);
+    color: white;
+    border-color: var(--citation);
+  }
+
+  /* ============ CITATION MODAL ============ */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 36, 25, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--paper);
+    border-radius: var(--radius);
+    max-width: 520px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    padding: 28px;
+    position: relative;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: transparent;
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--bg-warm); color: var(--ink); }
+  .modal-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--citation);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .modal-title {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    padding-right: 32px;
+  }
+  .modal-year {
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+  }
+  .modal-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .modal-source {
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+
+  /* ============ EXAMPLE CALLOUT ============ */
+  .example {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--accent-soft);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .example-tag {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ============ HIGHLIGHT CALLOUT (special) ============ */
+  .callout-special {
+    background: var(--warning-bg);
+    border: 1px solid #f3d8a9;
+    border-left: 4px solid var(--warning-border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin: 32px 0;
+  }
+  .callout-special-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .callout-special-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+  .callout-special h4 {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+  }
+  .callout-special p {
+    margin-bottom: 12px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .callout-special p:last-child { margin-bottom: 0; }
+
+  /* ============ DIALOG SEN-NÍCH (collapsible) ============ */
+  .dialog-collapse {
+    margin: 28px 0;
+  }
+  .dialog-toggle {
+    width: 100%;
+    background: linear-gradient(135deg, #fff8e1 0%, #fef5e3 100%);
+    border: 1px solid #f0d9a7;
+    border-radius: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: all 0.15s;
+    text-align: left;
+  }
+  .dialog-toggle:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+  .dialog-toggle-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .dialog-toggle-label {
+    flex: 1;
+  }
+  .dialog-toggle-meta {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+  .dialog-toggle-arrow {
+    font-size: 14px;
+    color: var(--ink-mute);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .dialog-collapse.open .dialog-toggle-arrow {
+    transform: rotate(180deg);
+  }
+  .dialog-body {
+    display: none;
+    background: linear-gradient(135deg, #fff8e1 0%, #fef5e3 100%);
+    border: 1px solid #f0d9a7;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 18px 22px 22px;
+    margin-top: -1px;
+  }
+  .dialog-collapse.open .dialog-toggle {
+    border-radius: 12px 12px 0 0;
+  }
+  .dialog-collapse.open .dialog-body { display: block; }
+
+  .bubble {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .bubble:last-child { margin-bottom: 0; }
+  .bubble-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .bubble.nich .bubble-avatar { background: #2c6b6b; }
+  .bubble-content {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+    flex: 1;
+  }
+  .bubble-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ RECAP (Cẩm nang) ============ */
+  .recap {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-top: 32px;
+    box-shadow: var(--shadow);
+  }
+  .recap-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .recap-content {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .recap-content strong { color: var(--accent); }
+
+  /* ============ BLOCKQUOTE ============ */
+  blockquote {
+    border-left: 3px solid var(--accent-soft);
+    padding: 4px 0 4px 18px;
+    margin: 18px 0;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+  blockquote .attribution {
+    display: block;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+  }
+
+  /* ============ STEP CARDS ============ */
+  .step {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 22px 22px 76px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .step-num {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+  }
+  .step h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .step p {
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .step p + p { margin-top: 10px; }
+  .step .fallback {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-size: 14.5px;
+  }
+  .step .fallback strong { color: var(--ink); }
+
+  /* ============ PRE-STEP (Bước 0) ============ */
+  .pre-step {
+    background: linear-gradient(135deg, #fef5e3 0%, #fdf1e3 100%);
+    border: 1px dashed var(--accent-soft);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .pre-step-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+  .pre-step h4 {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .pre-step p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+  }
+  .pre-step .format {
+    display: inline-block;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--accent);
+    background: var(--paper);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14.5px;
+  }
+
+  /* ============ KEY CARD (3 behaviors) ============ */
+  .key-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin: 18px 0;
+    box-shadow: var(--shadow);
+  }
+  .key-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .key-card-badge {
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+  .key-card-head h4 {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+  }
+
+  /* ============ TAB FOOTER NAV ============ */
+  .tab-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .tab-footer-btn {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    transition: all 0.15s;
+    text-align: left;
+    flex: 1;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .tab-footer-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+  .tab-footer-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .tab-footer-btn.next { text-align: right; align-items: flex-end; }
+  .tab-footer-btn-label {
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tab-footer-btn-title {
+    font-weight: 600;
+    font-size: 14.5px;
+  }
+
+  /* ============ CLOSING ============ */
+  .closing {
+    background: linear-gradient(135deg, #f4ecdc 0%, #ead9b8 100%);
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 60px;
+  }
+  .closing-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .closing h3 {
+    font-family: 'Lora', serif;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .closing p {
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .back-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 22px;
+    border: 1.5px solid var(--accent);
+    border-radius: 100px;
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+  }
+  .back-link:hover { background: var(--accent); color: white; }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .hero { padding: 40px 20px 44px; }
+    main { padding: 28px 20px 20px; }
+    .tab-nav { padding: 10px 16px; }
+    .tab-nav-brand { font-size: 12px; padding-right: 10px; }
+    .tab-btn { font-size: 12px; padding: 5px 10px; }
+    .standout { font-size: 17px; padding: 20px 16px; }
+    table { font-size: 14px; }
+    thead th, tbody td { padding: 11px 12px; font-size: 13.5px; }
+    .step { padding: 20px 18px 20px 64px; }
+    .step-num { left: 14px; top: 18px; width: 36px; height: 36px; font-size: 16px; }
+    .modal { padding: 24px 20px; }
+    .modal-title { font-size: 18px; }
+    .tab-footer-nav { flex-direction: column; }
+    .tab-footer-btn { max-width: 100%; width: 100%; }
+    .tab-footer-btn.next { text-align: left; align-items: flex-start; }
+  }
+
+  @media print {
+    .topbar, .tab-footer-nav, .modal-backdrop { display: none; }
+    .tab-panel { display: block !important; page-break-after: always; }
+    .dialog-body { display: block !important; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="tab-nav" id="tabNav">
+    <span class="tab-nav-brand">☕ Trà đá</span>
+    <button class="tab-btn active" data-tab="s1"><span class="dot"></span>1. Khoảnh khắc</button>
+    <button class="tab-btn" data-tab="s2"><span class="dot"></span>2. Hai câu hỏi sai</button>
+    <button class="tab-btn" data-tab="s3"><span class="dot"></span>3. Vòng tin tưởng</button>
+    <button class="tab-btn" data-tab="s4"><span class="dot"></span>4. Giả tạo?</button>
+    <button class="tab-btn" data-tab="s5"><span class="dot"></span>5. Làm gì tuần này</button>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">● Chuyện công sở</span>
+    <h1>Sao đồng nghiệp cùng team được sếp ưu ái hơn còn tôi thì không?</h1>
+    <div class="hero-insight">
+      <strong>Key insight:</strong> Sếp không ưu ái người họ thích nhất — họ ưu ái người họ tin tưởng nhất. Và sự tin tưởng không đến từ làm việc tốt, mà từ việc sếp cảm thấy bạn hiểu họ.
+    </div>
+    <div class="hero-meta">
+      <span>⏱ 10 phút đọc</span>
+      <span>📚 13 nguồn nghiên cứu</span>
+      <span>✦ 5 phần</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ TAB 1 ============ -->
+  <article class="tab-panel active" id="panel-s1">
+    <span class="section-number">— Phần I —</span>
+    <h2>Khoảnh khắc nhận ra</h2>
+
+    <p class="lead">Nó không đến trong một khoảnh khắc duy nhất. Nó tích lũy, từng mảnh nhỏ, qua nhiều tuần.</p>
+
+    <p>Và đây là điều kỳ lạ: cùng một chuỗi sự kiện, nhưng bên ngoài và bên trong bạn đang xử lý hai câu chuyện hoàn toàn khác nhau.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Điều xảy ra bên ngoài</th>
+            <th>Điều diễn ra bên trong</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sếp hỏi ý kiến họ trước trong buổi họp</td><td>"Chắc sếp đang bận, không để ý thôi."</td></tr>
+          <tr><td>Dự án mới được giao cho họ</td><td>"Họ có kinh nghiệm hơn mình ở mảng đó."</td></tr>
+          <tr><td>Một buổi cà phê buổi sáng không có mình</td><td>"Mình có đang bị bỏ qua không?"</td></tr>
+          <tr><td>Câu khen ngợi trước cả team, nghe có vẻ nhiều hơn mức cần thiết</td><td>"Tại sao không bao giờ là mình?"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Không có gì là bằng chứng rõ ràng. Nhưng tổng hợp lại, rất khó phủ nhận.</p>
+    <p><strong>Và rồi hai câu hỏi xuất hiện, theo đúng thứ tự đó.</strong></p>
+    <p>Câu hỏi đầu tiên là câu hỏi lý trí: <em>"Họ làm tốt hơn mình ở điểm nào?"</em></p>
+    <p>Câu hỏi thứ hai mới là câu hỏi thực sự: <em>"Hay là sếp đơn giản là không thích mình?"</em></p>
+
+    <div class="standout">Câu thứ hai đau hơn rất nhiều. Vì làm tốt hơn thì còn có thể học. Còn nếu vấn đề là bản thân bạn thì sửa bằng cách nào?</div>
+
+    <h3>Tại sao bị thiên vị lại đau theo cách khác so với các vấn đề công việc thông thường?</h3>
+
+    <p>Vì nó không chỉ kích hoạt một cảm xúc. Nó kích hoạt nhiều lớp cùng một lúc.</p>
+
+    <p>Nhà thần kinh học David Rock, trong <button class="cite" data-cite="rock">SCARF Model (2008)</button>, chỉ ra rằng não người xử lý 5 loại đe dọa xã hội với cùng cường độ như đe dọa thể chất. Khi bị thiên vị, ít nhất 4 trong 5 loại đó bị kích hoạt đồng thời, và đây là lý do tại sao phản ứng của bạn mạnh hơn bạn tưởng là bình thường.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Bạn cảm thấy</th>
+            <th>Cơ chế tâm lý phía sau</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bị loại ra ngoài</td>
+            <td>Nhà tâm lý học <button class="cite" data-cite="williams">Kipling Williams (2007)</button> chứng minh rằng chỉ cần bị loại khỏi một trò chơi đơn giản trong vài phút, não người đã phản ứng như khi bị đau thể chất. Nhu cầu thuộc về một nhóm không phải cảm tính mà là phản xạ sinh học.</td>
+          </tr>
+          <tr>
+            <td>Bị xếp thấp hơn trong mắt cả team</td>
+            <td>Đây là mối đe dọa về địa vị xã hội, một trong những mối đe dọa nhạy cảm nhất trong SCARF Model. Não người theo dõi địa vị trong nhóm liên tục và vô thức, vì trong hàng triệu năm tiến hóa, địa vị thấp đồng nghĩa với việc tiếp cận ít nguồn lực hơn để tồn tại.</td>
+          </tr>
+          <tr>
+            <td>Không biết tại sao và không biết phải làm gì</td>
+            <td>Nghiên cứu của <button class="cite" data-cite="kruglanski">Arie Kruglanski</button> về nhu cầu nhận thức về sự chắc chắn chỉ ra rằng não người không chịu được sự mơ hồ kéo dài. Khi không có lý giải rõ ràng, não tự động điền vào khoảng trống đó bằng kịch bản tiêu cực nhất có thể.</td>
+          </tr>
+          <tr>
+            <td>Có gì đó sai về mặt căn bản</td>
+            <td><button class="cite" data-cite="eisenberger">Eisenberger và cộng sự (2003)</button> tại UCLA dùng máy quét não cho thấy khi con người cảm nhận sự bất công xã hội, vùng não phản ứng mạnh nhất không phải vùng xử lý tức giận mà là vùng xử lý cảm giác ghê tởm. Bạn không chỉ thấy bực. Bạn thấy có gì đó sai về mặt căn bản.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Và ở giữa tất cả những thứ đó là sự mơ hồ.</strong></p>
+    <p>Với chuyện lương, ít nhất có con số rõ ràng. Bạn có thể bước vào phòng sếp và nói chuyện về nó.</p>
+    <p>Với việc bị thiên vị, bạn không thể làm vậy. Bạn không thể nói <em>"Anh/chị đang ưu ái họ hơn tôi"</em> mà không nghe lại câu <em>"Em đang nghĩ quá rồi"</em>, dù cả hai đều biết điều đó không hoàn toàn đúng.</p>
+    <p>Vì vậy bạn chọn im lặng. Quan sát. Tự hỏi. Và dần dần, hoặc bạn học cách sống chung với nỗi bực bội đó, hoặc bạn bắt đầu tách ra khỏi công việc theo cách bạn không nhận ra cho đến khi đã quá muộn.</p>
+
+    <div class="example">
+      <span class="example-tag">✦ Trước khi sang Phần II</span>
+      Và đúng, điều này <strong>không công bằng</strong>. Bạn không cần phải thuyết phục bản thân rằng cảm giác đó là sai. Câu hỏi thực sự không phải là làm sao để chấp nhận tình huống này, mà là làm sao để <strong>thay đổi nó</strong>, bắt đầu từ chỗ bạn thực sự có thể kiểm soát.
+    </div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Cảm giác bị thiên vị <strong>đau theo cách khác</strong> vì nó không phải một cảm xúc — nó là 4 mối đe dọa xã hội kích hoạt cùng lúc trong não. Cộng với sự mơ hồ không thể đem ra hỏi, dễ dẫn đến tách ra khỏi công việc trước khi nhận ra.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" disabled>
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">—</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="s2">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">2. Hai câu hỏi sai</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB 2 ============ -->
+  <article class="tab-panel" id="panel-s2">
+    <span class="section-number">— Phần II —</span>
+    <h2>Tại sao cả hai câu hỏi đó đều sai</h2>
+
+    <p class="lead">Khi cảm xúc lắng xuống đủ để suy nghĩ rõ hơn, hầu hết mọi người bắt đầu tìm câu trả lời theo một trong hai hướng. Và cả hai hướng đó đều dẫn đến ngõ cụt.</p>
+
+    <p>Hướng thứ nhất là câu hỏi lý trí: <em>"Họ làm tốt hơn mình ở điểm nào?"</em></p>
+    <p>Hướng thứ hai là câu hỏi cảm xúc: <em>"Hay là sếp đơn giản là không thích mình?"</em></p>
+    <p>Cả hai câu hỏi đều nghe có vẻ tự nhiên. Nhưng cả hai đều đang dẫn bạn đến sai chỗ.</p>
+
+    <h3>Câu hỏi thứ nhất sai ở đâu?</h3>
+
+    <p>Khi hỏi <em>"Họ giỏi hơn mình ở điểm nào?"</em>, bạn đang giả định rằng sếp thiên vị vì năng lực. Nếu đúng vậy, giải pháp là làm tốt hơn và mọi thứ sẽ tự thay đổi.</p>
+    <p>Nhưng năng lực không vận hành theo cách đó trong đầu người quản lý.</p>
+
+    <p><button class="cite" data-cite="scullen">Scullen, Mount và Goff (2000)</button> công bố trên <em>Journal of Applied Psychology</em> một phân tích hơn 9.000 bản đánh giá hiệu suất thực tế trong môi trường doanh nghiệp. Kết quả cho thấy <strong>hơn 60% sự chênh lệch</strong> trong điểm đánh giá giữa các nhân viên không phản ánh năng lực thực tế của người được đánh giá, mà phản ánh xu hướng nhận thức của chính người quản lý đang đánh giá.</p>
+
+    <p>Nói cách khác, phần lớn cách sếp nhìn nhận bạn không đến từ những gì bạn làm. Nó đến từ <strong>lăng kính</strong> mà sếp đang nhìn bạn qua, và lăng kính đó được hình thành từ rất sớm, thường trước khi bạn kịp chứng minh bất cứ điều gì.</p>
+
+    <div class="example">
+      <span class="example-tag">✦ Hình dung thế này</span>
+      Hai nhân viên cùng làm một việc như nhau trong một tuần. Người A đã tạo được ấn tượng tốt với sếp từ trước. Người B thì chưa. Sếp nhìn vào kết quả giống nhau đó và thấy hai thứ khác nhau hoàn toàn — không phải vì kết quả thực sự khác, mà vì lăng kính đang nhìn khác.
+    </div>
+
+    <p>Người đồng nghiệp được ưu ái không nhất thiết đang làm tốt hơn bạn. Rất có thể họ đã tạo được ấn tượng tích cực ban đầu với sếp, và từ đó mọi thứ họ làm đều được nhìn qua lăng kính đó. Mọi thứ bạn làm cũng vậy, nhưng theo chiều ngược lại.</p>
+
+    <div class="standout">Năng lực là điều kiện để được giữ lại. Không phải lý do để được tin tưởng.</div>
+
+    <h3>Câu hỏi thứ hai sai ở đâu?</h3>
+
+    <p>Khi hỏi <em>"Sếp có thích mình không?"</em>, bạn đang đặt vấn đề vào một thứ gần như không thể kiểm soát và không thể thay đổi bằng hành động cụ thể.</p>
+    <p>Nhưng có một sự phân biệt quan trọng mà hầu hết mọi người bỏ qua.</p>
+    <p>Nhà nghiên cứu <button class="cite" data-cite="mcallister">Daniel McAllister (1995)</button> tại Georgetown University phân tích sự tin tưởng trong tổ chức và chỉ ra rằng có hai loại tin tưởng hoàn toàn khác nhau trong môi trường công việc.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Loại tin tưởng</th>
+            <th>Được hình thành từ</th>
+            <th>Bạn có kiểm soát được không?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dựa trên cảm xúc</td><td>Sự tương đồng về tính cách, sở thích, nền tảng cá nhân</td><td>Rất khó, vì không thể ép người ta cảm thấy gần gũi với mình</td></tr>
+          <tr><td>Dựa trên hành vi</td><td>Quan sát bạn làm đúng những gì nói, xử lý được việc khó, không tạo thêm gánh nặng cho sếp</td><td>Hoàn toàn có thể, vì đây là những hành vi cụ thể</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Khi bạn hỏi <em>"Sếp có thích mình không?"</em>, bạn đang nghĩ đến loại thứ nhất và tự đặt mình vào thế không có lối ra. Trong khi đó, thứ thực sự quyết định ai được giao việc quan trọng, ai được tham gia các cuộc trò chuyện quan trọng, ai được nhắc đến khi có cơ hội mới, lại phần lớn nằm ở loại thứ hai.</p>
+
+    <div class="dialog-collapse" data-dialog>
+      <button class="dialog-toggle" type="button">
+        <span class="dialog-toggle-icon">☕</span>
+        <span class="dialog-toggle-label">
+          Sen & Ních bàn về chuyện này
+          <span class="dialog-toggle-meta">4 lượt trao đổi · 30 giây</span>
+        </span>
+        <span class="dialog-toggle-arrow">▼</span>
+      </button>
+      <div class="dialog-body">
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Vậy nghĩa là sếp thân với ai thì người đó được ưu ái à? Đời thật bất công ghê.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Không phải. McAllister chỉ ra hai loại — và loại quyết định ai được giao việc quan trọng <em>không phải</em> loại "thân thiết". Là loại "tin được không?" — và cái này mày kiểm soát được bằng hành vi cụ thể.
+          </div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Hành vi gì? Tao đi làm chăm chỉ rồi mà.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Chăm chỉ là cần. Nhưng chưa đủ. Phần III sẽ nói cụ thể 3 hành vi nào.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Vậy câu hỏi đúng là gì?</h3>
+
+    <p>Không phải <em>"Họ giỏi hơn mình không?"</em> và không phải <em>"Sếp có thích mình không?"</em></p>
+    <p>Mà là: <em><strong>"Sếp đang tin tưởng họ vì hành vi cụ thể nào?"</strong></em></p>
+
+    <p>Câu hỏi này được xây dựng trên nền tảng của một trong những lý thuyết tổ chức được nghiên cứu nhiều nhất trong môi trường công sở. <button class="cite" data-cite="graen">Graen và Uhl-Bien (1995)</button> chỉ ra rằng người quản lý tự nhiên hình thành hai nhóm trong team: nhóm được trao nhiều tin tưởng, thông tin và cơ hội hơn, và nhóm còn lại chỉ nhận những gì cần thiết để hoàn thành công việc. Vị trí trong hai nhóm đó <strong>không được quyết định bởi năng lực hay bởi sự yêu thích cá nhân</strong>, mà được hình thành qua chuỗi những tương tác hành vi cụ thể trong giai đoạn đầu của mối quan hệ.</p>
+
+    <p>Nói ngắn gọn hơn: bạn không bị đặt vào nhóm bên ngoài vì bạn kém hay vì sếp không thích bạn. Bạn bị đặt vào đó vì <strong>chưa có đủ tín hiệu hành vi</strong> để sếp đưa bạn vào nhóm tin tưởng.</p>
+    <p>Và nếu vấn đề là hành vi, thì hành vi có thể thay đổi.</p>
+
+    <p><button class="cite" data-cite="covey-quote">Stephen M.R. Covey (2006)</button> trong <em>The Speed of Trust</em> viết:</p>
+    <blockquote>
+      "Trust is not some soft, illusive quality that you either have or you don't; rather, trust is a pragmatic, tangible, actionable asset that you can create."
+      <span class="attribution">— Stephen M.R. Covey, <em>The Speed of Trust</em> (2006)</span>
+    </blockquote>
+    <p>Tạm dịch: tin tưởng không phải thứ mơ hồ mà bạn hoặc có hoặc không, mà là thứ cụ thể, có thể đo được và có thể chủ động xây dựng.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Câu hỏi</th>
+            <th>Giả định đằng sau</th>
+            <th>Dẫn đến</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Họ giỏi hơn mình không?</td><td>Thiên vị đến từ năng lực</td><td>Cố làm tốt hơn theo tiêu chí mình tự đặt ra, không biết có đúng hướng không</td></tr>
+          <tr><td>Sếp có thích mình không?</td><td>Thiên vị đến từ cảm tình cá nhân</td><td>Cố làm hài lòng, thay đổi cách nói chuyện, mệt mỏi và thường không hiệu quả</td></tr>
+          <tr><td>Sếp tin tưởng họ vì điều gì?</td><td>Thiên vị đến từ sự tin tưởng được tích lũy qua hành vi</td><td>Hiểu được cơ chế và có hành vi cụ thể để thay đổi</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Sự tin tưởng được xây dựng qua hành vi, qua thời gian, và quan trọng hơn là có thể bắt đầu thay đổi từ tuần này. Đó là nội dung của phần tiếp theo.</p>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Hỏi <strong>"sếp tin tưởng họ vì hành vi nào?"</strong> thay vì "họ giỏi hơn không?" hay "sếp có thích mình không?". Tin tưởng dựa trên hành vi <strong>có thể kiểm soát</strong> — tin tưởng dựa trên cảm xúc thì không.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="s1">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">1. Khoảnh khắc</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="s3">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">3. Vòng tin tưởng</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB 3 ============ -->
+  <article class="tab-panel" id="panel-s3">
+    <span class="section-number">— Phần III —</span>
+    <h2>3 thứ tạo nên vòng tin tưởng</h2>
+
+    <p class="lead">Nếu vấn đề thực sự là sự tin tưởng, thì tin tốt là: sự tin tưởng có thể xây dựng được. Và không cần bắt đầu từ việc lớn.</p>
+
+    <p><button class="cite" data-cite="dirks">Dirks và Ferrin (2002)</button> công bố trên <em>Journal of Applied Psychology</em> một phân tích tổng hợp từ <strong>106 nghiên cứu</strong> về tin tưởng trong môi trường tổ chức. Kết luận trung tâm: tin tưởng vào người quản lý trực tiếp là một trong những yếu tố dự báo mạnh nhất cho hiệu suất công việc, mức độ gắn kết, và sự sẵn sàng đóng góp vượt ngoài nhiệm vụ được giao. Và quan trọng hơn, tin tưởng đó được hình thành <strong>chủ yếu từ hành vi quan sát được theo thời gian</strong>, không phải từ tính cách hay sự tương đồng cá nhân.</p>
+
+    <p>Điều đó có nghĩa là sự tin tưởng có thể xây dựng được. Và có ba nhóm hành vi cốt lõi tạo ra nó.</p>
+
+    <div class="key-card">
+      <div class="key-card-head">
+        <span class="key-card-badge">01</span>
+        <h4>Nhất quán trong những việc nhỏ</h4>
+      </div>
+
+      <p><button class="cite" data-cite="brown-trust">Brené Brown (2018)</button> trong cuốn <em>Dare to Lead</em> xây dựng một khung phân tích về tin tưởng gồm bảy thành tố hành vi cụ thể. Trong đó, thành tố về sự đáng tin cậy được định nghĩa như sau:</p>
+
+      <blockquote>
+        "You do what you say you'll do. At work, this means staying aware of your competencies and limitations so you don't overpromise and are able to deliver on commitments and balance competing priorities."
+        <span class="attribution">— Brené Brown, <em>Dare to Lead</em> (2018)</span>
+      </blockquote>
+
+      <p>Tạm dịch: bạn làm đúng những gì bạn nói sẽ làm. Không phải đôi khi. Không phải khi tiện. Mà là nhất quán, kể cả với những cam kết nhỏ.</p>
+      <p>Điểm quan trọng Brown nhấn mạnh là phần sau của định nghĩa: <strong>đừng hứa quá khả năng</strong>. Một người hay hứa nhiều nhưng thực hiện không đều tạo ra ít tin tưởng hơn một người hứa ít nhưng thực hiện chắc chắn. Não người ghi nhận sự vi phạm cam kết mạnh hơn là ghi nhận cam kết được thực hiện.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tín hiệu xây dựng tin tưởng</th><th>Tín hiệu làm xói mòn tin tưởng</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Deadline nhỏ được giữ đúng, liên tục</td><td>Deadline lớn đúng nhưng deadline nhỏ hay trễ</td></tr>
+            <tr><td>Cập nhật chủ động khi có thay đổi</td><td>Im lặng cho đến khi được hỏi</td></tr>
+            <tr><td>Nói không được thì nói không được từ đầu</td><td>Nhận việc rồi không xử lý được mới báo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-card">
+      <div class="key-card-head">
+        <span class="key-card-badge">02</span>
+        <h4>Không tạo thêm gánh nặng cho sếp</h4>
+      </div>
+
+      <p><button class="cite" data-cite="covey-formula">Stephen Covey (2006)</button> trong <em>The Speed of Trust</em> đề xuất một công thức đơn giản để đo mức độ tin tưởng: tin tưởng được tạo ra bởi ba thứ gồm năng lực chuyên môn, độ tin cậy và sự gần gũi, nhưng tất cả bị chia cho một yếu tố duy nhất là <strong>mức độ bạn đang ưu tiên lợi ích của bản thân</strong>.</p>
+
+      <p>Khi yếu tố đó cao, dù ba thứ kia tốt đến đâu, tin tưởng vẫn bị kéo xuống. Trong thực tế công sở, yếu tố đó thể hiện qua một câu hỏi đơn giản trong đầu người quản lý: <em>"Khi giao việc này cho họ, mình có thực sự buông tay được không?"</em></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Người sếp có thể buông tay</th><th>Người sếp cần theo dõi thêm</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nhận việc và tự xác định phạm vi trước khi làm</td><td>Nhận việc xong rồi mới hỏi có đúng ý không</td></tr>
+            <tr><td>Khi gặp vướng mắc, đề xuất phương án trước khi hỏi</td><td>Mang vấn đề đến mà không có hướng xử lý</td></tr>
+            <tr><td>Báo cáo ngắn gọn, chủ động, đúng lúc</td><td>Chỉ báo cáo khi được hỏi</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-card">
+      <div class="key-card-head">
+        <span class="key-card-badge">03</span>
+        <h4>Hiểu sếp đang thực sự cần gì</h4>
+      </div>
+
+      <p><button class="cite" data-cite="drucker">Peter Drucker (2005)</button> trong <em>Managing Oneself</em>, bài viết đăng trên <em>Harvard Business Review</em> và được tái bản nhiều lần, chỉ ra rằng một trong những kỹ năng quan trọng nhất trong môi trường công việc là hiểu được <strong>cách người quản lý của bạn thực sự vận hành</strong>, họ đang lo lắng điều gì, họ đo thành công bằng tiêu chí nào, và họ cần nhận thông tin theo cách nào.</p>
+
+      <blockquote>
+        "It is essential to take responsibility for managing your relationship with your superiors. Managing up means first understanding how your manager works and what they truly need from you."
+        <span class="attribution">— Peter Drucker, <em>Managing Oneself</em>, HBR</span>
+      </blockquote>
+
+      <p>Người đồng nghiệp được ưu ái thường không làm nhiều hơn bạn. Họ làm <strong>đúng những thứ sếp đang thực sự lo lắng</strong> vào đúng thời điểm sếp đang cần. Đó là lý do mỗi việc họ làm trông có vẻ quan trọng hơn, dù khối lượng công việc có thể tương đương.</p>
+    </div>
+
+    <h3>Ba thứ này cộng hưởng như thế nào?</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Có</th><th>Thiếu</th><th>Kết quả</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nhất quán + Giảm gánh nặng</td><td>Hiểu ưu tiên của sếp</td><td>Được đánh giá đáng tin nhưng không được giao việc quan trọng</td></tr>
+          <tr><td>Nhất quán + Hiểu ưu tiên</td><td>Giảm gánh nặng</td><td>Được xem là có năng lực nhưng sếp vẫn cần để mắt</td></tr>
+          <tr><td>Giảm gánh nặng + Hiểu ưu tiên</td><td>Nhất quán</td><td>Tạo ấn tượng tốt ban đầu nhưng tin tưởng bào mòn dần theo thời gian</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Ba hành vi xây vòng tin tưởng: <strong>(1)</strong> nhất quán cả ở việc nhỏ, <strong>(2)</strong> không tạo thêm gánh nặng — mang phương án thay vì mang vấn đề, <strong>(3)</strong> hiểu sếp đang thực sự lo gì. Thiếu bất kỳ thứ nào trong ba, hai cái còn lại sẽ không đủ.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="s2">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">2. Hai câu hỏi sai</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="s4">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">4. Giả tạo?</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB 4 ============ -->
+  <article class="tab-panel" id="panel-s4">
+    <span class="section-number">— Phần IV —</span>
+    <h2>Làm vậy có phải đang giả tạo không?</h2>
+
+    <p class="lead">Biết được ba thứ cần thay đổi là một việc. Nhưng trước khi bắt tay vào làm, hầu hết mọi người đều vấp phải một câu hỏi khó chịu hơn.</p>
+
+    <p>Đến đây, một câu hỏi tự nhiên xuất hiện: nếu phải thay đổi hành vi để được sếp tin tưởng hơn, thì khác gì đang giả tạo?</p>
+    <p>Đây là lo ngại chính đáng và cần được trả lời rõ ràng trước khi bàn đến hành động cụ thể.</p>
+
+    <div class="dialog-collapse" data-dialog>
+      <button class="dialog-toggle" type="button">
+        <span class="dialog-toggle-icon">☕</span>
+        <span class="dialog-toggle-label">
+          Sen & Ních cãi nhau chuyện "giả tạo"
+          <span class="dialog-toggle-meta">4 lượt trao đổi · 30 giây</span>
+        </span>
+        <span class="dialog-toggle-arrow">▼</span>
+      </button>
+      <div class="dialog-body">
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Tao thấy mấy đứa được sếp ưu ái nó cứ "dạ vâng" suốt. Mày bảo tao phải làm vậy à? Tao không làm được đâu.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Khác hẳn nhau đấy. Giữ cam kết nhỏ không phải nịnh. Mang phương án đến khi gặp vướng cũng không phải nịnh. Đó là thể hiện năng lực, không phải phục tùng.
+          </div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Nhưng tao thay đổi cách làm vì sếp — nghe vẫn cấn cấn.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Mày không thay đổi giá trị cốt lõi của mày. Mày chỉ thay đổi cách <em>biểu đạt</em>. Ibarra có nói rõ chuyện này.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sự khác biệt mà hầu hết mọi người bỏ qua</h3>
+
+    <p><button class="cite" data-cite="ibarra">Herminia Ibarra (2015)</button> trong bài viết <em>The Authenticity Paradox</em> đăng trên <em>Harvard Business Review</em> chỉ ra rằng việc cứng nhắc giữ nguyên cách làm việc với lý do "đó là con người thật của tôi" thực ra có thể là <strong>rào cản cho sự phát triển chuyên môn</strong>. Bà phân biệt giữa hai thứ: <strong>giá trị cốt lõi</strong>, thứ không nên thay đổi, và <strong>phong cách biểu đạt</strong>, thứ hoàn toàn có thể điều chỉnh mà không làm mất đi bản thân.</p>
+
+    <p><button class="cite" data-cite="brown-belong">Brené Brown (2018)</button> trong <em>Dare to Lead</em> đặt ra sự phân biệt còn sắc nét hơn giữa hai khái niệm. Thứ nhất là <strong>cố hòa tan vào môi trường</strong>, tức là đánh giá xem người khác muốn gì rồi trở thành người đó để được chấp nhận. Thứ hai là <strong>thuộc về một cách chân thật</strong>, tức là mang đúng bản thân mình vào môi trường đó nhưng biết cách để bản thân đó được nhìn thấy đúng cách.</p>
+
+    <p>Ba hành vi xây dựng tin tưởng ở phần trước thuộc về loại thứ hai. Giữ đúng cam kết nhỏ không phải giả tạo. Mang phương án đến khi gặp vướng mắc không phải giả tạo. Hiểu sếp đang lo lắng điều gì không phải giả tạo. <strong>Đó là những hành vi thể hiện năng lực và sự chuyên nghiệp, không phải sự phục tùng.</strong></p>
+
+    <h3>Khi nào thì đây không còn là vấn đề của bạn nữa?</h3>
+
+    <p>Cần nói thẳng điều này: không phải mọi trường hợp thiên vị đều có thể giải quyết bằng cách xây dựng tin tưởng từ phía bạn.</p>
+
+    <p>Nếu bạn đã thực hiện đủ cả ba nhóm hành vi trong thời gian dài mà tình huống vẫn không thay đổi, khả năng cao vấn đề không nằm ở hành vi của bạn mà nằm ở <strong>cấu trúc của mối quan hệ hoặc của tổ chức</strong>. <button class="cite" data-cite="edmondson">Edmondson (2018)</button> trong cuốn <em>The Fearless Organization</em> chỉ ra rằng trong môi trường thiếu an toàn tâm lý, ngay cả những hành vi xây dựng tin tưởng chuẩn mực nhất cũng không tạo ra kết quả vì hệ thống không được thiết kế để phản hồi chúng.</p>
+
+    <p>Khi đó, câu hỏi không còn là <em>"mình phải làm gì khác đi?"</em> mà là <em>"đây có phải môi trường mình muốn đầu tư lâu dài không?"</em></p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Dấu hiệu vấn đề nằm ở hành vi của bạn</th><th>Dấu hiệu vấn đề nằm ở cấu trúc tổ chức</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Chưa thực sự thử cả ba nhóm hành vi một cách nhất quán</td><td>Đã thử và duy trì đủ lâu nhưng không có thay đổi nào</td></tr>
+          <tr><td>Mối quan hệ với sếp chưa có đủ thời gian để hình thành</td><td>Không ai trong team ngoài một vài người được tin tưởng, bất kể hành vi</td></tr>
+          <tr><td>Chưa bao giờ có cuộc trò chuyện thẳng thắn về kỳ vọng</td><td>Phản hồi từ sếp mâu thuẫn hoặc không nhất quán với mọi người</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout-special">
+      <div class="callout-special-head">
+        <span class="callout-special-icon">🚪</span>
+        <h4>Còn nếu bạn đang nghĩ đến việc nghỉ?</h4>
+      </div>
+      <p>Nếu bạn đang đọc đến đây và trong đầu đang có câu hỏi <em>"hay là nghỉ cho xong"</em>, đó không phải là phản ứng sai. Đó là phản ứng của người đã dùng quá nhiều năng lượng cho một môi trường chưa đáp lại tương xứng.</p>
+      <p>Bài này <strong>không có mục tiêu thuyết phục bạn ở lại bằng mọi giá</strong>. Mục tiêu là giúp bạn ra quyết định từ vị trí hiểu rõ vấn đề thay vì từ vị trí mệt mỏi và mơ hồ.</p>
+      <p>Nếu bạn thử ba hành động ở phần tiếp theo trong 60 ngày và không có gì thay đổi, bảng chẩn đoán ở trên sẽ cho bạn biết liệu đây là môi trường đáng tiếp tục đầu tư hay không. <strong>Biết để rời đi đúng lúc cũng là một kết quả tốt.</strong></p>
+    </div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Thay đổi <strong>phong cách biểu đạt</strong> không phải giả tạo — chỉ thay đổi <strong>giá trị cốt lõi</strong> mới là. Nếu đã thử cả ba hành vi đủ lâu mà không có thay đổi, vấn đề có thể không ở bạn — câu hỏi đổi thành <em>"đây có phải nơi mình muốn đầu tư lâu dài không?"</em>
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="s3">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">3. Vòng tin tưởng</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="s5">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">5. Làm gì tuần này</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB 5 ============ -->
+  <article class="tab-panel" id="panel-s5">
+    <span class="section-number">— Phần V —</span>
+    <h2>Làm gì từ tuần này</h2>
+
+    <p class="lead">Ba việc cụ thể, mỗi việc tương ứng với một trong ba nhóm hành vi xây dựng tin tưởng.</p>
+
+    <div class="pre-step">
+      <span class="pre-step-tag">⚡ Bước 0 · Làm ngay hôm nay</span>
+      <h4>Viết ra một câu mô tả kết quả cụ thể nhất bạn đã tạo ra trong tháng vừa rồi</h4>
+      <p>Trước khi bắt đầu bất cứ điều gì trong ba việc dưới đây, hãy viết theo format: <span class="format">"Tôi đã làm X, dẫn đến Y."</span></p>
+      <p style="margin-top: 10px;">Không cần gửi cho ai. Chỉ cần viết ra. Bước này giúp bạn nhìn lại <strong>giá trị thực</strong> của mình trước khi bắt đầu xây dựng sự tin tưởng theo hướng mới.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Chọn một cam kết nhỏ và thực hiện trước hạn</h4>
+      <p>Không cần chọn việc lớn. Chọn một việc bạn hay hẹn hoặc hay để sát deadline, thực hiện nó sớm hơn một bậc so với thông thường, và chủ động báo cho đúng người biết khi xong.</p>
+      <p>Mục đích không phải để gây ấn tượng. Mục đích là để bắt đầu <strong>thay đổi tín hiệu</strong> mà sếp đang nhận từ bạn, từng việc nhỏ một.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Lần tới gặp vướng mắc, mang theo ít nhất một phương án</h4>
+      <p>Trước khi gặp sếp để hỏi hoặc báo cáo một vấn đề, dành thêm mười phút để nghĩ ra ít nhất một hướng xử lý, dù chưa chắc đó là hướng tốt nhất.</p>
+      <p>Câu mở đầu thay vì <em>"Em đang gặp vấn đề X"</em> thành <em>"Em đang gặp vấn đề X, em nghĩ có thể xử lý theo hướng Y, anh chị thấy thế nào?"</em> Sự thay đổi nhỏ đó tạo ra tín hiệu lớn về mức độ bạn <strong>giảm gánh nặng nhận thức</strong> cho người quản lý.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Hỏi một câu thật sự về ưu tiên của sếp</h4>
+      <p>Trong buổi họp một một hoặc cuộc trò chuyện thông thường gần nhất, hỏi một câu không phải để gây ấn tượng mà để thực sự hiểu: <em>"Anh chị đang tập trung nhiều nhất vào điều gì trong giai đoạn này?"</em></p>
+      <p>Câu hỏi đó làm được hai thứ cùng lúc. Nó cho bạn thông tin thực để điều chỉnh cách bạn ưu tiên công việc. Và nó tạo ra tín hiệu rằng bạn đang nghĩ đến <strong>bức tranh lớn hơn</strong>, không chỉ phần việc của mình.</p>
+      <div class="fallback">
+        <strong>Nếu không có buổi họp một một thường xuyên:</strong> có thể bắt đầu bằng cách gửi một bản cập nhật ngắn về việc đang làm, cuối đó thêm một câu: <em>"Anh/chị có muốn em điều chỉnh ưu tiên gì trong giai đoạn này không?"</em> Câu đó tự nhiên hơn là hỏi thẳng và vẫn tạo ra cùng tín hiệu.
+      </div>
+    </div>
+
+    <div class="standout">Và nếu bạn không biết nên bắt đầu từ việc nào trong ba — bắt đầu từ việc 1.</div>
+
+    <p>Nhất quán trong những thứ nhỏ là nền tảng. Hai thứ còn lại khó xây dựng nếu nền tảng đó chưa có.</p>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Tuần này chỉ cần làm <strong>1 việc</strong> — không phải cả 3: chọn 1 cam kết nhỏ, làm sớm hơn 1 bậc, báo chủ động khi xong. Nếu phân vân chọn cái nào trong ba, bắt đầu từ đây — nền tảng có rồi thì hai cái sau mới đứng được.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="s4">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">4. Giả tạo?</span>
+      </button>
+      <button class="tab-footer-btn next" disabled>
+        <span class="tab-footer-btn-label">Đã hết →</span>
+        <span class="tab-footer-btn-title">—</span>
+      </button>
+    </div>
+  </article>
+
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>Đọc xong rồi — giờ đến lượt bạn</h3>
+    <p>Đừng cố nhớ hết. Chọn một câu trong "Cẩm nang để dành" của phần nào chạm bạn nhất, và làm <em>một</em> việc theo nó trong tuần này.</p>
+    <button class="back-link" id="restartBtn">↻ Đọc lại từ đầu</button>
+  </div>
+</footer>
+
+<!-- ============ CITATION MODAL ============ -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Đóng">×</button>
+    <span class="modal-tag">📚 Nguồn nghiên cứu</span>
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <div class="modal-year" id="modalYear"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-source" id="modalSource"></div>
+  </div>
+</div>
+
+<script>
+  // ============ CITATIONS DATA ============
+  const citations = {
+    'rock': {
+      title: 'David Rock — SCARF Model',
+      year: '2008',
+      body: 'Nhà thần kinh học David Rock đề xuất mô hình SCARF (Status, Certainty, Autonomy, Relatedness, Fairness) — 5 loại đe dọa xã hội mà não người xử lý với cường độ tương đương đe dọa thể chất. Khi bị thiên vị, ít nhất 4 trong 5 loại đó kích hoạt đồng thời, giải thích vì sao phản ứng cảm xúc mạnh hơn người ta tưởng là bình thường.',
+      source: 'NeuroLeadership Journal, vol. 1, 2008'
+    },
+    'williams': {
+      title: 'Kipling Williams — Ostracism Research',
+      year: '2007',
+      body: 'Nhà tâm lý học Kipling Williams (Purdue University) chứng minh rằng chỉ cần bị loại khỏi một trò chơi đơn giản (Cyberball) trong vài phút, não người đã phản ứng như khi bị đau thể chất. Nhu cầu thuộc về một nhóm không phải cảm tính mà là phản xạ sinh học.',
+      source: 'Annual Review of Psychology, 2007'
+    },
+    'kruglanski': {
+      title: 'Arie Kruglanski — Need for Cognitive Closure',
+      year: 'Multiple works',
+      body: 'Nghiên cứu của Kruglanski (University of Maryland) về "need for cognitive closure" chỉ ra rằng não người không chịu được sự mơ hồ kéo dài. Khi không có lý giải rõ ràng, não tự động điền vào khoảng trống đó bằng kịch bản tiêu cực nhất có thể.',
+      source: 'Psychological Review, multiple publications'
+    },
+    'eisenberger': {
+      title: 'Eisenberger et al. — Brain Imaging of Social Pain',
+      year: '2003',
+      body: 'Eisenberger và cộng sự tại UCLA dùng máy quét fMRI cho thấy khi con người cảm nhận sự bất công xã hội, vùng não phản ứng mạnh nhất không phải vùng xử lý tức giận mà là vùng xử lý cảm giác ghê tởm (insular cortex). Bạn không chỉ thấy bực — bạn thấy có gì đó sai về mặt căn bản.',
+      source: 'Science, vol. 302, 2003'
+    },
+    'scullen': {
+      title: 'Scullen, Mount & Goff — Performance Ratings',
+      year: '2000',
+      body: 'Phân tích hơn 9.000 bản đánh giá hiệu suất thực tế trong môi trường doanh nghiệp. Kết quả: hơn 60% sự chênh lệch trong điểm đánh giá giữa các nhân viên không phản ánh năng lực thực tế của người được đánh giá, mà phản ánh xu hướng nhận thức (rater effect) của chính người quản lý đang đánh giá.',
+      source: 'Journal of Applied Psychology, vol. 85, 2000'
+    },
+    'mcallister': {
+      title: 'Daniel McAllister — Affect & Cognition-Based Trust',
+      year: '1995',
+      body: 'Nhà nghiên cứu tại Georgetown University phân tích sự tin tưởng trong tổ chức và chỉ ra hai loại tin tưởng khác nhau: (1) tin tưởng dựa trên cảm xúc — hình thành từ sự tương đồng cá nhân; (2) tin tưởng dựa trên hành vi — hình thành từ quan sát hành động cụ thể. Loại quyết định ai được giao việc quan trọng là loại thứ hai.',
+      source: 'Academy of Management Journal, vol. 38, 1995'
+    },
+    'graen': {
+      title: 'Graen & Uhl-Bien — Leader-Member Exchange Theory',
+      year: '1995',
+      body: 'Một trong những lý thuyết tổ chức được nghiên cứu nhiều nhất. Người quản lý tự nhiên hình thành hai nhóm trong team: in-group (được trao nhiều tin tưởng, thông tin, cơ hội) và out-group (chỉ nhận những gì cần thiết). Vị trí không quyết định bởi năng lực hay sự yêu thích cá nhân, mà bởi chuỗi tương tác hành vi cụ thể trong giai đoạn đầu.',
+      source: 'The Leadership Quarterly, vol. 6, 1995'
+    },
+    'covey-quote': {
+      title: 'Stephen M.R. Covey — The Speed of Trust',
+      year: '2006',
+      body: '"Trust is not some soft, illusive quality that you either have or you don\'t; rather, trust is a pragmatic, tangible, actionable asset that you can create." — Tin tưởng không phải thứ mơ hồ mà bạn hoặc có hoặc không, mà là thứ cụ thể, có thể đo được và có thể chủ động xây dựng.',
+      source: 'The Speed of Trust: The One Thing That Changes Everything, Free Press, 2006'
+    },
+    'covey-formula': {
+      title: 'Stephen Covey — Trust Formula',
+      year: '2006',
+      body: 'Covey đề xuất công thức: tin tưởng = (năng lực chuyên môn + độ tin cậy + sự gần gũi) ÷ mức độ ưu tiên lợi ích bản thân. Khi mẫu số cao, dù tử số tốt đến đâu, tin tưởng vẫn bị kéo xuống. Trong công sở, điều này thể hiện qua câu hỏi: "Khi giao việc này, mình có thực sự buông tay được không?"',
+      source: 'The Speed of Trust, Free Press, 2006'
+    },
+    'brown-trust': {
+      title: 'Brené Brown — BRAVING Framework',
+      year: '2018',
+      body: 'Brown xây dựng khung 7 thành tố của tin tưởng (BRAVING). Thành tố "Reliability" được định nghĩa: "You do what you say you\'ll do. At work, this means staying aware of your competencies and limitations so you don\'t overpromise and are able to deliver on commitments and balance competing priorities." Điểm quan trọng: đừng hứa quá khả năng.',
+      source: 'Dare to Lead: Brave Work. Tough Conversations. Whole Hearts., Random House, 2018'
+    },
+    'brown-belong': {
+      title: 'Brené Brown — Fitting In vs Belonging',
+      year: '2018',
+      body: 'Brown phân biệt hai khái niệm dễ nhầm: (1) "Fitting in" — cố hòa tan vào môi trường, đánh giá người khác muốn gì rồi trở thành người đó; (2) "Belonging" — thuộc về một cách chân thật, mang đúng bản thân vào môi trường nhưng biết cách để nó được nhìn thấy đúng. Ba hành vi xây tin tưởng thuộc về loại thứ hai.',
+      source: 'Dare to Lead, Random House, 2018'
+    },
+    'dirks': {
+      title: 'Dirks & Ferrin — Trust in Leadership (Meta-analysis)',
+      year: '2002',
+      body: 'Phân tích tổng hợp từ 106 nghiên cứu về tin tưởng trong môi trường tổ chức. Kết luận: tin tưởng vào người quản lý trực tiếp là một trong những yếu tố dự báo mạnh nhất cho hiệu suất, gắn kết, và sự sẵn sàng đóng góp vượt ngoài nhiệm vụ. Quan trọng: tin tưởng đó được hình thành chủ yếu từ hành vi quan sát được theo thời gian, không phải từ tính cách hay sự tương đồng cá nhân.',
+      source: 'Journal of Applied Psychology, vol. 87, 2002'
+    },
+    'drucker': {
+      title: 'Peter Drucker — Managing Oneself',
+      year: '2005 (reprint)',
+      body: '"It is essential to take responsibility for managing your relationship with your superiors. Managing up means first understanding how your manager works and what they truly need from you." Drucker nhấn mạnh: hiểu cách sếp vận hành, sếp đang lo gì, sếp đo thành công bằng tiêu chí nào, và sếp cần nhận thông tin theo cách nào — là một trong những kỹ năng quan trọng nhất.',
+      source: 'Harvard Business Review, January 2005 (reprint)'
+    },
+    'ibarra': {
+      title: 'Herminia Ibarra — The Authenticity Paradox',
+      year: '2015',
+      body: 'Ibarra (London Business School) lập luận: cứng nhắc giữ nguyên cách làm việc với lý do "đó là con người thật của tôi" có thể là rào cản cho phát triển chuyên môn. Bà phân biệt: giá trị cốt lõi không nên thay đổi, nhưng phong cách biểu đạt hoàn toàn có thể điều chỉnh mà không làm mất đi bản thân.',
+      source: 'Harvard Business Review, January-February 2015'
+    },
+    'edmondson': {
+      title: 'Amy Edmondson — The Fearless Organization',
+      year: '2018',
+      body: 'Edmondson (Harvard Business School) chỉ ra rằng trong môi trường thiếu psychological safety, ngay cả những hành vi xây dựng tin tưởng chuẩn mực nhất cũng không tạo ra kết quả — vì hệ thống không được thiết kế để phản hồi chúng. Khi đó câu hỏi đổi từ "mình phải làm gì khác?" thành "đây có phải môi trường mình muốn đầu tư lâu dài không?"',
+      source: 'The Fearless Organization: Creating Psychological Safety in the Workplace for Learning, Innovation, and Growth, Wiley, 2018'
+    }
+  };
+
+  // ============ TAB SYSTEM ============
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  const progressBar = document.getElementById('progressBar');
+  const visitedTabs = new Set(['s1']);
+
+  function switchTab(tabId) {
+    tabBtns.forEach(btn => {
+      const isActive = btn.dataset.tab === tabId;
+      btn.classList.toggle('active', isActive);
+      if (visitedTabs.has(btn.dataset.tab)) btn.classList.add('visited');
+    });
+    tabPanels.forEach(panel => {
+      panel.classList.toggle('active', panel.id === 'panel-' + tabId);
+    });
+    visitedTabs.add(tabId);
+    updateProgress();
+
+    // Scroll to top of panel
+    window.scrollTo({ top: document.querySelector('.hero').offsetHeight - 40, behavior: 'smooth' });
+
+    // Update URL hash
+    history.replaceState(null, '', '#' + tabId);
+  }
+
+  function updateProgress() {
+    const pct = (visitedTabs.size / tabBtns.length) * 100;
+    progressBar.style.width = pct + '%';
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  document.querySelectorAll('[data-goto]').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.goto));
+  });
+
+  // Restart
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    switchTab('s1');
+  });
+
+  // Initial tab from hash
+  const initialHash = window.location.hash.replace('#', '');
+  if (initialHash && document.getElementById('panel-' + initialHash)) {
+    switchTab(initialHash);
+  } else {
+    updateProgress();
+  }
+
+  // ============ DIALOG COLLAPSE ============
+  document.querySelectorAll('[data-dialog]').forEach(dialog => {
+    const toggle = dialog.querySelector('.dialog-toggle');
+    toggle.addEventListener('click', () => {
+      dialog.classList.toggle('open');
+    });
+  });
+
+  // ============ CITATION MODAL ============
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalYear = document.getElementById('modalYear');
+  const modalBody = document.getElementById('modalBody');
+  const modalSource = document.getElementById('modalSource');
+  const modalClose = document.getElementById('modalClose');
+
+  function openCitation(key) {
+    const c = citations[key];
+    if (!c) return;
+    modalTitle.textContent = c.title;
+    modalYear.textContent = c.year;
+    modalBody.textContent = c.body;
+    modalSource.textContent = c.source;
+    modalBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCitation() {
+    modalBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.cite').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCitation(btn.dataset.cite);
+    });
+  });
+
+  modalClose.addEventListener('click', closeCitation);
+  modalBackdrop.addEventListener('click', (e) => {
+    if (e.target === modalBackdrop) closeCitation();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeCitation();
+  });
+</script>
+
+</body>
+</html>
