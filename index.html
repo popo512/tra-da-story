@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sao đồng nghiệp được sếp ưu ái hơn còn tôi thì không? · Trà đá vỉa hè</title>
+<title>Trà đá vỉa hè · Câu chuyện công sở</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
     line-height: 1.25;
   }
 
-  /* ============ TOP BAR (progress + brand) ============ */
+  /* ============ TOP BAR ============ */
   .topbar {
     position: sticky;
     top: 0;
@@ -63,8 +63,6 @@
     width: 0%;
     transition: width 0.3s;
   }
-
-  /* ============ TAB NAVIGATION ============ */
   .tab-nav {
     max-width: 900px;
     margin: 0 auto;
@@ -82,8 +80,22 @@
     color: var(--accent);
     white-space: nowrap;
     flex-shrink: 0;
-    border-right: 1px solid var(--line);
     padding-right: 12px;
+    margin-right: 4px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tab-nav-brand:hover { color: var(--ink); }
+  .tab-nav-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--line);
+    flex-shrink: 0;
     margin-right: 4px;
   }
   .tab-btn {
@@ -121,10 +133,146 @@
   .tab-btn.visited .dot { background: var(--accent-soft); }
   .tab-btn.active .dot { background: white; }
 
-  /* ============ HERO ============ */
+  /* ============ VIEWS ============ */
+  .view { display: none; animation: fadeIn 0.3s ease; }
+  .view.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ HOME VIEW ============ */
+  .home-hero {
+    background: linear-gradient(135deg, #f4ecdc 0%, #ead9b8 100%);
+    padding: 72px 24px 56px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(200, 146, 58, 0.15), transparent 70%);
+    border-radius: 50%;
+  }
+  .home-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(139, 90, 43, 0.1), transparent 70%);
+    border-radius: 50%;
+  }
+  .home-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .home-brand {
+    font-size: 56px;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+  .home-tagline {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .home-sub {
+    font-size: 14px;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+
+  .home-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .home-grid:last-of-type { padding-bottom: 80px; }
+  .topic-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 26px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+  }
+  .topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-soft);
+  }
+  .topic-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    background: var(--accent-bg);
+    padding: 5px 10px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+  .topic-card h2 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .topic-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .topic-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    margin-bottom: 14px;
+  }
+  .topic-card-cta {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .topic-card:hover .topic-card-cta { gap: 10px; }
+
+  /* ============ TOPIC HERO ============ */
   .hero {
     background: linear-gradient(135deg, #f4ecdc 0%, #ead9b8 100%);
-    padding: 56px 24px 56px;
+    padding: 56px 24px;
     position: relative;
     overflow: hidden;
   }
@@ -171,6 +319,17 @@
     margin-bottom: 20px;
     letter-spacing: -0.5px;
   }
+  .hero-scenario {
+    background: rgba(255, 253, 248, 0.7);
+    border-left: 3px solid var(--accent-soft);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
   .hero-insight {
     background: var(--paper);
     border-left: 4px solid var(--accent);
@@ -182,6 +341,24 @@
     margin-bottom: 20px;
   }
   .hero-insight strong { color: var(--ink); }
+  .hero-insight ul {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+  }
+  .hero-insight ul li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 6px;
+    line-height: 1.55;
+  }
+  .hero-insight ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
   .hero-meta {
     display: flex;
     gap: 16px;
@@ -192,21 +369,9 @@
   }
 
   /* ============ MAIN / TAB PANELS ============ */
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 40px 24px 24px;
-  }
-  .tab-panel {
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 24px; }
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
   .tab-panel.active { display: block; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
   .section-number {
     display: inline-block;
@@ -263,11 +428,7 @@
   }
 
   /* ============ TABLES ============ */
-  .table-wrap {
-    margin: 20px -8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+  .table-wrap { margin: 20px -8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table {
     width: 100%;
     border-collapse: separate;
@@ -300,7 +461,7 @@
   tbody tr:nth-child(even) td { background: rgba(250, 246, 238, 0.5); }
   tbody td:first-child { font-weight: 600; color: var(--ink); }
 
-  /* ============ CITATION CHIP (inline) ============ */
+  /* ============ CITATION CHIP & MODAL ============ */
   .cite {
     display: inline-flex;
     align-items: center;
@@ -317,19 +478,14 @@
     font-family: inherit;
     line-height: 1.4;
     vertical-align: baseline;
-    text-decoration: none;
   }
-  .cite::before {
-    content: '📚';
-    font-size: 11px;
-  }
+  .cite::before { content: '📚'; font-size: 11px; }
   .cite:hover {
     background: var(--citation);
     color: white;
     border-color: var(--citation);
   }
 
-  /* ============ CITATION MODAL ============ */
   .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -405,6 +561,7 @@
     line-height: 1.65;
     color: var(--ink);
     margin-bottom: 16px;
+    white-space: pre-wrap;
   }
   .modal-source {
     padding-top: 14px;
@@ -435,7 +592,7 @@
     margin-bottom: 8px;
   }
 
-  /* ============ HIGHLIGHT CALLOUT (special) ============ */
+  /* ============ HIGHLIGHT CALLOUT ============ */
   .callout-special {
     background: var(--warning-bg);
     border: 1px solid #f3d8a9;
@@ -450,10 +607,7 @@
     gap: 10px;
     margin-bottom: 14px;
   }
-  .callout-special-icon {
-    font-size: 22px;
-    line-height: 1;
-  }
+  .callout-special-icon { font-size: 22px; line-height: 1; }
   .callout-special h4 {
     font-family: 'Lora', serif;
     font-size: 19px;
@@ -468,11 +622,21 @@
     color: var(--ink);
   }
   .callout-special p:last-child { margin-bottom: 0; }
-
-  /* ============ DIALOG SEN-NÍCH (collapsible) ============ */
-  .dialog-collapse {
-    margin: 28px 0;
+  .callout-special ul {
+    margin: 8px 0 12px 0;
+    padding-left: 20px;
   }
+  .callout-special ul li {
+    margin-bottom: 6px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .callout-special ul li strong {
+    color: var(--warning-border);
+  }
+
+  /* ============ DIALOG SEN-NÍCH ============ */
+  .dialog-collapse { margin: 28px 0; }
   .dialog-toggle {
     width: 100%;
     background: linear-gradient(135deg, #fff8e1 0%, #fef5e3 100%);
@@ -491,17 +655,9 @@
     transition: all 0.15s;
     text-align: left;
   }
-  .dialog-toggle:hover {
-    box-shadow: var(--shadow);
-    transform: translateY(-1px);
-  }
-  .dialog-toggle-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .dialog-toggle-label {
-    flex: 1;
-  }
+  .dialog-toggle:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+  .dialog-toggle-icon { font-size: 20px; flex-shrink: 0; }
+  .dialog-toggle-label { flex: 1; }
   .dialog-toggle-meta {
     font-size: 12px;
     font-weight: 500;
@@ -514,9 +670,7 @@
     transition: transform 0.25s;
     flex-shrink: 0;
   }
-  .dialog-collapse.open .dialog-toggle-arrow {
-    transform: rotate(180deg);
-  }
+  .dialog-collapse.open .dialog-toggle-arrow { transform: rotate(180deg); }
   .dialog-body {
     display: none;
     background: linear-gradient(135deg, #fff8e1 0%, #fef5e3 100%);
@@ -526,17 +680,10 @@
     padding: 18px 22px 22px;
     margin-top: -1px;
   }
-  .dialog-collapse.open .dialog-toggle {
-    border-radius: 12px 12px 0 0;
-  }
+  .dialog-collapse.open .dialog-toggle { border-radius: 12px 12px 0 0; }
   .dialog-collapse.open .dialog-body { display: block; }
 
-  .bubble {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-    align-items: flex-start;
-  }
+  .bubble { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
   .bubble:last-child { margin-bottom: 0; }
   .bubble-avatar {
     width: 32px; height: 32px;
@@ -569,7 +716,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* ============ RECAP (Cẩm nang) ============ */
+  /* ============ RECAP ============ */
   .recap {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -595,6 +742,14 @@
     color: var(--ink);
   }
   .recap-content strong { color: var(--accent); }
+  .recap-content ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+  }
+  .recap-content ul li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
 
   /* ============ BLOCKQUOTE ============ */
   blockquote {
@@ -660,10 +815,22 @@
     padding-top: 12px;
     border-top: 1px dashed var(--line);
     font-size: 14.5px;
+    color: var(--ink-soft);
   }
   .step .fallback strong { color: var(--ink); }
+  .step .example-line {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--bg-warm);
+    border-radius: 8px;
+    font-style: italic;
+    font-family: 'Lora', serif;
+    color: var(--ink);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
 
-  /* ============ PRE-STEP (Bước 0) ============ */
+  /* ============ PRE-STEP ============ */
   .pre-step {
     background: linear-gradient(135deg, #fef5e3 0%, #fdf1e3 100%);
     border: 1px dashed var(--accent-soft);
@@ -705,7 +872,7 @@
     font-size: 14.5px;
   }
 
-  /* ============ KEY CARD (3 behaviors) ============ */
+  /* ============ KEY CARD ============ */
   .key-card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -736,6 +903,81 @@
     margin: 0;
     flex: 1;
   }
+
+  /* ============ POV GRID ============ */
+  .pov-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .pov-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .pov-card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .pov-icon { font-size: 22px; }
+  .pov-card h4 {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+  }
+  .pov-card p {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .pov-card p:last-child { margin-bottom: 0; }
+
+  /* ============ CONSEQUENCE LIST ============ */
+  .consequence-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .consequence-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: var(--shadow);
+  }
+  .consequence-num {
+    background: #fef5e3;
+    color: var(--warning-border);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'Lora', serif;
+  }
+  .consequence-body {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .consequence-body strong { color: var(--ink); font-weight: 600; }
 
   /* ============ TAB FOOTER NAV ============ */
   .tab-footer-nav {
@@ -769,10 +1011,7 @@
     background: var(--accent-bg);
     color: var(--accent);
   }
-  .tab-footer-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
+  .tab-footer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .tab-footer-btn.next { text-align: right; align-items: flex-end; }
   .tab-footer-btn-label {
     font-size: 12px;
@@ -781,10 +1020,7 @@
     text-transform: uppercase;
     font-weight: 600;
   }
-  .tab-footer-btn-title {
-    font-weight: 600;
-    font-size: 14.5px;
-  }
+  .tab-footer-btn-title { font-weight: 600; font-size: 14.5px; }
 
   /* ============ CLOSING ============ */
   .closing {
@@ -793,10 +1029,7 @@
     text-align: center;
     margin-top: 60px;
   }
-  .closing-inner {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  .closing-inner { max-width: 600px; margin: 0 auto; }
   .closing h3 {
     font-family: 'Lora', serif;
     font-size: 23px;
@@ -804,11 +1037,14 @@
     margin-bottom: 14px;
     color: var(--ink);
   }
-  .closing p {
-    color: var(--ink-soft);
-    margin-bottom: 20px;
+  .closing p { color: var(--ink-soft); margin-bottom: 20px; }
+  .closing-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  .back-link {
+  .btn-link {
     display: inline-block;
     color: var(--accent);
     text-decoration: none;
@@ -822,11 +1058,373 @@
     font-family: inherit;
     transition: background 0.15s, color 0.15s;
   }
-  .back-link:hover { background: var(--accent); color: white; }
+  .btn-link:hover { background: var(--accent); color: white; }
+  .btn-link.primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-link.primary:hover { background: var(--ink); border-color: var(--ink); }
+
+  /* ============ HOME SECTION DIVIDER ============ */
+  .home-section-title {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .home-section-title-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    padding-right: 12px;
+    font-size: 14px;
+    color: var(--accent);
+  }
+  .home-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .home-section-sub {
+    max-width: 1100px;
+    margin: 6px auto 0;
+    padding: 0 24px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+
+  /* ============ COMPRESS BADGE on topic card ============ */
+  .topic-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: white;
+    background: var(--accent);
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ============ COMPRESS TOPIC VIEW ============ */
+  .compress-main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 36px 24px 24px;
+  }
+  .compress-block {
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .compress-block-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .compress-block h3 {
+    font-family: 'Lora', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .compress-block p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .compress-block p:last-child { margin-bottom: 0; }
+  .compress-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+  }
+  .compress-block ul li {
+    padding: 10px 0 10px 28px;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+    position: relative;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .compress-block ul li:last-child { border-bottom: none; }
+
+  /* Misconception (red) */
+  .compress-misconception {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #dc2626;
+  }
+  .compress-misconception .compress-block-tag { color: #dc2626; }
+  .compress-misconception h3 { color: #991b1b; }
+  .compress-misconception .quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #7f1d1d;
+    padding: 14px 18px;
+    background: rgba(220, 38, 38, 0.05);
+    border-radius: 8px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  /* Consequence (warning) */
+  .compress-consequence {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #ca8a04;
+  }
+  .compress-consequence .compress-block-tag { color: #a16207; }
+  .compress-consequence h3 { color: #713f12; }
+  .compress-consequence ul li::before {
+    content: '→';
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    color: #ca8a04;
+    font-weight: 700;
+  }
+
+  /* Truth (green) */
+  .compress-truth {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #16a34a;
+  }
+  .compress-truth .compress-block-tag { color: #15803d; }
+  .compress-truth h3 { color: #14532d; }
+  .compress-truth ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    top: 11px;
+    color: #16a34a;
+    font-weight: 700;
+  }
+  .compress-truth .quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #14532d;
+    padding: 14px 18px;
+    background: rgba(22, 163, 74, 0.06);
+    border-radius: 8px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  /* Action (accent) */
+  .compress-action {
+    background: var(--accent-bg);
+    border: 1px solid #f3d8a9;
+    border-left: 4px solid var(--accent);
+  }
+  .compress-action .compress-block-tag { color: var(--accent); }
+  .compress-action h3 { color: var(--ink); }
+  .compress-action-step {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(139, 90, 43, 0.2);
+  }
+  .compress-action-step:last-child { border-bottom: none; padding-bottom: 4px; }
+  .compress-action-step:first-of-type { padding-top: 4px; }
+  .compress-action-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'Lora', serif;
+    font-size: 15px;
+  }
+  .compress-action-body { flex: 1; }
+  .compress-action-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 4px 0 6px;
+    color: var(--ink);
+  }
+  .compress-action-body p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .compress-action-body em {
+    font-family: 'Lora', serif;
+    color: var(--ink);
+  }
+
+  /* Deep-dive CTA at bottom of compress topic */
+  .deep-dive {
+    background: var(--paper);
+    border: 1px dashed var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .deep-dive-label {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .deep-dive a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .deep-dive a:hover { text-decoration: underline; }
+
+  /* ============ REASON LIST (topic 3) ============ */
+  .reason-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .reason-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .reason-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .reason-body { flex: 1; }
+  .reason-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .reason-body p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ============ MINDSET LIST (psych safety) ============ */
+  .mindset-list {
+    margin: 18px 0 8px;
+    padding: 0;
+    list-style: none;
+    counter-reset: mindset;
+  }
+  .mindset-list li {
+    counter-increment: mindset;
+    padding: 12px 16px 12px 48px;
+    margin-bottom: 8px;
+    background: var(--bg-warm);
+    border-radius: 8px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .mindset-list li::before {
+    content: counter(mindset);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ============ CHECKLIST (help-seeking) ============ */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+  }
+  .checklist li {
+    padding: 12px 0 12px 32px;
+    border-bottom: 1px dashed var(--line);
+    position: relative;
+    font-size: 15.5px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 700;
+  }
 
   /* ============ MOBILE ============ */
+  @media (max-width: 900px) {
+    .home-grid { grid-template-columns: 1fr; max-width: 600px; }
+  }
   @media (max-width: 640px) {
     body { font-size: 16px; }
+    .home-hero { padding: 56px 20px 44px; }
+    .home-brand { font-size: 44px; }
+    .home-grid { padding: 36px 20px 60px; gap: 16px; }
+    .topic-card { padding: 24px 22px; }
+    .topic-card h2 { font-size: 19px; }
     .hero { padding: 40px 20px 44px; }
     main { padding: 28px 20px 20px; }
     .tab-nav { padding: 10px 16px; }
@@ -837,6 +1435,7 @@
     thead th, tbody td { padding: 11px 12px; font-size: 13.5px; }
     .step { padding: 20px 18px 20px 64px; }
     .step-num { left: 14px; top: 18px; width: 36px; height: 36px; font-size: 16px; }
+    .pov-grid { grid-template-columns: 1fr; }
     .modal { padding: 24px 20px; }
     .modal-title { font-size: 18px; }
     .tab-footer-nav { flex-direction: column; }
@@ -846,6 +1445,7 @@
 
   @media print {
     .topbar, .tab-footer-nav, .modal-backdrop { display: none; }
+    .view { display: block !important; }
     .tab-panel { display: block !important; page-break-after: always; }
     .dialog-body { display: block !important; }
     body { background: white; }
@@ -857,25 +1457,415 @@
 <div class="topbar">
   <div class="progress-bar" id="progressBar"></div>
   <nav class="tab-nav" id="tabNav">
-    <span class="tab-nav-brand">☕ Trà đá</span>
-    <button class="tab-btn active" data-tab="s1"><span class="dot"></span>1. Khoảnh khắc</button>
-    <button class="tab-btn" data-tab="s2"><span class="dot"></span>2. Hai câu hỏi sai</button>
-    <button class="tab-btn" data-tab="s3"><span class="dot"></span>3. Vòng tin tưởng</button>
-    <button class="tab-btn" data-tab="s4"><span class="dot"></span>4. Giả tạo?</button>
-    <button class="tab-btn" data-tab="s5"><span class="dot"></span>5. Làm gì tuần này</button>
+    <button class="tab-nav-brand" id="brandBtn">☕ Trà đá</button>
+    <span class="tab-nav-divider" data-show-on="topic"></span>
+    <!-- Topic 1 tabs -->
+    <button class="tab-btn active" data-tab="s1" data-topic="topic1" data-show-on="topic1"><span class="dot"></span>1. Khoảnh khắc</button>
+    <button class="tab-btn" data-tab="s2" data-topic="topic1" data-show-on="topic1"><span class="dot"></span>2. Hai câu hỏi sai</button>
+    <button class="tab-btn" data-tab="s3" data-topic="topic1" data-show-on="topic1"><span class="dot"></span>3. Vòng tin tưởng</button>
+    <button class="tab-btn" data-tab="s4" data-topic="topic1" data-show-on="topic1"><span class="dot"></span>4. Giả tạo?</button>
+    <button class="tab-btn" data-tab="s5" data-topic="topic1" data-show-on="topic1"><span class="dot"></span>5. Làm gì tuần này</button>
+    <!-- Topic 2 tabs -->
+    <button class="tab-btn active" data-tab="t1" data-topic="topic2" data-show-on="topic2"><span class="dot"></span>1. Tại sao xảy ra</button>
+    <button class="tab-btn" data-tab="t2" data-topic="topic2" data-show-on="topic2"><span class="dot"></span>2. Nếu mặc kệ</button>
+    <button class="tab-btn" data-tab="t3" data-topic="topic2" data-show-on="topic2"><span class="dot"></span>3. Cách giải quyết</button>
+    <!-- Topic 3 tabs -->
+    <button class="tab-btn active" data-tab="u1" data-topic="topic3" data-show-on="topic3"><span class="dot"></span>1. Vì sao mình giấu</button>
+    <button class="tab-btn" data-tab="u2" data-topic="topic3" data-show-on="topic3"><span class="dot"></span>2. Tâm thế trước</button>
+    <button class="tab-btn" data-tab="u3" data-topic="topic3" data-show-on="topic3"><span class="dot"></span>3. 2 kỹ năng</button>
   </nav>
 </div>
 
+<!-- ================================================================== -->
+<!-- ============================= HOME VIEW ========================== -->
+<!-- ================================================================== -->
+<section class="view active" data-view="home">
+  <header class="home-hero">
+    <div class="home-hero-inner">
+      <h1 class="home-brand">☕ Trà đá vỉa hè</h1>
+      <p class="home-tagline">Câu chuyện công sở · Giải tỏa stress · Mỗi cốc một bài học</p>
+      <p class="home-sub">Có nghiên cứu, có ví dụ, có Sen với Ních cãi nhau.</p>
+    </div>
+  </header>
+
+  <div class="home-section-title">
+    <span class="home-section-title-text">⚡ Bản tóm tắt</span>
+  </div>
+  <p class="home-section-sub">3 phút mỗi bài · Hiểu nhầm → Hệ quả → Sự thật → Hành động. Cho người mới đi làm cần tăng awareness nhanh.</p>
+
+  <div class="home-grid">
+    <button class="topic-card" data-go-topic="topic4">
+      <span class="topic-card-tag">● Chuyện sếp <span class="topic-card-badge">Cô đọng</span></span>
+      <h2>Đồng nghiệp được ưu ái — vấn đề không nằm ở chỗ bạn nghĩ</h2>
+      <p>Hai câu hỏi mà người mới hay tự hỏi đều dẫn đến ngõ cụt: "họ giỏi hơn?" và "sếp không thích mình?". Câu hỏi đúng là câu thứ ba.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 3 phút</span>
+        <span>✦ 1 trang</span>
+      </div>
+      <span class="topic-card-cta">Đọc nhanh →</span>
+    </button>
+
+    <button class="topic-card" data-go-topic="topic5">
+      <span class="topic-card-tag">● Giao việc <span class="topic-card-badge">Cô đọng</span></span>
+      <h2>Sếp brief 1 phút, bạn làm 5 ngày sai hướng</h2>
+      <p>Người mới hay nghĩ "sếp giải thích kém" hoặc "mình hiểu chậm" — và chọn tự đoán. Thực tế: cả hai đang đứng ở hai bản đồ khác nhau.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 3 phút</span>
+        <span>✦ 1 trang</span>
+      </div>
+      <span class="topic-card-cta">Đọc nhanh →</span>
+    </button>
+
+    <button class="topic-card" data-go-topic="topic6">
+      <span class="topic-card-tag">● Giao tiếp <span class="topic-card-badge">Cô đọng</span></span>
+      <h2>Gật giả 5 giây, vật lộn 5 ngày</h2>
+      <p>"Dạ em hiểu rồi anh" — câu nói tự nhiên nhất của người mới. Và là câu khiến bạn mất 5 ngày tự vật lộn vì sợ 5 phút xấu hổ.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 3 phút</span>
+        <span>✦ 1 trang</span>
+      </div>
+      <span class="topic-card-cta">Đọc nhanh →</span>
+    </button>
+  </div>
+
+  <div class="home-section-title">
+    <span class="home-section-title-text">📖 Bản đầy đủ</span>
+  </div>
+  <p class="home-section-sub">7–10 phút mỗi bài · Có nghiên cứu, có ví dụ, có Sen & Ních cãi nhau. Cho bạn nào đã thấy được vấn đề và muốn đào sâu.</p>
+
+  <div class="home-grid">
+    <button class="topic-card" data-go-topic="topic1">
+      <span class="topic-card-tag">● Chuyện sếp</span>
+      <h2>Sao đồng nghiệp cùng team được sếp ưu ái hơn còn tôi thì không?</h2>
+      <p>Sếp không ưu ái người họ thích nhất — họ ưu ái người họ tin tưởng nhất. Và sự tin tưởng không đến từ làm việc tốt, mà từ việc sếp cảm thấy bạn hiểu họ.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 10 phút đọc</span>
+        <span>📚 15 nguồn</span>
+        <span>✦ 5 phần</span>
+      </div>
+      <span class="topic-card-cta">Đọc câu chuyện →</span>
+    </button>
+
+    <button class="topic-card" data-go-topic="topic2">
+      <span class="topic-card-tag">● Giao việc</span>
+      <h2>Task requirements mập mờ? 3 pro tips để đọc suy nghĩ sếp chuẩn đét</h2>
+      <p>Vấn đề thật không phải "requirements không rõ" — đó chỉ là phần nổi. Cốt lõi: bạn và sếp đang không ở cùng một context trước khi bắt đầu làm.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 7 phút đọc</span>
+        <span>📚 5 nguồn</span>
+        <span>✦ 3 phần</span>
+      </div>
+      <span class="topic-card-cta">Đọc câu chuyện →</span>
+    </button>
+
+    <button class="topic-card" data-go-topic="topic3">
+      <span class="topic-card-tag">● Giao tiếp</span>
+      <h2>Ngại hỏi, giả vờ hiểu khi sếp giao việc</h2>
+      <p>Mỗi lần gật "dạ em hiểu rồi" trong khi chưa hiểu là một lần đánh đổi 5 phút sĩ diện lấy 5 ngày tự vật lộn. Vấn đề không phải bạn ngu — là bạn đang sợ chứng minh điều đó.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 8 phút đọc</span>
+        <span>📚 3 nguồn</span>
+        <span>✦ 3 phần</span>
+      </div>
+      <span class="topic-card-cta">Đọc câu chuyện →</span>
+    </button>
+  </div>
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 4 (cô đọng từ T1) ============= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic4">
+
 <header class="hero">
   <div class="hero-inner">
-    <span class="hero-tag">● Chuyện công sở</span>
+    <span class="hero-tag">⚡ Chuyện sếp · Cô đọng</span>
+    <h1>Đồng nghiệp được ưu ái — vấn đề không nằm ở chỗ bạn nghĩ</h1>
+    <div class="hero-scenario">
+      Sếp luôn hỏi ý kiến họ trước. Dự án mới giao cho họ. Bạn ngồi tự hỏi: <em>do mình kém, hay do sếp không thích?</em>
+    </div>
+  </div>
+</header>
+
+<main class="compress-main">
+
+  <div class="compress-block compress-misconception">
+    <span class="compress-block-tag">✕ Hiểu nhầm thường gặp</span>
+    <h3>"Sếp thiên vị vì cảm tình cá nhân — hoặc vì đồng nghiệp giỏi hơn mình"</h3>
+    <p class="quote">"Chắc họ giỏi hơn mình thật. Hay là sếp đơn giản không thích mình?"</p>
+    <p>Đây là 2 câu hỏi tự nhiên nhất khi cảm thấy bị bỏ qua. Người mới đi làm thường nghĩ chỉ có 2 khả năng này — và cả 2 đều dẫn đến ngõ cụt.</p>
+  </div>
+
+  <div class="compress-block compress-consequence">
+    <span class="compress-block-tag">→ Hệ quả khi tin vào hiểu nhầm</span>
+    <h3>Càng cố càng mệt, và càng xa nơi mình cần đến</h3>
+    <ul>
+      <li>Cố làm tốt hơn theo tiêu chí mình tự đặt ra — nhưng không biết có đúng hướng không.</li>
+      <li>Cố làm hài lòng sếp bằng mọi cách — mệt mỏi và thường không hiệu quả.</li>
+      <li>Tách dần khỏi công việc theo cách bạn không nhận ra cho đến khi đã quá muộn.</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-truth">
+    <span class="compress-block-tag">✓ Suy nghĩ đúng</span>
+    <h3>Vấn đề không phải năng lực hay cảm tình — là sự tin tưởng</h3>
+    <p class="quote">Sếp ưu ái người họ TIN TƯỞNG nhất, không phải người họ thích nhất hay giỏi nhất.</p>
+    <ul>
+      <li><strong>Tin tưởng dựa trên hành vi</strong> (có thể kiểm soát) — không phải cảm xúc (gần như không thể).</li>
+      <li>Hành vi được quan sát qua thời gian — nghĩa là <strong>có thể bắt đầu thay đổi từ tuần này</strong>.</li>
+      <li>Câu hỏi đúng: <em>"Sếp đang tin tưởng họ vì hành vi cụ thể nào?"</em> — không phải "họ giỏi hơn không?" hay "sếp có thích mình không?"</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-action">
+    <span class="compress-block-tag">→ Hành động từ tuần này</span>
+    <h3>Bắt đầu từ 1 việc — không phải cả 3</h3>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">1</div>
+      <div class="compress-action-body">
+        <h4>Cam kết nhỏ làm sớm hơn 1 bậc</h4>
+        <p>Chọn 1 việc bạn hay hẹn hoặc hay để sát deadline. Làm xong sớm hơn thông thường, và chủ động báo đúng người biết. Đừng chọn việc lớn.</p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">2</div>
+      <div class="compress-action-body">
+        <h4>Mang phương án thay vì mang vấn đề</h4>
+        <p>Trước khi gặp sếp báo problem, dành 10 phút nghĩ 1 hướng xử lý. Mở đầu: <em>"Em đang gặp X, em nghĩ có thể xử lý theo hướng Y, anh thấy thế nào?"</em></p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">3</div>
+      <div class="compress-action-body">
+        <h4>Hỏi 1 câu thật về ưu tiên của sếp</h4>
+        <p>Trong buổi 1-1 gần nhất: <em>"Anh chị đang tập trung nhiều nhất vào điều gì giai đoạn này?"</em> Hai lợi ích cùng lúc: bạn biết ưu tiên thật, sếp thấy bạn đang nghĩ đến bức tranh lớn.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deep-dive">
+    <div class="deep-dive-label">Muốn hiểu sâu hơn về cơ chế tâm lý + có thêm dấu hiệu để biết khi nào nên rời đi?</div>
+    <button data-goto="topic1-s1">📖 Đọc bản đầy đủ — 10 phút, 15 nguồn nghiên cứu, 5 phần</button>
+  </div>
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>3 phút, 1 câu để mang về</h3>
+    <p>Không phải <em>"sếp có thích mình?"</em> — mà <em>"sếp đang tin tưởng họ vì hành vi nào?"</em></p>
+    <div class="closing-actions">
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 5 (cô đọng từ T2) ============= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic5">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">⚡ Giao việc · Cô đọng</span>
+    <h1>Sếp brief 1 phút, bạn làm 5 ngày sai hướng</h1>
+    <div class="hero-scenario">
+      Ngoài hành lang: <em>"Em làm cái báo cáo B2B nhé, tuần sau nộp"</em> — rồi sếp quay đi. Bạn tự đoán, làm cật lực 5 ngày. Nộp xong sếp nhíu mày: <em>"Cái này không phải ý anh."</em>
+    </div>
+  </div>
+</header>
+
+<main class="compress-main">
+
+  <div class="compress-block compress-misconception">
+    <span class="compress-block-tag">✕ Hiểu nhầm thường gặp</span>
+    <h3>"Sếp giải thích kém — hoặc mình hiểu chậm. Cứ thử rồi sửa sau."</h3>
+    <p class="quote">"Chắc tại sếp bận, không có thời gian dặn kỹ. Mình tự làm xem sao đã."</p>
+    <p>Người mới hay nghĩ vấn đề là <em>"ai đó thiếu"</em> — và phản ứng tự nhiên là tự bù bằng cách đoán. Rồi đến phút cuối mới phát hiện đoán sai.</p>
+  </div>
+
+  <div class="compress-block compress-consequence">
+    <span class="compress-block-tag">→ Hệ quả khi tin vào hiểu nhầm</span>
+    <h3>Mất 3 thứ cùng lúc, cái thứ ba khó hồi phục nhất</h3>
+    <ul>
+      <li>Mất 5 ngày làm sai hướng — phải làm lại từ đầu, deadline trễ.</li>
+      <li>Bị đánh giá thấp về output, dù bạn đã nỗ lực thật.</li>
+      <li>Tích lũy mệt mỏi và nỗi sợ "lại sai nữa" — pattern lặp lại thành niềm tin sai về bản thân.</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-truth">
+    <span class="compress-block-tag">✓ Suy nghĩ đúng</span>
+    <h3>Sếp context-rich, time-poor. Bạn tự thiết kế quy trình</h3>
+    <p class="quote">Sếp có cả bức tranh trong đầu — nhưng không hình dung được bạn chưa thấy cái họ thấy.</p>
+    <ul>
+      <li>Đừng kỳ vọng sếp tự change cách brief. Họ không cố tình mơ hồ — họ chỉ bị <strong>"Curse of Knowledge"</strong>.</li>
+      <li>Cần đưa cả hai vào <strong>cùng 1 context TRƯỚC khi bắt đầu làm</strong>, không phải sau.</li>
+      <li>Hỏi đúng cách không phải lộ kém — là kỹ năng nghề.</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-action">
+    <span class="compress-block-tag">→ Hành động từ task tiếp theo</span>
+    <h3>3 nước đi ở 3 thời điểm khác nhau</h3>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">1</div>
+      <div class="compress-action-body">
+        <h4>Brainstorm nhanh 5W2H — focus Why & Who</h4>
+        <p>Mục đích thật (Why) và audience cuối (Who) là 2 câu hỏi quan trọng nhất nhưng hay bị bỏ qua nhất. Biết được Why thật, bạn tự quyết được 50% chi tiết còn lại.</p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">2</div>
+      <div class="compress-action-body">
+        <h4>Clarify bằng giả định cụ thể — đừng hỏi câu trống</h4>
+        <p><strong>Cunningham's Law:</strong> não phản ứng nhanh hơn với việc sửa thông tin sai. Thay vì hỏi "anh nói rõ hơn được không?", đưa giả định:</p>
+        <p style="font-style: italic; margin-top: 8px; padding: 10px 14px; background: var(--paper); border-radius: 6px;">"Em xác nhận lại nhé: anh muốn báo cáo B2B Q3 để check app health, focus retention rate, slide ~10 trang, present thứ Hai. Đúng không anh?"</p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">3</div>
+      <div class="compress-action-body">
+        <h4>Check-in lúc 25%, đừng đợi xong 100%</h4>
+        <p>Khi có outline / slide mẫu / draft đầu, gửi sếp: <em>"Em đi hướng này, anh xem giúp 5 phút khi nào tiện nhé."</em> Catch lệch hướng sớm + đặt sếp vào tâm thế <strong>co-author</strong> thay vì judge.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deep-dive">
+    <div class="deep-dive-label">Muốn biết thêm cách feedback ngược lại sếp khi vấn đề lặp đi lặp lại (SBI framework)?</div>
+    <button data-goto="topic2-t1">📖 Đọc bản đầy đủ — 7 phút, 5 nguồn, 3 phần</button>
+  </div>
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>3 phút, 1 câu để mang về</h3>
+    <p>Đừng đoán. Đưa giả định cụ thể rồi xin sếp confirm. <em>5 phút clarify = tiết kiệm 5 ngày làm sai hướng.</em></p>
+    <div class="closing-actions">
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 6 (cô đọng từ T3) ============= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic6">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">⚡ Giao tiếp · Cô đọng</span>
+    <h1>Gật giả 5 giây, vật lộn 5 ngày</h1>
+    <div class="hero-scenario">
+      Sếp giảng xong, ngước lên: <em>"Em hiểu chưa?"</em> Bạn gật ngay: <em>"Dạ em hiểu rồi anh."</em> Ra khỏi phòng họp mới biết mình chẳng hiểu gì.
+    </div>
+  </div>
+</header>
+
+<main class="compress-main">
+
+  <div class="compress-block compress-misconception">
+    <span class="compress-block-tag">✕ Hiểu nhầm thường gặp</span>
+    <h3>"Hỏi = lộ điểm yếu. Không hiểu = không đủ thông minh. An toàn nhất là gật."</h3>
+    <p class="quote">"Hỏi giờ kỳ quá. Mai sếp sẽ nghĩ mình ngu mất."</p>
+    <p>Người mới hay nhầm: <strong>"không biết một việc"</strong> với <strong>"không đủ giỏi để làm việc"</strong>. Hai cái đó khác nhau hoàn toàn — nhưng trong đầu thì cùng kích hoạt một cảm giác xấu hổ.</p>
+  </div>
+
+  <div class="compress-block compress-consequence">
+    <span class="compress-block-tag">→ Hệ quả khi tin vào hiểu nhầm</span>
+    <h3>Né 5 phút xấu hổ, rước 5 ngày khổ — và đúng cái mình sợ</h3>
+    <ul>
+      <li>Tự vật lộn vài giờ, vài ngày — làm ra sai hướng, phải làm lại.</li>
+      <li>Mỗi lần ra output sai bị đánh giá thấp hơn — <strong>đúng cái mình tránh</strong> bằng cách không hỏi.</li>
+      <li>Tích lũy nỗi sợ hỏi — lần sau càng khó mở miệng, lần sau nữa lại càng khó hơn.</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-truth">
+    <span class="compress-block-tag">✓ Suy nghĩ đúng</span>
+    <h3>Hỏi không phải xin phép — là quyền học của bạn</h3>
+    <p class="quote">Người giỏi không phải người không bao giờ cần hỏi. Là người hỏi đúng, hỏi nhanh, biết hỏi ai.</p>
+    <ul>
+      <li>Hỏi đúng cách thể hiện <strong>bạn đang nghĩ</strong> — không phải bạn không đủ.</li>
+      <li>Sếp nghĩ bạn kém <strong>nhiều hơn</strong> khi bạn làm 5 ngày sai hướng vì không hỏi.</li>
+      <li>Psychological Safety không phải sếp ban cho — là tâm thế bạn <strong>tự mang vào</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="compress-block compress-action">
+    <span class="compress-block-tag">→ Hành động lần tới được hỏi "em hiểu chưa?"</span>
+    <h3>Đừng vội gật. Làm 3 việc thay vào đó</h3>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">1</div>
+      <div class="compress-action-body">
+        <h4>Đổi tâm thế: hỏi = học, không phải = xin phép</h4>
+        <p>Trước khi mở miệng, nhắc bản thân: <em>"Mình không đang chứng minh năng lực — mình đang lấy thông tin để làm đúng."</em> Đổi câu nội tâm là đổi cách bạn xuất hiện.</p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">2</div>
+      <div class="compress-action-body">
+        <h4>Active Listening — paraphrase và đặt câu hỏi mở</h4>
+        <p>Thay vì gật, thử: <em>"Ý anh là chúng ta cần X để đạt được Y đúng không?"</em> Hoặc câu hỏi mở: <em>"Anh có thể chia sẻ thêm về phần Z không?"</em> Hai cách này không lộ kém — chúng cho sếp thấy bạn đang theo dõi.</p>
+      </div>
+    </div>
+
+    <div class="compress-action-step">
+      <div class="compress-action-num">3</div>
+      <div class="compress-action-body">
+        <h4>Help-seeking: 5 câu tự đặt trước khi hỏi</h4>
+        <p>Trước khi gõ tin nhắn cho sếp, tự trả lời:</p>
+        <p style="margin-top: 6px;">① Mình đã thử gì? ② Mình hiểu tới đâu? ③ Thiếu chính xác cái gì? ④ Hỏi ai phù hợp nhất? ⑤ Impact nếu tự đoán?</p>
+        <p style="margin-top: 8px;">Trả lời được 5 câu này → câu hỏi của bạn ngắn, cụ thể, và sếp cần &lt;1 phút để trả lời. Đó là dấu hiệu hỏi <em>đúng cách</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deep-dive">
+    <div class="deep-dive-label">Muốn luyện Active Listening + Help-Seeking với chi tiết và ví dụ?</div>
+    <button data-goto="topic3-u1">📖 Đọc bản đầy đủ — 8 phút, 3 nguồn, 3 phần</button>
+  </div>
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>3 phút, 1 câu để mang về</h3>
+    <p>Lần tới, đừng gật ngay. Thử: <em>"Em xác nhận lại đoạn này nhé: anh muốn..."</em> — 5 giây thôi, đổi cả tuần làm việc.</p>
+    <div class="closing-actions">
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 1 ============================= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic1">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">● Chuyện sếp</span>
     <h1>Sao đồng nghiệp cùng team được sếp ưu ái hơn còn tôi thì không?</h1>
     <div class="hero-insight">
       <strong>Key insight:</strong> Sếp không ưu ái người họ thích nhất — họ ưu ái người họ tin tưởng nhất. Và sự tin tưởng không đến từ làm việc tốt, mà từ việc sếp cảm thấy bạn hiểu họ.
     </div>
     <div class="hero-meta">
       <span>⏱ 10 phút đọc</span>
-      <span>📚 13 nguồn nghiên cứu</span>
+      <span>📚 15 nguồn nghiên cứu</span>
       <span>✦ 5 phần</span>
     </div>
   </div>
@@ -884,7 +1874,7 @@
 <main>
 
   <!-- ============ TAB 1 ============ -->
-  <article class="tab-panel active" id="panel-s1">
+  <article class="tab-panel active" id="panel-topic1-s1">
     <span class="section-number">— Phần I —</span>
     <h2>Khoảnh khắc nhận ra</h2>
 
@@ -894,12 +1884,7 @@
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Điều xảy ra bên ngoài</th>
-            <th>Điều diễn ra bên trong</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Điều xảy ra bên ngoài</th><th>Điều diễn ra bên trong</th></tr></thead>
         <tbody>
           <tr><td>Sếp hỏi ý kiến họ trước trong buổi họp</td><td>"Chắc sếp đang bận, không để ý thôi."</td></tr>
           <tr><td>Dự án mới được giao cho họ</td><td>"Họ có kinh nghiệm hơn mình ở mảng đó."</td></tr>
@@ -919,34 +1904,16 @@
     <h3>Tại sao bị thiên vị lại đau theo cách khác so với các vấn đề công việc thông thường?</h3>
 
     <p>Vì nó không chỉ kích hoạt một cảm xúc. Nó kích hoạt nhiều lớp cùng một lúc.</p>
-
     <p>Nhà thần kinh học David Rock, trong <button class="cite" data-cite="rock">SCARF Model (2008)</button>, chỉ ra rằng não người xử lý 5 loại đe dọa xã hội với cùng cường độ như đe dọa thể chất. Khi bị thiên vị, ít nhất 4 trong 5 loại đó bị kích hoạt đồng thời, và đây là lý do tại sao phản ứng của bạn mạnh hơn bạn tưởng là bình thường.</p>
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Bạn cảm thấy</th>
-            <th>Cơ chế tâm lý phía sau</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Bạn cảm thấy</th><th>Cơ chế tâm lý phía sau</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Bị loại ra ngoài</td>
-            <td>Nhà tâm lý học <button class="cite" data-cite="williams">Kipling Williams (2007)</button> chứng minh rằng chỉ cần bị loại khỏi một trò chơi đơn giản trong vài phút, não người đã phản ứng như khi bị đau thể chất. Nhu cầu thuộc về một nhóm không phải cảm tính mà là phản xạ sinh học.</td>
-          </tr>
-          <tr>
-            <td>Bị xếp thấp hơn trong mắt cả team</td>
-            <td>Đây là mối đe dọa về địa vị xã hội, một trong những mối đe dọa nhạy cảm nhất trong SCARF Model. Não người theo dõi địa vị trong nhóm liên tục và vô thức, vì trong hàng triệu năm tiến hóa, địa vị thấp đồng nghĩa với việc tiếp cận ít nguồn lực hơn để tồn tại.</td>
-          </tr>
-          <tr>
-            <td>Không biết tại sao và không biết phải làm gì</td>
-            <td>Nghiên cứu của <button class="cite" data-cite="kruglanski">Arie Kruglanski</button> về nhu cầu nhận thức về sự chắc chắn chỉ ra rằng não người không chịu được sự mơ hồ kéo dài. Khi không có lý giải rõ ràng, não tự động điền vào khoảng trống đó bằng kịch bản tiêu cực nhất có thể.</td>
-          </tr>
-          <tr>
-            <td>Có gì đó sai về mặt căn bản</td>
-            <td><button class="cite" data-cite="eisenberger">Eisenberger và cộng sự (2003)</button> tại UCLA dùng máy quét não cho thấy khi con người cảm nhận sự bất công xã hội, vùng não phản ứng mạnh nhất không phải vùng xử lý tức giận mà là vùng xử lý cảm giác ghê tởm. Bạn không chỉ thấy bực. Bạn thấy có gì đó sai về mặt căn bản.</td>
-          </tr>
+          <tr><td>Bị loại ra ngoài</td><td>Nhà tâm lý học <button class="cite" data-cite="williams">Kipling Williams (2007)</button> chứng minh rằng chỉ cần bị loại khỏi một trò chơi đơn giản trong vài phút, não người đã phản ứng như khi bị đau thể chất. Nhu cầu thuộc về một nhóm không phải cảm tính mà là phản xạ sinh học.</td></tr>
+          <tr><td>Bị xếp thấp hơn trong mắt cả team</td><td>Đây là mối đe dọa về địa vị xã hội, một trong những mối đe dọa nhạy cảm nhất trong SCARF Model. Não người theo dõi địa vị trong nhóm liên tục và vô thức, vì trong hàng triệu năm tiến hóa, địa vị thấp đồng nghĩa với việc tiếp cận ít nguồn lực hơn để tồn tại.</td></tr>
+          <tr><td>Không biết tại sao và không biết phải làm gì</td><td>Nghiên cứu của <button class="cite" data-cite="kruglanski">Arie Kruglanski</button> về nhu cầu nhận thức về sự chắc chắn chỉ ra rằng não người không chịu được sự mơ hồ kéo dài. Khi không có lý giải rõ ràng, não tự động điền vào khoảng trống đó bằng kịch bản tiêu cực nhất có thể.</td></tr>
+          <tr><td>Có gì đó sai về mặt căn bản</td><td><button class="cite" data-cite="eisenberger">Eisenberger và cộng sự (2003)</button> tại UCLA dùng máy quét não cho thấy khi con người cảm nhận sự bất công xã hội, vùng não phản ứng mạnh nhất không phải vùng xử lý tức giận mà là vùng xử lý cảm giác ghê tởm. Bạn không chỉ thấy bực. Bạn thấy có gì đó sai về mặt căn bản.</td></tr>
         </tbody>
       </table>
     </div>
@@ -973,7 +1940,7 @@
         <span class="tab-footer-btn-label">← Phần trước</span>
         <span class="tab-footer-btn-title">—</span>
       </button>
-      <button class="tab-footer-btn next" data-goto="s2">
+      <button class="tab-footer-btn next" data-goto="topic1-s2">
         <span class="tab-footer-btn-label">Phần sau →</span>
         <span class="tab-footer-btn-title">2. Hai câu hỏi sai</span>
       </button>
@@ -981,7 +1948,7 @@
   </article>
 
   <!-- ============ TAB 2 ============ -->
-  <article class="tab-panel" id="panel-s2">
+  <article class="tab-panel" id="panel-topic1-s2">
     <span class="section-number">— Phần II —</span>
     <h2>Tại sao cả hai câu hỏi đó đều sai</h2>
 
@@ -995,9 +1962,7 @@
 
     <p>Khi hỏi <em>"Họ giỏi hơn mình ở điểm nào?"</em>, bạn đang giả định rằng sếp thiên vị vì năng lực. Nếu đúng vậy, giải pháp là làm tốt hơn và mọi thứ sẽ tự thay đổi.</p>
     <p>Nhưng năng lực không vận hành theo cách đó trong đầu người quản lý.</p>
-
     <p><button class="cite" data-cite="scullen">Scullen, Mount và Goff (2000)</button> công bố trên <em>Journal of Applied Psychology</em> một phân tích hơn 9.000 bản đánh giá hiệu suất thực tế trong môi trường doanh nghiệp. Kết quả cho thấy <strong>hơn 60% sự chênh lệch</strong> trong điểm đánh giá giữa các nhân viên không phản ánh năng lực thực tế của người được đánh giá, mà phản ánh xu hướng nhận thức của chính người quản lý đang đánh giá.</p>
-
     <p>Nói cách khác, phần lớn cách sếp nhìn nhận bạn không đến từ những gì bạn làm. Nó đến từ <strong>lăng kính</strong> mà sếp đang nhìn bạn qua, và lăng kính đó được hình thành từ rất sớm, thường trước khi bạn kịp chứng minh bất cứ điều gì.</p>
 
     <div class="example">
@@ -1017,13 +1982,7 @@
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Loại tin tưởng</th>
-            <th>Được hình thành từ</th>
-            <th>Bạn có kiểm soát được không?</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Loại tin tưởng</th><th>Được hình thành từ</th><th>Bạn có kiểm soát được không?</th></tr></thead>
         <tbody>
           <tr><td>Dựa trên cảm xúc</td><td>Sự tương đồng về tính cách, sở thích, nền tảng cá nhân</td><td>Rất khó, vì không thể ép người ta cảm thấy gần gũi với mình</td></tr>
           <tr><td>Dựa trên hành vi</td><td>Quan sát bạn làm đúng những gì nói, xử lý được việc khó, không tạo thêm gánh nặng cho sếp</td><td>Hoàn toàn có thể, vì đây là những hành vi cụ thể</td></tr>
@@ -1078,9 +2037,7 @@
 
     <p>Không phải <em>"Họ giỏi hơn mình không?"</em> và không phải <em>"Sếp có thích mình không?"</em></p>
     <p>Mà là: <em><strong>"Sếp đang tin tưởng họ vì hành vi cụ thể nào?"</strong></em></p>
-
     <p>Câu hỏi này được xây dựng trên nền tảng của một trong những lý thuyết tổ chức được nghiên cứu nhiều nhất trong môi trường công sở. <button class="cite" data-cite="graen">Graen và Uhl-Bien (1995)</button> chỉ ra rằng người quản lý tự nhiên hình thành hai nhóm trong team: nhóm được trao nhiều tin tưởng, thông tin và cơ hội hơn, và nhóm còn lại chỉ nhận những gì cần thiết để hoàn thành công việc. Vị trí trong hai nhóm đó <strong>không được quyết định bởi năng lực hay bởi sự yêu thích cá nhân</strong>, mà được hình thành qua chuỗi những tương tác hành vi cụ thể trong giai đoạn đầu của mối quan hệ.</p>
-
     <p>Nói ngắn gọn hơn: bạn không bị đặt vào nhóm bên ngoài vì bạn kém hay vì sếp không thích bạn. Bạn bị đặt vào đó vì <strong>chưa có đủ tín hiệu hành vi</strong> để sếp đưa bạn vào nhóm tin tưởng.</p>
     <p>Và nếu vấn đề là hành vi, thì hành vi có thể thay đổi.</p>
 
@@ -1093,13 +2050,7 @@
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Câu hỏi</th>
-            <th>Giả định đằng sau</th>
-            <th>Dẫn đến</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Câu hỏi</th><th>Giả định đằng sau</th><th>Dẫn đến</th></tr></thead>
         <tbody>
           <tr><td>Họ giỏi hơn mình không?</td><td>Thiên vị đến từ năng lực</td><td>Cố làm tốt hơn theo tiêu chí mình tự đặt ra, không biết có đúng hướng không</td></tr>
           <tr><td>Sếp có thích mình không?</td><td>Thiên vị đến từ cảm tình cá nhân</td><td>Cố làm hài lòng, thay đổi cách nói chuyện, mệt mỏi và thường không hiệu quả</td></tr>
@@ -1118,11 +2069,11 @@
     </div>
 
     <div class="tab-footer-nav">
-      <button class="tab-footer-btn" data-goto="s1">
+      <button class="tab-footer-btn" data-goto="topic1-s1">
         <span class="tab-footer-btn-label">← Phần trước</span>
         <span class="tab-footer-btn-title">1. Khoảnh khắc</span>
       </button>
-      <button class="tab-footer-btn next" data-goto="s3">
+      <button class="tab-footer-btn next" data-goto="topic1-s3">
         <span class="tab-footer-btn-label">Phần sau →</span>
         <span class="tab-footer-btn-title">3. Vòng tin tưởng</span>
       </button>
@@ -1130,7 +2081,7 @@
   </article>
 
   <!-- ============ TAB 3 ============ -->
-  <article class="tab-panel" id="panel-s3">
+  <article class="tab-panel" id="panel-topic1-s3">
     <span class="section-number">— Phần III —</span>
     <h2>3 thứ tạo nên vòng tin tưởng</h2>
 
@@ -1145,22 +2096,16 @@
         <span class="key-card-badge">01</span>
         <h4>Nhất quán trong những việc nhỏ</h4>
       </div>
-
       <p><button class="cite" data-cite="brown-trust">Brené Brown (2018)</button> trong cuốn <em>Dare to Lead</em> xây dựng một khung phân tích về tin tưởng gồm bảy thành tố hành vi cụ thể. Trong đó, thành tố về sự đáng tin cậy được định nghĩa như sau:</p>
-
       <blockquote>
         "You do what you say you'll do. At work, this means staying aware of your competencies and limitations so you don't overpromise and are able to deliver on commitments and balance competing priorities."
         <span class="attribution">— Brené Brown, <em>Dare to Lead</em> (2018)</span>
       </blockquote>
-
       <p>Tạm dịch: bạn làm đúng những gì bạn nói sẽ làm. Không phải đôi khi. Không phải khi tiện. Mà là nhất quán, kể cả với những cam kết nhỏ.</p>
       <p>Điểm quan trọng Brown nhấn mạnh là phần sau của định nghĩa: <strong>đừng hứa quá khả năng</strong>. Một người hay hứa nhiều nhưng thực hiện không đều tạo ra ít tin tưởng hơn một người hứa ít nhưng thực hiện chắc chắn. Não người ghi nhận sự vi phạm cam kết mạnh hơn là ghi nhận cam kết được thực hiện.</p>
-
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>Tín hiệu xây dựng tin tưởng</th><th>Tín hiệu làm xói mòn tin tưởng</th></tr>
-          </thead>
+          <thead><tr><th>Tín hiệu xây dựng tin tưởng</th><th>Tín hiệu làm xói mòn tin tưởng</th></tr></thead>
           <tbody>
             <tr><td>Deadline nhỏ được giữ đúng, liên tục</td><td>Deadline lớn đúng nhưng deadline nhỏ hay trễ</td></tr>
             <tr><td>Cập nhật chủ động khi có thay đổi</td><td>Im lặng cho đến khi được hỏi</td></tr>
@@ -1175,16 +2120,11 @@
         <span class="key-card-badge">02</span>
         <h4>Không tạo thêm gánh nặng cho sếp</h4>
       </div>
-
       <p><button class="cite" data-cite="covey-formula">Stephen Covey (2006)</button> trong <em>The Speed of Trust</em> đề xuất một công thức đơn giản để đo mức độ tin tưởng: tin tưởng được tạo ra bởi ba thứ gồm năng lực chuyên môn, độ tin cậy và sự gần gũi, nhưng tất cả bị chia cho một yếu tố duy nhất là <strong>mức độ bạn đang ưu tiên lợi ích của bản thân</strong>.</p>
-
       <p>Khi yếu tố đó cao, dù ba thứ kia tốt đến đâu, tin tưởng vẫn bị kéo xuống. Trong thực tế công sở, yếu tố đó thể hiện qua một câu hỏi đơn giản trong đầu người quản lý: <em>"Khi giao việc này cho họ, mình có thực sự buông tay được không?"</em></p>
-
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>Người sếp có thể buông tay</th><th>Người sếp cần theo dõi thêm</th></tr>
-          </thead>
+          <thead><tr><th>Người sếp có thể buông tay</th><th>Người sếp cần theo dõi thêm</th></tr></thead>
           <tbody>
             <tr><td>Nhận việc và tự xác định phạm vi trước khi làm</td><td>Nhận việc xong rồi mới hỏi có đúng ý không</td></tr>
             <tr><td>Khi gặp vướng mắc, đề xuất phương án trước khi hỏi</td><td>Mang vấn đề đến mà không có hướng xử lý</td></tr>
@@ -1199,14 +2139,11 @@
         <span class="key-card-badge">03</span>
         <h4>Hiểu sếp đang thực sự cần gì</h4>
       </div>
-
       <p><button class="cite" data-cite="drucker">Peter Drucker (2005)</button> trong <em>Managing Oneself</em>, bài viết đăng trên <em>Harvard Business Review</em> và được tái bản nhiều lần, chỉ ra rằng một trong những kỹ năng quan trọng nhất trong môi trường công việc là hiểu được <strong>cách người quản lý của bạn thực sự vận hành</strong>, họ đang lo lắng điều gì, họ đo thành công bằng tiêu chí nào, và họ cần nhận thông tin theo cách nào.</p>
-
       <blockquote>
         "It is essential to take responsibility for managing your relationship with your superiors. Managing up means first understanding how your manager works and what they truly need from you."
         <span class="attribution">— Peter Drucker, <em>Managing Oneself</em>, HBR</span>
       </blockquote>
-
       <p>Người đồng nghiệp được ưu ái thường không làm nhiều hơn bạn. Họ làm <strong>đúng những thứ sếp đang thực sự lo lắng</strong> vào đúng thời điểm sếp đang cần. Đó là lý do mỗi việc họ làm trông có vẻ quan trọng hơn, dù khối lượng công việc có thể tương đương.</p>
     </div>
 
@@ -1214,9 +2151,7 @@
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr><th>Có</th><th>Thiếu</th><th>Kết quả</th></tr>
-        </thead>
+        <thead><tr><th>Có</th><th>Thiếu</th><th>Kết quả</th></tr></thead>
         <tbody>
           <tr><td>Nhất quán + Giảm gánh nặng</td><td>Hiểu ưu tiên của sếp</td><td>Được đánh giá đáng tin nhưng không được giao việc quan trọng</td></tr>
           <tr><td>Nhất quán + Hiểu ưu tiên</td><td>Giảm gánh nặng</td><td>Được xem là có năng lực nhưng sếp vẫn cần để mắt</td></tr>
@@ -1233,11 +2168,11 @@
     </div>
 
     <div class="tab-footer-nav">
-      <button class="tab-footer-btn" data-goto="s2">
+      <button class="tab-footer-btn" data-goto="topic1-s2">
         <span class="tab-footer-btn-label">← Phần trước</span>
         <span class="tab-footer-btn-title">2. Hai câu hỏi sai</span>
       </button>
-      <button class="tab-footer-btn next" data-goto="s4">
+      <button class="tab-footer-btn next" data-goto="topic1-s4">
         <span class="tab-footer-btn-label">Phần sau →</span>
         <span class="tab-footer-btn-title">4. Giả tạo?</span>
       </button>
@@ -1245,7 +2180,7 @@
   </article>
 
   <!-- ============ TAB 4 ============ -->
-  <article class="tab-panel" id="panel-s4">
+  <article class="tab-panel" id="panel-topic1-s4">
     <span class="section-number">— Phần IV —</span>
     <h2>Làm vậy có phải đang giả tạo không?</h2>
 
@@ -1264,58 +2199,28 @@
         <span class="dialog-toggle-arrow">▼</span>
       </button>
       <div class="dialog-body">
-        <div class="bubble">
-          <div class="bubble-avatar">S</div>
-          <div class="bubble-content">
-            <div class="bubble-name">Sen</div>
-            Tao thấy mấy đứa được sếp ưu ái nó cứ "dạ vâng" suốt. Mày bảo tao phải làm vậy à? Tao không làm được đâu.
-          </div>
-        </div>
-        <div class="bubble nich">
-          <div class="bubble-avatar">N</div>
-          <div class="bubble-content">
-            <div class="bubble-name">Ních</div>
-            Khác hẳn nhau đấy. Giữ cam kết nhỏ không phải nịnh. Mang phương án đến khi gặp vướng cũng không phải nịnh. Đó là thể hiện năng lực, không phải phục tùng.
-          </div>
-        </div>
-        <div class="bubble">
-          <div class="bubble-avatar">S</div>
-          <div class="bubble-content">
-            <div class="bubble-name">Sen</div>
-            Nhưng tao thay đổi cách làm vì sếp — nghe vẫn cấn cấn.
-          </div>
-        </div>
-        <div class="bubble nich">
-          <div class="bubble-avatar">N</div>
-          <div class="bubble-content">
-            <div class="bubble-name">Ních</div>
-            Mày không thay đổi giá trị cốt lõi của mày. Mày chỉ thay đổi cách <em>biểu đạt</em>. Ibarra có nói rõ chuyện này.
-          </div>
-        </div>
+        <div class="bubble"><div class="bubble-avatar">S</div><div class="bubble-content"><div class="bubble-name">Sen</div>Tao thấy mấy đứa được sếp ưu ái nó cứ "dạ vâng" suốt. Mày bảo tao phải làm vậy à? Tao không làm được đâu.</div></div>
+        <div class="bubble nich"><div class="bubble-avatar">N</div><div class="bubble-content"><div class="bubble-name">Ních</div>Khác hẳn nhau đấy. Giữ cam kết nhỏ không phải nịnh. Mang phương án đến khi gặp vướng cũng không phải nịnh. Đó là thể hiện năng lực, không phải phục tùng.</div></div>
+        <div class="bubble"><div class="bubble-avatar">S</div><div class="bubble-content"><div class="bubble-name">Sen</div>Nhưng tao thay đổi cách làm vì sếp — nghe vẫn cấn cấn.</div></div>
+        <div class="bubble nich"><div class="bubble-avatar">N</div><div class="bubble-content"><div class="bubble-name">Ních</div>Mày không thay đổi giá trị cốt lõi của mày. Mày chỉ thay đổi cách <em>biểu đạt</em>. Ibarra có nói rõ chuyện này.</div></div>
       </div>
     </div>
 
     <h3>Sự khác biệt mà hầu hết mọi người bỏ qua</h3>
 
     <p><button class="cite" data-cite="ibarra">Herminia Ibarra (2015)</button> trong bài viết <em>The Authenticity Paradox</em> đăng trên <em>Harvard Business Review</em> chỉ ra rằng việc cứng nhắc giữ nguyên cách làm việc với lý do "đó là con người thật của tôi" thực ra có thể là <strong>rào cản cho sự phát triển chuyên môn</strong>. Bà phân biệt giữa hai thứ: <strong>giá trị cốt lõi</strong>, thứ không nên thay đổi, và <strong>phong cách biểu đạt</strong>, thứ hoàn toàn có thể điều chỉnh mà không làm mất đi bản thân.</p>
-
     <p><button class="cite" data-cite="brown-belong">Brené Brown (2018)</button> trong <em>Dare to Lead</em> đặt ra sự phân biệt còn sắc nét hơn giữa hai khái niệm. Thứ nhất là <strong>cố hòa tan vào môi trường</strong>, tức là đánh giá xem người khác muốn gì rồi trở thành người đó để được chấp nhận. Thứ hai là <strong>thuộc về một cách chân thật</strong>, tức là mang đúng bản thân mình vào môi trường đó nhưng biết cách để bản thân đó được nhìn thấy đúng cách.</p>
-
     <p>Ba hành vi xây dựng tin tưởng ở phần trước thuộc về loại thứ hai. Giữ đúng cam kết nhỏ không phải giả tạo. Mang phương án đến khi gặp vướng mắc không phải giả tạo. Hiểu sếp đang lo lắng điều gì không phải giả tạo. <strong>Đó là những hành vi thể hiện năng lực và sự chuyên nghiệp, không phải sự phục tùng.</strong></p>
 
     <h3>Khi nào thì đây không còn là vấn đề của bạn nữa?</h3>
 
     <p>Cần nói thẳng điều này: không phải mọi trường hợp thiên vị đều có thể giải quyết bằng cách xây dựng tin tưởng từ phía bạn.</p>
-
     <p>Nếu bạn đã thực hiện đủ cả ba nhóm hành vi trong thời gian dài mà tình huống vẫn không thay đổi, khả năng cao vấn đề không nằm ở hành vi của bạn mà nằm ở <strong>cấu trúc của mối quan hệ hoặc của tổ chức</strong>. <button class="cite" data-cite="edmondson">Edmondson (2018)</button> trong cuốn <em>The Fearless Organization</em> chỉ ra rằng trong môi trường thiếu an toàn tâm lý, ngay cả những hành vi xây dựng tin tưởng chuẩn mực nhất cũng không tạo ra kết quả vì hệ thống không được thiết kế để phản hồi chúng.</p>
-
     <p>Khi đó, câu hỏi không còn là <em>"mình phải làm gì khác đi?"</em> mà là <em>"đây có phải môi trường mình muốn đầu tư lâu dài không?"</em></p>
 
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr><th>Dấu hiệu vấn đề nằm ở hành vi của bạn</th><th>Dấu hiệu vấn đề nằm ở cấu trúc tổ chức</th></tr>
-        </thead>
+        <thead><tr><th>Dấu hiệu vấn đề nằm ở hành vi của bạn</th><th>Dấu hiệu vấn đề nằm ở cấu trúc tổ chức</th></tr></thead>
         <tbody>
           <tr><td>Chưa thực sự thử cả ba nhóm hành vi một cách nhất quán</td><td>Đã thử và duy trì đủ lâu nhưng không có thay đổi nào</td></tr>
           <tr><td>Mối quan hệ với sếp chưa có đủ thời gian để hình thành</td><td>Không ai trong team ngoài một vài người được tin tưởng, bất kể hành vi</td></tr>
@@ -1342,11 +2247,11 @@
     </div>
 
     <div class="tab-footer-nav">
-      <button class="tab-footer-btn" data-goto="s3">
+      <button class="tab-footer-btn" data-goto="topic1-s3">
         <span class="tab-footer-btn-label">← Phần trước</span>
         <span class="tab-footer-btn-title">3. Vòng tin tưởng</span>
       </button>
-      <button class="tab-footer-btn next" data-goto="s5">
+      <button class="tab-footer-btn next" data-goto="topic1-s5">
         <span class="tab-footer-btn-label">Phần sau →</span>
         <span class="tab-footer-btn-title">5. Làm gì tuần này</span>
       </button>
@@ -1354,7 +2259,7 @@
   </article>
 
   <!-- ============ TAB 5 ============ -->
-  <article class="tab-panel" id="panel-s5">
+  <article class="tab-panel" id="panel-topic1-s5">
     <span class="section-number">— Phần V —</span>
     <h2>Làm gì từ tuần này</h2>
 
@@ -1403,13 +2308,13 @@
     </div>
 
     <div class="tab-footer-nav">
-      <button class="tab-footer-btn" data-goto="s4">
+      <button class="tab-footer-btn" data-goto="topic1-s4">
         <span class="tab-footer-btn-label">← Phần trước</span>
         <span class="tab-footer-btn-title">4. Giả tạo?</span>
       </button>
-      <button class="tab-footer-btn next" disabled>
+      <button class="tab-footer-btn next" data-goto="home">
         <span class="tab-footer-btn-label">Đã hết →</span>
-        <span class="tab-footer-btn-title">—</span>
+        <span class="tab-footer-btn-title">↻ Về trà đá</span>
       </button>
     </div>
   </article>
@@ -1420,9 +2325,599 @@
   <div class="closing-inner">
     <h3>Đọc xong rồi — giờ đến lượt bạn</h3>
     <p>Đừng cố nhớ hết. Chọn một câu trong "Cẩm nang để dành" của phần nào chạm bạn nhất, và làm <em>một</em> việc theo nó trong tuần này.</p>
-    <button class="back-link" id="restartBtn">↻ Đọc lại từ đầu</button>
+    <div class="closing-actions">
+      <button class="btn-link" data-goto="topic1-s1">↻ Đọc lại từ đầu</button>
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
   </div>
 </footer>
+
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 2 ============================= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic2">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">● Giao việc</span>
+    <h1>Task requirements mập mờ? 3 pro tips để đọc suy nghĩ sếp chuẩn đét</h1>
+    <div class="hero-scenario">
+      Ngoài hành lang, sếp nói <em>"Em làm cái báo cáo B2B nhé, tuần sau nộp"</em> rồi quay đi. Bạn tự đoán hướng, làm cật lực 5 ngày. Đến lúc nộp, sếp lướt 2 phút rồi nhíu mày: <em>"Cái này không phải ý anh."</em>
+    </div>
+    <div class="hero-insight">
+      <strong>Key insight:</strong> Vấn đề thật không phải "requirements không rõ" — đó chỉ là phần nổi của tảng băng. Cốt lõi là bạn và sếp đang không ở trong cùng 1 context <strong>TRƯỚC</strong> khi bạn bắt đầu làm. Tiết kiệm 5 ngày làm mà kết quả không như ý sếp bằng cách:
+      <ul>
+        <li>Đưa sếp và mình vào cùng 1 context</li>
+        <li>Check-in thường xuyên để on track</li>
+        <li>Feedback tinh tế nếu vấn đề lặp đi lặp lại</li>
+      </ul>
+    </div>
+    <div class="hero-meta">
+      <span>⏱ 7 phút đọc</span>
+      <span>📚 5 nguồn nghiên cứu</span>
+      <span>✦ 3 phần</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ TAB T1: Tại sao xảy ra ============ -->
+  <article class="tab-panel active" id="panel-topic2-t1">
+    <span class="section-number">— Phần I —</span>
+    <h2>Tại sao chuyện này thường xảy ra?</h2>
+
+    <p class="lead">Hai bên đang đứng ở hai vị trí rất khác nhau — và cả hai đều không nhận ra điều đó.</p>
+
+    <div class="pov-grid">
+      <div class="pov-card">
+        <div class="pov-card-head">
+          <span class="pov-icon">👔</span>
+          <h4>Góc nhìn của sếp</h4>
+        </div>
+        <p>Sếp luôn ở trạng thái <strong>context-rich nhưng time-poor</strong>. Họ có cả bức tranh trong đầu nhưng không có thời gian giải thích chi tiết lại cho bạn.</p>
+        <p>Đây là <button class="cite" data-cite="curse-knowledge">Curse of Knowledge</button> — khi đã biết quá rõ, người ta không hình dung được người khác chưa biết. Cộng với <button class="cite" data-cite="illusion-transparency">Illusion of Transparency (1998)</button> — ai cũng đánh giá quá cao mức độ ý mình được hiểu.</p>
+      </div>
+
+      <div class="pov-card">
+        <div class="pov-card-head">
+          <span class="pov-icon">💼</span>
+          <h4>Góc nhìn của bạn</h4>
+        </div>
+        <p>Bối rối nhưng không dám hỏi vì sợ bị đánh giá là <em>"chậm hiểu"</em>.</p>
+        <p>Dẫn tới tự đoán ý sếp nhưng vẫn nghi ngờ, làm trong trạng thái <strong>không chắc chắn, mông lung</strong> — và rồi 5 ngày sau, kết quả không như ý sếp.</p>
+      </div>
+    </div>
+
+    <div class="standout">Vấn đề không phải sếp giải thích kém hay bạn hiểu chậm. Là cả hai đang nói chuyện từ hai bản đồ khác nhau, mà không ai mở bản đồ ra cho bên kia xem.</div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Sếp <strong>context-rich, time-poor</strong> — họ không cố tình mơ hồ, họ chỉ không hình dung được bạn chưa thấy cái họ thấy. Bạn <strong>không dám hỏi</strong> vì sợ bị đánh giá chậm hiểu. Kết quả: cả hai cùng giả định, không ai xác nhận, đến phút cuối mới phát hiện lệch.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="home">
+        <span class="tab-footer-btn-label">← Về trà đá</span>
+        <span class="tab-footer-btn-title">Danh mục</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="topic2-t2">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">2. Nếu mặc kệ</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB T2: Hậu quả ============ -->
+  <article class="tab-panel" id="panel-topic2-t2">
+    <span class="section-number">— Phần II —</span>
+    <h2>Nếu không chủ động giải quyết, hậu quả là gì?</h2>
+
+    <p class="lead">Không xử lý không có nghĩa là vấn đề biến mất — nó chỉ chuyển từ một vấn đề công việc thành một vấn đề tích lũy theo thời gian.</p>
+
+    <div class="consequence-list">
+      <div class="consequence-item">
+        <div class="consequence-num">1</div>
+        <div class="consequence-body">
+          <strong>Công việc không hoàn thành đúng deadline.</strong> Làm xong rồi phải làm lại, deadline trễ, và cảm giác mệt mỏi vì 5 ngày công sức đầu tiên trở thành công cốc.
+        </div>
+      </div>
+      <div class="consequence-item">
+        <div class="consequence-num">2</div>
+        <div class="consequence-body">
+          <strong>Bị đánh giá thấp</strong> → không được công nhận, không được promote → ảnh hưởng đến cơ hội thăng tiến. Sếp không biết bạn nỗ lực thế nào — sếp chỉ thấy output cuối cùng không đúng ý.
+        </div>
+      </div>
+      <div class="consequence-item">
+        <div class="consequence-num">3</div>
+        <div class="consequence-body">
+          <strong>Cảm thấy đã bỏ nỗ lực mà vẫn fail</strong>, tích tụ lâu ngày ảnh hưởng tới tinh thần và năng suất làm việc. Đây là phần ít người nói đến nhưng ảnh hưởng nặng nhất về dài hạn.
+        </div>
+      </div>
+    </div>
+
+    <div class="standout">Một lần lệch hướng là chuyện công việc. Lệch hướng lặp đi lặp lại là chuyện niềm tin.</div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Mỗi lần làm xong mới phát hiện lệch là một lần <strong>mất 3 thứ cùng lúc</strong>: thời gian, đánh giá, và năng lượng tinh thần. Cái thứ ba mới là cái khó hồi phục nhất.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="topic2-t1">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">1. Tại sao xảy ra</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="topic2-t3">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">3. Cách giải quyết</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB T3: Cách giải quyết ============ -->
+  <article class="tab-panel" id="panel-topic2-t3">
+    <span class="section-number">— Phần III —</span>
+    <h2>Giải quyết như nào đây?</h2>
+
+    <p class="lead">Đừng kỳ vọng sếp tự thay đổi. Hãy tự thiết kế quy trình của riêng bạn, gồm 3 nước đi ở 3 thời điểm khác nhau.</p>
+
+    <h3>Sau khi nhận được requirements</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Tự brainstorm nhanh để thể hiện sự chủ động</h4>
+      <p>Trong <button class="cite" data-cite="5w2h">khung 5W2H</button>, <strong>Why</strong> (mục đích sử dụng) và <strong>Who</strong> (audience cuối) là hai câu quan trọng nhất nhưng hay bị bỏ qua nhất.</p>
+      <p>Biết được mục đích thật giúp bạn <strong>tự quyết định 50% chi tiết còn lại</strong>. Bạn có thể tự giả định câu trả lời với context bạn đang có và confirm lại ngay với sếp.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Clarify với sếp bằng cách đưa giả định cụ thể, yêu cầu xác nhận</h4>
+      <p>Đừng hỏi <em>"anh nói rõ hơn được không?"</em> — khi bạn đẩy gánh nặng về sếp, bạn có thể nhận câu trả lời chung chung vì sếp vẫn chưa thực sự rõ bạn cần rõ hơn cái gì.</p>
+      <p>Theo <button class="cite" data-cite="cunningham">Cunningham's Law</button>: não phản ứng nhanh hơn với việc <strong>sửa thông tin sai</strong> so với <strong>tạo thông tin mới</strong>. Sếp sẽ xử lý yêu cầu của bạn nhanh và dễ dàng hơn.</p>
+      <div class="example-line">
+        "Em xác nhận lại nhé: anh muốn báo cáo B2B Q3 để anh check app health, focus retention rate, slide ~10 trang, present thứ Hai. Đúng không anh?"
+      </div>
+    </div>
+
+    <div class="dialog-collapse" data-dialog>
+      <button class="dialog-toggle" type="button">
+        <span class="dialog-toggle-icon">☕</span>
+        <span class="dialog-toggle-label">
+          Sen & Ních cãi nhau về chuyện hỏi sếp
+          <span class="dialog-toggle-meta">4 lượt trao đổi · 30 giây</span>
+        </span>
+        <span class="dialog-toggle-arrow">▼</span>
+      </button>
+      <div class="dialog-body">
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Tao thấy hỏi "anh nói rõ hơn được không?" là chuyện thường mà? Sao lại sai?
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Không sai. Nhưng não sếp đang busy. Mày đưa câu hỏi trống, sếp phải <em>nghĩ ra</em> câu trả lời từ đầu — tốn 10 phút. Mày đưa giả định, sếp chỉ cần <em>sửa</em> — tốn 1 phút.
+          </div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Cunningham's Law là gì? Nghe lạ lạ.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Cách nhanh nhất để có câu trả lời đúng trên internet không phải là hỏi, mà là <em>đưa ra câu trả lời sai</em> — rồi đợi có người sửa. Sếp cũng vậy.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Trong quá trình làm</h3>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>25% check-in — đừng làm xong 100% rồi mới show</h4>
+      <p>Khi xong ~25% (outline, slide mẫu, draft đầu), gửi sếp:</p>
+      <div class="example-line">
+        "Em đang đi hướng này, gửi anh xem outline trước. Anh xem giúp em 5 phút khi nào tiện nhé."
+      </div>
+      <p style="margin-top: 12px;">Lợi ích kép: <strong>catch lệch hướng sớm</strong> + đặt sếp vào tâm thế <em>"co-author"</em> thay vì <em>"judge"</em>. Khi sếp đã xem outline rồi, kết quả cuối được sếp xem là sản phẩm chung — không phải sản phẩm mình giao nộp cho sếp đánh giá.</p>
+    </div>
+
+    <h3>Sau khi có output</h3>
+
+    <div class="callout-special">
+      <div class="callout-special-head">
+        <span class="callout-special-icon">🔁</span>
+        <h4>Nếu tình trạng requirements mơ hồ lặp đi lặp lại nhiều lần: dùng SBI</h4>
+      </div>
+      <p>Khi không phải một lần, mà là vấn đề có hệ thống, bạn cần feedback ngược lại sếp. <button class="cite" data-cite="sbi">Khung SBI (Situation-Behavior-Impact)</button> của Center for Creative Leadership giúp bạn nói thẳng mà không làm sếp cảm thấy bị tấn công cá nhân:</p>
+      <ul>
+        <li><strong>Situation:</strong> "Tuần trước khi anh giao em làm báo cáo B2B..."</li>
+        <li><strong>Behavior:</strong> "Em nhận brief 1 phút, không có tài liệu tham khảo..."</li>
+        <li><strong>Impact:</strong> "...em phải đoán hướng và làm lại từ đầu, mất thêm 3 ngày."</li>
+      </ul>
+      <p>Rồi đề xuất: <em>"Em đề xuất mỗi task mới, mình dành 10 phút để em hỏi lại và anh confirm. Anh thấy thế nào?"</em></p>
+      <p>Hiệu quả vì <strong>tách hành vi khỏi danh tính</strong> — sếp không cảm thấy bạn đang chê họ, chỉ thấy bạn đang đề xuất một quy trình.</p>
+    </div>
+
+    <div class="standout">Với góc nhìn của sếp, yêu cầu mơ hồ có thể không phải là vấn đề. Đừng kỳ vọng sếp tự thay đổi và cảm thấy tức giận khi thực tế khác xa kỳ vọng — hãy tự thiết kế quy trình của riêng bạn.</div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Mục tiêu chính: <strong>đưa requirements của sếp vào một context cụ thể</strong> và <strong>keep it on track</strong>.
+        <ul>
+          <li><strong>Sau khi nhận brief:</strong> tự brainstorm 5W2H (focus Why & Who) + clarify bằng giả định cụ thể (Cunningham's Law).</li>
+          <li><strong>Trong khi làm:</strong> check-in lúc 25% — đặt sếp vào tâm thế co-author.</li>
+          <li><strong>Nếu lặp đi lặp lại:</strong> SBI — tách hành vi khỏi danh tính, đề xuất quy trình mới.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="topic2-t2">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">2. Nếu mặc kệ</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="home">
+        <span class="tab-footer-btn-label">Đã hết →</span>
+        <span class="tab-footer-btn-title">↻ Về trà đá</span>
+      </button>
+    </div>
+  </article>
+
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>Đọc xong rồi — giờ đến lượt bạn</h3>
+    <p>Lần tới khi nhận brief mơ hồ: dừng 5 phút brainstorm Why + Who, rồi gửi sếp 1 câu xác nhận với giả định cụ thể. Đó là tất cả.</p>
+    <div class="closing-actions">
+      <button class="btn-link" data-goto="topic2-t1">↻ Đọc lại từ đầu</button>
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 3 ============================= -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic3">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">● Giao tiếp</span>
+    <h1>Ngại hỏi, giả vờ hiểu khi sếp giao việc</h1>
+    <div class="hero-scenario">
+      Sếp giảng xong, ngước lên hỏi <em>"Em hiểu chưa?"</em>. Bạn gật ngay: <em>"Dạ em hiểu rồi anh."</em> Ra khỏi phòng họp, ngồi xuống bàn — mới nhận ra mình chẳng hiểu gì. Nhưng giờ quay lại hỏi thì… ngại quá.
+    </div>
+    <div class="hero-insight">
+      <strong>Key insight:</strong> Vấn đề không phải mình không thông minh — là mình đang sợ <strong>chứng minh điều đó</strong>. Mỗi lần gật "dạ em hiểu rồi" trong khi chưa hiểu là một lần đánh đổi 5 phút sĩ diện lấy 5 ngày tự vật lộn. Hỏi đúng cách không phải lộ điểm yếu, đó là kỹ năng nghề.
+    </div>
+    <div class="hero-meta">
+      <span>⏱ 8 phút đọc</span>
+      <span>📚 3 nguồn nghiên cứu</span>
+      <span>✦ 3 phần</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ TAB U1: Vì sao mình giấu ============ -->
+  <article class="tab-panel active" id="panel-topic3-u1">
+    <span class="section-number">— Phần I —</span>
+    <h2>Tại sao mình hay giả vờ hiểu?</h2>
+
+    <p class="lead">Đằng sau một cái gật đầu "dạ em hiểu rồi" là 4 niềm tin ngầm đang vận hành trong đầu — và phần lớn không có gì là sự thật.</p>
+
+    <div class="reason-list">
+      <div class="reason-item">
+        <div class="reason-icon-wrap">👁️</div>
+        <div class="reason-body">
+          <h4>Xem việc không biết là nguy hiểm</h4>
+          <p>Trong đầu mặc định: hỏi = thừa nhận mình không biết = chứng tỏ mình kém. "Không biết" trong môi trường công sở dễ bị diễn dịch thành "không đủ năng lực".</p>
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <div class="reason-icon-wrap">⚖️</div>
+        <div class="reason-body">
+          <h4>Đồng nhất năng lực với giá trị bản thân</h4>
+          <p>Niềm tin ngầm: hiểu nhanh = thông minh, không hiểu = không đủ tốt. Cảm giác "không đủ tốt" đau hơn cả việc mất 2 tiếng tự tìm hiểu — nên thà mất 2 tiếng còn hơn.</p>
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <div class="reason-icon-wrap">😳</div>
+        <div class="reason-body">
+          <h4>Sợ bị đánh giá là ngu</h4>
+          <p>Chấp nhận tự vật lộn với công việc còn hơn ngồi với cảm giác cả phòng đang nghĩ mình không theo kịp. Né cảm giác xấu hổ bằng cách… không hỏi.</p>
+        </div>
+      </div>
+
+      <div class="reason-item">
+        <div class="reason-icon-wrap">🩹</div>
+        <div class="reason-body">
+          <h4>Từng bị môi trường phán xét</h4>
+          <p>Có thể từng nghe <em>"Cái này mà cũng không biết"</em>, hoặc bị mỉa mai trước đám đông. Vết thương đó dạy não một bài học: an toàn nhất là không hỏi gì cả.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="standout">Cái gật đầu đó không phải vì hiểu. Là vì sợ.</div>
+
+    <div class="dialog-collapse" data-dialog>
+      <button class="dialog-toggle" type="button">
+        <span class="dialog-toggle-icon">☕</span>
+        <span class="dialog-toggle-label">
+          Sen & Ních nói chuyện thẳng
+          <span class="dialog-toggle-meta">4 lượt trao đổi · 30 giây</span>
+        </span>
+        <span class="dialog-toggle-arrow">▼</span>
+      </button>
+      <div class="dialog-body">
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Hỏi thì lộ ngu, không hỏi thì làm sai. Tao chọn nào cũng thiệt.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Sai cách đặt vấn đề rồi. Mày đang nhầm "không biết một việc" với "không đủ giỏi để làm việc". Hai cái đó khác nhau.
+          </div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-avatar">S</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Sen</div>
+            Nhưng sếp sẽ nghĩ tao kém mà.
+          </div>
+        </div>
+        <div class="bubble nich">
+          <div class="bubble-avatar">N</div>
+          <div class="bubble-content">
+            <div class="bubble-name">Ních</div>
+            Sếp nghĩ kém hơn nhiều khi mày làm 5 ngày ra sai hướng. Mày đang né cảm giác 5 phút xấu hổ bằng cách rước 5 ngày khổ.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Bốn lý do mình giả vờ hiểu đều xoay quanh <strong>1 niềm tin sai</strong>: hỏi = lộ kém. Sự thật ngược lại — hỏi đúng cách thể hiện bạn đang nghĩ chứ không phải đang lười suy nghĩ. Cái mất 5 phút khi hỏi luôn nhỏ hơn cái mất 5 ngày khi không hỏi.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="home">
+        <span class="tab-footer-btn-label">← Về trà đá</span>
+        <span class="tab-footer-btn-title">Danh mục</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="topic3-u2">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">2. Tâm thế trước tiên</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB U2: Tâm thế trước tiên ============ -->
+  <article class="tab-panel" id="panel-topic3-u2">
+    <span class="section-number">— Phần II —</span>
+    <h2>Tâm thế trước tiên: An toàn tâm lý từ chính mình</h2>
+
+    <p class="lead">Trước khi học kỹ năng hỏi cụ thể, phải đổi tâm thế nền. Tâm thế đó có tên: <strong>Psychological Safety</strong> — và nếu môi trường không tự cho, bạn phải tự mang vào.</p>
+
+    <h3>Psychological Safety là gì?</h3>
+
+    <p>Khái niệm do <button class="cite" data-cite="psych-safety">Amy Edmondson</button> phát triển từ những năm 1990s. Một môi trường làm việc được đánh giá là "an toàn tâm lý" cho nhân viên là nơi mà:</p>
+
+    <ul class="mindset-list">
+      <li>Thừa nhận và thảo luận về những sai lầm.</li>
+      <li>Công khai giải quyết các vấn đề và những khó khăn.</li>
+      <li>Tìm kiếm sự giúp đỡ và phản hồi.</li>
+      <li>Tin tưởng rằng không ai trong đội có ý định hãm hại họ.</li>
+      <li>Tin tưởng rằng họ là một thành viên có giá trị của nhóm.</li>
+    </ul>
+
+    <div class="example">
+      <span class="example-tag">✦ Thực tế</span>
+      Lý tưởng nếu bạn đang làm trong môi trường có sẵn văn hóa như vậy — bạn gần như không gặp vấn đề ngại hỏi. Nhưng phần lớn môi trường công sở Việt Nam không như thế. Khi đó, bạn cần <strong>tự mang tâm thế đó vào</strong> công việc của mình, không chờ tổ chức cho.
+    </div>
+
+    <h3>5 hành vi để tự tạo an toàn tâm lý cho mình và team</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Tập trung tìm kiếm giải pháp, không quy lỗi</h4>
+      <p>Thay vì <em>"Tại sao chuyện này xảy ra?"</em>, đổi thành: <em>"Chúng ta có thể làm gì để giúp giải quyết vấn đề này?"</em> Cách đặt câu hỏi quyết định ai sẽ tham gia trả lời và ai sẽ phòng thủ.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Chủ động xin phản hồi từ người khác</h4>
+      <p>Đừng chờ feedback đến với mình. Câu mẫu: <em>"Tôi rất muốn nhận được phản hồi của bạn về ý tưởng đó."</em> Khi bạn xin trước, bạn đang dạy team rằng feedback là chuyện bình thường, không phải tấn công.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Tích cực lắng nghe và đặt câu hỏi lịch sự</h4>
+      <p>Khi đồng nghiệp chia sẻ, đừng vội phán xét hoặc ngắt lời. Nghe hết, hỏi lại để hiểu rõ. Kỹ năng cụ thể của phần này nằm ở Phần III.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Thể hiện tôn trọng kể cả khi không đồng ý</h4>
+      <p>Có thể phản đối ý tưởng — nhưng không phản đối <em>người</em>. <em>"Mình hiểu cách bạn nhìn, nhưng mình nghĩ khác ở chỗ này..."</em> giữ cho cuộc thảo luận an toàn để cả hai bên tiếp tục đóng góp.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <h4>Đưa phản hồi một cách tôn trọng và chu đáo</h4>
+      <p>Khi đến lượt mình góp ý người khác, nhớ lại cảm giác mình muốn được nhận feedback như thế nào. Sự tôn trọng đi cả hai chiều — và bạn đang tạo ra văn hóa cho team.</p>
+    </div>
+
+    <div class="standout">An toàn tâm lý không phải sếp ban cho. Là tâm thế bạn mang vào.</div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Đổi tâm thế trước khi đổi kỹ năng: <strong>hỏi không phải xin phép</strong>, hỏi là <strong>quyền được học</strong>. Khi bạn tự mang psychological safety vào công việc — chủ động xin feedback, tôn trọng cả người không đồng ý, không quy lỗi khi gặp vấn đề — bạn đang tự tạo môi trường để hỏi không còn đáng sợ nữa.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="topic3-u1">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">1. Vì sao mình giấu</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="topic3-u3">
+        <span class="tab-footer-btn-label">Phần sau →</span>
+        <span class="tab-footer-btn-title">3. 2 kỹ năng cần luyện</span>
+      </button>
+    </div>
+  </article>
+
+  <!-- ============ TAB U3: 2 kỹ năng ============ -->
+  <article class="tab-panel" id="panel-topic3-u3">
+    <span class="section-number">— Phần III —</span>
+    <h2>Hỏi đúng cách: 2 kỹ năng cần luyện</h2>
+
+    <p class="lead">Khi tâm thế đã đúng, kỹ năng cụ thể giúp bạn hỏi nhanh, hỏi đúng, và hỏi mà người được hỏi cảm thấy được tôn trọng.</p>
+
+    <div class="key-card">
+      <div class="key-card-head">
+        <span class="key-card-badge">01</span>
+        <h4>Lắng nghe chủ động (Active Listening)</h4>
+      </div>
+
+      <p><button class="cite" data-cite="active-listening">Carl Rogers (1957)</button> là người đặt nền móng cho khái niệm "active listening" — lắng nghe không phải để chờ đến lượt mình nói, mà để thực sự hiểu người đang nói.</p>
+
+      <h3 style="font-size: 17px; margin: 20px 0 10px;">Tâm thế khi lắng nghe chủ động</h3>
+      <ul class="mindset-list">
+        <li><strong>Tập trung hoàn toàn:</strong> Gác lại điện thoại, laptop. Gật đầu, giao tiếp bằng mắt (eye contact) để thể hiện sự quan tâm.</li>
+        <li><strong>Phản hồi tích cực:</strong> Sử dụng câu khẳng định <em>"Vâng"</em>, <em>"Tôi hiểu"</em>, hoặc đặt câu hỏi mở để khuyến khích chia sẻ thêm.</li>
+        <li><strong>Tóm tắt và xác nhận:</strong> Diễn đạt lại ý của người nói (<em>"Có phải bạn đang muốn nói là..."</em>) để đảm bảo hiểu đúng, tránh hiểu lầm.</li>
+        <li><strong>Không phán xét, không ngắt lời:</strong> Kiên nhẫn nghe hết câu chuyện, không vội đưa ra lời khuyên hoặc võ đoán khi chưa nghe trọn vẹn.</li>
+        <li><strong>Thấu cảm (Empathic listening):</strong> Nhận diện cảm xúc đằng sau câu chuyện — lắng nghe để hiểu, không phải để đối đáp.</li>
+      </ul>
+
+      <h3 style="font-size: 17px; margin: 24px 0 10px;">3 phương pháp rèn luyện</h3>
+
+      <div class="step" style="margin-bottom: 14px;">
+        <div class="step-num">1</div>
+        <h4>Diễn giải lại (Paraphrasing)</h4>
+        <p>Sau khi người nói kết thúc một ý chính, hãy tóm tắt lại bằng lời của chính bạn để xác nhận xem mình đã hiểu đúng ý họ chưa.</p>
+        <div class="example-line">
+          "Ý bạn là chúng ta cần thêm 2 ngày nữa để hoàn thành báo cáo này đúng không?"
+        </div>
+      </div>
+
+      <div class="step" style="margin-bottom: 14px;">
+        <div class="step-num">2</div>
+        <h4>Quan sát ngôn ngữ cơ thể</h4>
+        <p>Chú ý đến nét mặt, cử chỉ tay và giọng điệu của người nói. Đôi khi thông điệp thực sự nằm ở <strong>cảm xúc đằng sau câu chữ</strong>, không phải trong câu chữ.</p>
+      </div>
+
+      <div class="step" style="margin-bottom: 0;">
+        <div class="step-num">3</div>
+        <h4>Đặt câu hỏi mở</h4>
+        <p>Thay vì các câu hỏi "Có/Không", hãy sử dụng các câu hỏi gợi mở để người nói có cơ hội chia sẻ sâu hơn về quan điểm của họ.</p>
+        <div class="example-line">
+          "Bạn có thể chia sẻ thêm về khó khăn mà dự án đang gặp phải không?"
+        </div>
+      </div>
+    </div>
+
+    <div class="key-card">
+      <div class="key-card-head">
+        <span class="key-card-badge">02</span>
+        <h4>Kỹ năng tìm sự giúp đỡ (Help-Seeking)</h4>
+      </div>
+
+      <p><button class="cite" data-cite="help-seeking">Help-Seeking skill</button> là kỹ năng <strong>chủ động tìm kiếm sự hỗ trợ</strong> để học nhanh hơn, làm đúng hơn và giảm rủi ro trong công việc.</p>
+
+      <p>Khác với "hỏi vội" — help-seeking đúng cách là bạn đã làm bài tập của mình trước, rồi hỏi đúng người với đúng câu hỏi. Trước khi hỏi, tự đặt 5 câu sau:</p>
+
+      <ul class="checklist">
+        <li><strong>Mình đã thử gì?</strong> — Đã đọc tài liệu nào, đã hỏi ai trước đó, đã thử cách nào không thành công.</li>
+        <li><strong>Mình hiểu tới đâu?</strong> — Phần nào đã rõ, phần nào còn mơ hồ. Càng cụ thể càng tốt.</li>
+        <li><strong>Mình đang thiếu chính xác cái gì?</strong> — Một con số? Một quyết định? Một context? Một template?</li>
+        <li><strong>Hỏi ai phù hợp nhất?</strong> — Không phải lúc nào cũng là sếp. Có thể là đồng nghiệp đã làm task tương tự, hoặc người có chuyên môn.</li>
+        <li><strong>Impact nếu mình tự assumption?</strong> — Nếu đoán sai, mất bao nhiêu thời gian/công sức? Đáng để hỏi không?</li>
+      </ul>
+
+      <div class="example">
+        <span class="example-tag">✦ Trước khi gõ tin nhắn cho sếp</span>
+        Trả lời được 5 câu trên — câu hỏi của bạn sẽ ngắn, cụ thể, và sếp cần ít hơn 1 phút để trả lời. Đó là dấu hiệu của help-seeking đúng cách: <strong>tôn trọng thời gian người được hỏi</strong>.
+      </div>
+    </div>
+
+    <div class="standout">Người giỏi không phải người không bao giờ cần hỏi. Là người hỏi đúng, hỏi nhanh, và biết hỏi ai.</div>
+
+    <div class="recap">
+      <span class="recap-tag">📝 Cẩm nang để dành</span>
+      <div class="recap-content">
+        Hai kỹ năng đi cùng nhau:
+        <ul>
+          <li><strong>Active Listening</strong> — nghe để hiểu, không phải để đối đáp. Diễn giải lại, quan sát ngôn ngữ cơ thể, đặt câu hỏi mở.</li>
+          <li><strong>Help-Seeking</strong> — trước khi hỏi, tự trả lời 5 câu: đã thử gì, hiểu tới đâu, thiếu gì, hỏi ai, impact nếu sai.</li>
+        </ul>
+        Cả hai cùng dựa trên 1 niềm tin nền: hỏi là thể hiện bạn đang nghĩ — không phải thể hiện bạn không đủ.
+      </div>
+    </div>
+
+    <div class="tab-footer-nav">
+      <button class="tab-footer-btn" data-goto="topic3-u2">
+        <span class="tab-footer-btn-label">← Phần trước</span>
+        <span class="tab-footer-btn-title">2. Tâm thế trước tiên</span>
+      </button>
+      <button class="tab-footer-btn next" data-goto="home">
+        <span class="tab-footer-btn-label">Đã hết →</span>
+        <span class="tab-footer-btn-title">↻ Về trà đá</span>
+      </button>
+    </div>
+  </article>
+
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>Đọc xong rồi — giờ đến lượt bạn</h3>
+    <p>Lần tới sếp hỏi "em hiểu chưa?", đừng vội gật. Thử câu: <em>"Em xác nhận lại đoạn này nhé: anh muốn..."</em> — 5 giây thôi, đổi cả tuần làm việc.</p>
+    <div class="closing-actions">
+      <button class="btn-link" data-goto="topic3-u1">↻ Đọc lại từ đầu</button>
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
 
 <!-- ============ CITATION MODAL ============ -->
 <div class="modal-backdrop" id="modalBackdrop">
@@ -1439,6 +2934,7 @@
 <script>
   // ============ CITATIONS DATA ============
   const citations = {
+    // ===== Topic 1 =====
     'rock': {
       title: 'David Rock — SCARF Model',
       year: '2008',
@@ -1528,66 +3024,220 @@
       year: '2018',
       body: 'Edmondson (Harvard Business School) chỉ ra rằng trong môi trường thiếu psychological safety, ngay cả những hành vi xây dựng tin tưởng chuẩn mực nhất cũng không tạo ra kết quả — vì hệ thống không được thiết kế để phản hồi chúng. Khi đó câu hỏi đổi từ "mình phải làm gì khác?" thành "đây có phải môi trường mình muốn đầu tư lâu dài không?"',
       source: 'The Fearless Organization: Creating Psychological Safety in the Workplace for Learning, Innovation, and Growth, Wiley, 2018'
+    },
+
+    // ===== Topic 2 =====
+    'curse-knowledge': {
+      title: 'Curse of Knowledge — Chip & Dan Heath',
+      year: '2007',
+      body: 'Anh em nhà Heath phổ biến khái niệm "Curse of Knowledge" trong sách Made to Stick: khi bạn đã biết quá rõ một thứ, bộ não bạn không thể tái hiện lại trạng thái "chưa biết" — và bạn đánh giá quá cao mức độ người khác hiểu được điều bạn nói.\n\nVí dụ kinh điển: thử nghiệm "tappers vs listeners" — người gõ giai điệu nghĩ 50% người nghe sẽ đoán ra bài hát; thực tế chỉ 2.5% đoán được. Sếp giải thích task cũng vậy: trong đầu sếp giai điệu rất rõ, nhưng tới tai bạn chỉ là tiếng gõ.',
+      source: 'Made to Stick: Why Some Ideas Survive and Others Die, Random House, 2007'
+    },
+    'illusion-transparency': {
+      title: 'Gilovich & Savitsky — Illusion of Transparency',
+      year: '1998',
+      body: 'Thomas Gilovich và Kenneth Savitsky (Cornell) chứng minh con người liên tục đánh giá quá cao mức độ trạng thái nội tâm và ý định của mình được người khác nhận ra.\n\nTrong context giao việc: sếp nghĩ "tôi đã nói rõ rồi mà" — vì trong đầu sếp, ý của họ rất rõ ràng. Nhưng cái rõ trong đầu họ không tự động chuyển thành cái rõ trong đầu bạn. Cộng với Curse of Knowledge, đây là combo lý giải vì sao requirements thường mơ hồ mà sếp không nhận ra.',
+      source: 'Journal of Personality and Social Psychology, vol. 75, 1998'
+    },
+    'cunningham': {
+      title: 'Cunningham\'s Law',
+      year: 'Ward Cunningham, ~2010s',
+      body: '"The best way to get the right answer on the Internet is not to ask a question; it\'s to post the wrong answer." — Cách nhanh nhất để có câu trả lời đúng trên internet không phải là hỏi, mà là đưa ra một câu trả lời sai, rồi đợi có người sửa.\n\nCơ chế tâm lý: não người phản ứng nhanh hơn với việc sửa thông tin sai so với tạo thông tin mới từ con số 0. Áp dụng vào công sở: thay vì hỏi "anh muốn báo cáo thế nào?", đưa giả định cụ thể "Em hiểu là anh muốn X, Y, Z — đúng không anh?" — sếp chỉ cần sửa chỗ sai, tiết kiệm 90% thời gian.',
+      source: 'Quy tắc được đặt tên theo Ward Cunningham (cha đẻ wiki), được phổ biến rộng rãi trong cộng đồng kỹ thuật và quản lý'
+    },
+    '5w2h': {
+      title: '5W2H Framework — Khung phân tích yêu cầu',
+      year: 'Project management standard',
+      body: 'Khung 7 câu hỏi dùng để phân tích bất kỳ task hay yêu cầu nào:\n\n• What — Cần làm gì?\n• Why — Mục đích sử dụng là gì? (quan trọng nhất)\n• Who — Ai là audience cuối? Ai sẽ dùng?\n• When — Khi nào cần xong?\n• Where — Dùng ở đâu / context nào?\n• How — Làm như thế nào?\n• How much — Quy mô, ngân sách, độ chi tiết bao nhiêu?\n\nTrong 7 câu, Why và Who là 2 câu quan trọng nhất nhưng hay bị bỏ qua nhất. Khi biết Why thật, bạn tự quyết định được 50% chi tiết còn lại. Khi biết Who, bạn biết phải trình bày kiểu gì, độ sâu thế nào.',
+      source: 'Khung mở rộng từ "Six Honest Serving Men" của Rudyard Kipling (1902), được hệ thống hóa trong project management và Six Sigma'
+    },
+    'sbi': {
+      title: 'SBI Feedback Model — Center for Creative Leadership',
+      year: 'CCL framework',
+      body: 'Khung Situation-Behavior-Impact (S-B-I) do Center for Creative Leadership phát triển, được dùng rộng rãi trong huấn luyện lãnh đạo:\n\n• Situation — Mô tả tình huống cụ thể, có thời gian, địa điểm. Tránh nói chung chung.\n• Behavior — Mô tả hành vi quan sát được, không phải suy diễn. "Anh nói brief 1 phút" thay vì "anh không quan tâm".\n• Impact — Tác động lên bạn, công việc, hoặc người khác. Cụ thể, đo được nếu có thể.\n\nHiệu quả vì tách hành vi khỏi danh tính. Người nghe không cảm thấy bị tấn công cá nhân ("anh là người vô tâm"), chỉ thấy được mô tả một sự việc và tác động. Sau SBI thường kết bằng đề xuất cụ thể — biến phàn nàn thành đối thoại xây dựng.',
+      source: 'Center for Creative Leadership (CCL), framework được phổ biến từ những năm 1990'
+    },
+
+    // ===== Topic 3 =====
+    'psych-safety': {
+      title: 'Amy Edmondson — Psychological Safety',
+      year: '1999, 2018',
+      body: 'Amy Edmondson (Harvard Business School) phát triển và phổ biến khái niệm "psychological safety" — niềm tin chung trong một nhóm rằng nhóm đó là môi trường an toàn để nói lên ý kiến, thừa nhận sai lầm, đặt câu hỏi, và nêu mối lo ngại mà không sợ bị trừng phạt hay coi thường.\n\nMôi trường có psychological safety thể hiện qua việc người ta sẵn sàng:\n\n• Thừa nhận và thảo luận về sai lầm\n• Công khai giải quyết vấn đề và khó khăn\n• Tìm kiếm sự giúp đỡ và phản hồi\n• Tin rằng không ai trong đội có ý hãm hại\n• Tin rằng họ là thành viên có giá trị\n\nGoogle thực hiện Project Aristotle (2015) khảo sát 180+ team nội bộ và kết luận: psychological safety là yếu tố #1 phân biệt team hiệu quả cao với team thường — quan trọng hơn cả độ giỏi của thành viên hay cấu trúc nhóm.',
+      source: 'Administrative Science Quarterly, vol. 44, 1999 · The Fearless Organization, Wiley, 2018'
+    },
+    'active-listening': {
+      title: 'Carl Rogers & Richard Farson — Active Listening',
+      year: '1957',
+      body: 'Nhà tâm lý học Carl Rogers (cùng Richard Farson) đặt nền móng cho khái niệm "active listening" trong bài viết cùng tên năm 1957 — lắng nghe không phải để chờ đến lượt mình nói, mà để thực sự hiểu người đang nói.\n\nRogers nhấn mạnh 3 yếu tố cốt lõi:\n\n• Empathy — đặt mình vào vị trí người nói, nhận diện cả nội dung lẫn cảm xúc.\n• Acceptance — chấp nhận không phán xét, ngay cả khi không đồng ý.\n• Congruence — phản hồi chân thật, không giả vờ.\n\nStephen Covey trong "7 Habits of Highly Effective People" (1989) đưa khái niệm này thành "Habit 5: Seek First to Understand, Then to Be Understood" — và là một trong những thói quen ảnh hưởng nhất đến hiệu quả giao tiếp công sở hiện đại.',
+      source: 'Active Listening, Industrial Relations Center, University of Chicago, 1957'
+    },
+    'help-seeking': {
+      title: 'Help-Seeking Behavior — Workplace Research',
+      year: 'Multiple sources',
+      body: 'Help-seeking là kỹ năng chủ động tìm kiếm hỗ trợ — được nghiên cứu nhiều trong tâm lý học tổ chức (Bamberger 2009, Bohns & Flynn 2010, Lee 2002).\n\nKết quả chính từ các nghiên cứu:\n\n• Bohns & Flynn (Columbia Business School, 2010): người ta đánh giá thấp khả năng người khác sẽ giúp đến 48%. Nỗi sợ bị từ chối lớn hơn thực tế.\n\n• Lee (2002, Academy of Management Review): help-seeking đúng cách tăng tốc độ học việc 30-40% so với tự vật lộn. Nhân viên mới có help-seeking skill tốt thường lên cấp nhanh hơn.\n\n• Bamberger (2009): help-seeking hiệu quả phụ thuộc vào việc người hỏi đã chuẩn bị câu hỏi (đã thử gì, hiểu tới đâu, thiếu gì) — không phải chỉ độ thân thiết với người được hỏi.\n\nNgắn gọn: hỏi không phải là dấu hiệu yếu kém. Hỏi sai cách mới là.',
+      source: 'Bamberger (2009), Bohns & Flynn (Journal of Experimental Social Psychology, 2010), Lee (Academy of Management Review, 2002)'
     }
   };
 
-  // ============ TAB SYSTEM ============
+  // ============ VIEW + TAB SYSTEM ============
+  const views = document.querySelectorAll('.view');
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
   const progressBar = document.getElementById('progressBar');
-  const visitedTabs = new Set(['s1']);
+  const brandBtn = document.getElementById('brandBtn');
 
-  function switchTab(tabId) {
-    tabBtns.forEach(btn => {
-      const isActive = btn.dataset.tab === tabId;
-      btn.classList.toggle('active', isActive);
-      if (visitedTabs.has(btn.dataset.tab)) btn.classList.add('visited');
+  const visitedTabs = {
+    topic1: new Set(['s1']),
+    topic2: new Set(['t1']),
+    topic3: new Set(['u1'])
+  };
+
+  let currentView = 'home';
+  let currentTab = { topic1: 's1', topic2: 't1', topic3: 'u1' };
+  const topicTabCount = { topic1: 5, topic2: 3, topic3: 3 };
+  const topicDefaultTab = { topic1: 's1', topic2: 't1', topic3: 'u1' };
+  // Single-page topics (no tabs)
+  const singlePageTopics = new Set(['topic4', 'topic5', 'topic6']);
+  function isValidTopic(name) {
+    return !!topicTabCount[name] || singlePageTopics.has(name);
+  }
+
+  function showView(viewName) {
+    views.forEach(v => v.classList.toggle('active', v.dataset.view === viewName));
+    currentView = viewName;
+
+    // Show/hide tabs based on view (only tabbed topics show tab buttons)
+    const isTabbedTopic = !!topicTabCount[viewName];
+    document.querySelectorAll('[data-show-on]').forEach(el => {
+      const target = el.dataset.showOn;
+      const show = target === viewName || (target === 'topic' && isTabbedTopic);
+      el.style.display = show ? '' : 'none';
     });
-    tabPanels.forEach(panel => {
-      panel.classList.toggle('active', panel.id === 'panel-' + tabId);
-    });
-    visitedTabs.add(tabId);
+
+    // If a tabbed topic view, sync tab buttons active state
+    if (isTabbedTopic) {
+      const tabId = currentTab[viewName];
+      activateTab(viewName, tabId, false);
+    }
+
+    // Update progress bar
     updateProgress();
 
-    // Scroll to top of panel
-    window.scrollTo({ top: document.querySelector('.hero').offsetHeight - 40, behavior: 'smooth' });
+    // Update brand button label
+    brandBtn.innerHTML = viewName === 'home' ? '☕ Trà đá' : '← ☕ Trà đá';
 
-    // Update URL hash
-    history.replaceState(null, '', '#' + tabId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function activateTab(topic, tabId, scroll) {
+    // Toggle button states
+    tabBtns.forEach(btn => {
+      if (btn.dataset.topic !== topic) return;
+      const isActive = btn.dataset.tab === tabId;
+      btn.classList.toggle('active', isActive);
+      if (visitedTabs[topic].has(btn.dataset.tab)) btn.classList.add('visited');
+    });
+
+    // Toggle panels
+    tabPanels.forEach(panel => {
+      panel.classList.toggle('active', panel.id === `panel-${topic}-${tabId}`);
+    });
+
+    visitedTabs[topic].add(tabId);
+    currentTab[topic] = tabId;
+    updateProgress();
+
+    if (scroll) {
+      window.scrollTo({ top: document.querySelector('.view.active .hero').offsetHeight - 40, behavior: 'smooth' });
+    }
+
+    // Update URL
+    history.replaceState(null, '', `#${topic}-${tabId}`);
   }
 
   function updateProgress() {
-    const pct = (visitedTabs.size / tabBtns.length) * 100;
+    if (currentView === 'home' || !topicTabCount[currentView]) {
+      progressBar.style.width = '0%';
+      return;
+    }
+    const pct = (visitedTabs[currentView].size / topicTabCount[currentView]) * 100;
     progressBar.style.width = pct + '%';
   }
 
+  function navigate(target) {
+    if (target === 'home') {
+      history.replaceState(null, '', '#');
+      showView('home');
+      return;
+    }
+    // Format: topic1-s2 (tabbed) or topic4 (single page)
+    const [topic, tabId] = target.split('-');
+    if (topicTabCount[topic]) {
+      currentTab[topic] = tabId || topicDefaultTab[topic];
+      history.replaceState(null, '', '#' + topic + '-' + currentTab[topic]);
+      showView(topic);
+    } else if (singlePageTopics.has(topic)) {
+      history.replaceState(null, '', '#' + topic);
+      showView(topic);
+    }
+  }
+
+  // Tab clicks
   tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    btn.addEventListener('click', () => {
+      const topic = btn.dataset.topic;
+      const tabId = btn.dataset.tab;
+      activateTab(topic, tabId, true);
+    });
   });
 
+  // Brand click → home
+  brandBtn.addEventListener('click', () => navigate('home'));
+
+  // Topic card clicks
+  document.querySelectorAll('[data-go-topic]').forEach(card => {
+    card.addEventListener('click', () => {
+      const topic = card.dataset.goTopic;
+      if (topicTabCount[topic]) {
+        navigate(topic + '-' + topicDefaultTab[topic]);
+      } else if (singlePageTopics.has(topic)) {
+        navigate(topic);
+      }
+    });
+  });
+
+  // Any data-goto buttons
   document.querySelectorAll('[data-goto]').forEach(btn => {
-    btn.addEventListener('click', () => switchTab(btn.dataset.goto));
+    btn.addEventListener('click', () => navigate(btn.dataset.goto));
   });
 
-  // Restart
-  document.getElementById('restartBtn').addEventListener('click', () => {
-    switchTab('s1');
-  });
-
-  // Initial tab from hash
-  const initialHash = window.location.hash.replace('#', '');
-  if (initialHash && document.getElementById('panel-' + initialHash)) {
-    switchTab(initialHash);
-  } else {
-    updateProgress();
+  // Initial route from hash
+  function initRoute() {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) {
+      showView('home');
+      return;
+    }
+    if (hash === 'home') {
+      showView('home');
+      return;
+    }
+    const [topic, tabId] = hash.split('-');
+    if (topicTabCount[topic] && tabId) {
+      currentTab[topic] = tabId;
+      visitedTabs[topic].add(tabId);
+      showView(topic);
+    } else if (singlePageTopics.has(topic)) {
+      showView(topic);
+    } else {
+      showView('home');
+    }
   }
 
   // ============ DIALOG COLLAPSE ============
   document.querySelectorAll('[data-dialog]').forEach(dialog => {
     const toggle = dialog.querySelector('.dialog-toggle');
-    toggle.addEventListener('click', () => {
-      dialog.classList.toggle('open');
-    });
+    toggle.addEventListener('click', () => dialog.classList.toggle('open'));
   });
 
   // ============ CITATION MODAL ============
@@ -1628,6 +3278,9 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeCitation();
   });
+
+  // ============ INIT ============
+  initRoute();
 </script>
 
 </body>
