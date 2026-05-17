@@ -199,6 +199,13 @@
     gap: 20px;
   }
   .home-grid:last-of-type { padding-bottom: 80px; }
+  .home-grid .topic-card:only-child {
+    grid-column: 2;
+    max-width: 500px;
+  }
+  @media (max-width: 900px) {
+    .home-grid .topic-card:only-child { grid-column: 1; max-width: 100%; }
+  }
   .topic-card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -1119,6 +1126,206 @@
     text-transform: uppercase;
   }
 
+  /* ============ CHECKLIST TOPIC VIEW ============ */
+  .checklist-main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px 24px 24px;
+  }
+  .checklist-section {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+  }
+  .checklist-section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .checklist-section-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .checklist-section-title { flex: 1; min-width: 0; }
+  .checklist-section-title h3 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .checklist-section-title .sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .checklist-counter {
+    background: var(--bg-warm);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    transition: all 0.25s;
+  }
+  .checklist-counter.full {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+  }
+  .checklist-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 2px;
+    border-bottom: 1px dashed var(--line-soft);
+    cursor: pointer;
+    align-items: flex-start;
+    user-select: none;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item:hover .checklist-check {
+    border-color: var(--accent-soft);
+  }
+  .checklist-check {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--line);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: transparent;
+    transition: all 0.15s;
+    background: var(--paper);
+  }
+  .checklist-item.checked .checklist-check {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+  .checklist-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+    flex: 1;
+    transition: color 0.2s;
+  }
+  .checklist-item.checked .checklist-text {
+    color: var(--ink-mute);
+  }
+  .checklist-item.checked .checklist-text strong {
+    color: var(--ink-mute);
+  }
+  .checklist-sub {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: var(--bg-warm);
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    cursor: default;
+  }
+  .checklist-sub strong {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .checklist-sub ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .checklist-sub ul li {
+    margin: 3px 0;
+    line-height: 1.5;
+  }
+
+  /* Score summary at bottom of checklist */
+  .checklist-summary {
+    background: linear-gradient(135deg, #fef5e3 0%, #fdf1e3 100%);
+    border: 1px dashed var(--accent);
+    border-radius: 14px;
+    padding: 28px;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .checklist-summary-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .checklist-summary-score {
+    font-family: 'Lora', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .checklist-summary-score .total {
+    color: var(--ink-mute);
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .checklist-summary-msg {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-top: 10px;
+    min-height: 24px;
+  }
+  .checklist-summary-msg em { font-style: italic; color: var(--accent); }
+
+  /* Reset button */
+  .checklist-reset {
+    background: transparent;
+    color: var(--ink-mute);
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    margin-top: 16px;
+    transition: all 0.15s;
+  }
+  .checklist-reset:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
   /* ============ COMPRESS TOPIC VIEW ============ */
   .compress-main {
     max-width: 720px;
@@ -1568,6 +1775,25 @@
         <span>✦ 3 phần</span>
       </div>
       <span class="topic-card-cta">Đọc câu chuyện →</span>
+    </button>
+  </div>
+
+  <div class="home-section-title">
+    <span class="home-section-title-text">🛠 Self-check</span>
+  </div>
+  <p class="home-section-sub">Công cụ tự đánh giá tương tác · Tick từng câu để xem mình đang ở đâu, thiếu gì.</p>
+
+  <div class="home-grid">
+    <button class="topic-card" data-go-topic="topic7">
+      <span class="topic-card-tag">● Quản lý công việc <span class="topic-card-badge">Checklist</span></span>
+      <h2>Self-check một ngày làm việc — 4 bước PERA</h2>
+      <p>31 câu chia 4 bước: Plan → Execute → Review → Adapt. Tick từng câu để biết mình đang quản lý công việc chỗ nào ổn, chỗ nào cần thay đổi.</p>
+      <div class="topic-card-meta">
+        <span>⏱ 5 phút</span>
+        <span>🛠 31 câu</span>
+        <span>✦ 4 bước</span>
+      </div>
+      <span class="topic-card-cta">Tự chấm →</span>
     </button>
   </div>
 </section>
@@ -2919,6 +3145,324 @@
 
 </section>
 
+<!-- ================================================================== -->
+<!-- ============================ TOPIC 7 (Self-check PERA) =========== -->
+<!-- ================================================================== -->
+<section class="view" data-view="topic7">
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">🛠 Self-check · Quản lý công việc</span>
+    <h1>Một ngày làm việc lành — Self-check 4 bước PERA</h1>
+    <div class="hero-scenario">
+      Hôm nay xong việc về nhà mà vẫn thấy mệt — không phải vì làm quá nhiều, mà vì không biết mình đã làm gì có nghĩa. Tick xem hôm nay bạn đang ở đâu trong <strong>Plan → Execute → Review → Adapt</strong>.
+    </div>
+    <div class="hero-meta">
+      <span>⏱ 5 phút</span>
+      <span>🛠 31 câu</span>
+      <span>✦ 4 bước</span>
+    </div>
+  </div>
+</header>
+
+<main class="checklist-main">
+
+  <!-- ============ PLAN ============ -->
+  <div class="checklist-section">
+    <div class="checklist-section-head">
+      <div class="checklist-section-icon">📋</div>
+      <div class="checklist-section-title">
+        <h3>1. Plan — Lập kế hoạch</h3>
+        <div class="sub">Biết mình sẽ làm gì, làm trong bao lâu, và đâu là việc đáng ưu tiên nhất.</div>
+      </div>
+      <div class="checklist-counter" data-counter>0/10</div>
+    </div>
+
+    <div class="checklist-items">
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có danh sách task rõ ràng trước khi bắt đầu làm</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Mỗi task đều có outcome cụ thể (không chỉ "làm cho xong")</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Task được phân loại theo độ quan trọng và độ gấp
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Ma trận Eisenhower</strong>
+            <ul>
+              <li>Quan trọng + Gấp → Làm ngay</li>
+              <li>Quan trọng + Không gấp → Lên lịch</li>
+              <li>Không quan trọng + Gấp → Delegate nếu được</li>
+              <li>Không quan trọng + Không gấp → Bỏ hoặc dồn lại</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Task quan trọng được ưu tiên slot thời gian tốt nhất trong ngày (peak hours của bạn)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Tổng workload không vượt quá năng lực thực tế trong ngày (~8 tiếng, không 12)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có <strong>buffer time</strong> cho issue phát sinh (~20% thời gian)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Biết rõ task nào nếu delay sẽ ảnh hưởng stakeholder khác</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có thứ tự ưu tiên rõ ràng nếu nhiều việc cùng đến tay</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Chỉ plan tối đa ~8 tiếng làm việc — không over-commit để rồi mỗi ngày lùi việc</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Xác định trước risk hoặc task có khả năng bị block (chờ người khác, chờ resource)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============ EXECUTE ============ -->
+  <div class="checklist-section">
+    <div class="checklist-section-head">
+      <div class="checklist-section-icon">🎯</div>
+      <div class="checklist-section-title">
+        <h3>2. Execute — Thực hiện</h3>
+        <div class="sub">Khi đã có kế hoạch, tập trung làm từng việc một. Không multitask, không nhảy task.</div>
+      </div>
+      <div class="checklist-counter" data-counter>0/7</div>
+    </div>
+
+    <div class="checklist-items">
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Chỉ có <strong>1 task "in progress"</strong> tại một thời điểm</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Không multitask với các việc cần tư duy sâu (deep work)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có block focus time rõ ràng trong lịch (không bị interrupt)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Chủ động hạn chế bị làm phiền
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>3 cách thực tế</strong>
+            <ul>
+              <li>Đeo tai nghe (tín hiệu vật lý)</li>
+              <li>Set status busy / focus trên Slack/Teams</li>
+              <li>Inform team trước: "Anh chị tag em sau 4h chiều nhé"</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Không nhảy task liên tục khi chưa hoàn thành việc hiện tại</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Khi có task mới phát sinh — không nhận ngay theo cảm xúc
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Bước trung gian trước khi nhận</strong>
+            <ul>
+              <li>Đánh giá urgency / impact trước</li>
+              <li>So với task đang làm — cái nào ưu tiên hơn?</li>
+              <li>Nếu nhận, đẩy việc nào ra sau?</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Task hoàn thành đúng <strong>outcome</strong> thay vì chỉ "done cho có"</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============ REVIEW ============ -->
+  <div class="checklist-section">
+    <div class="checklist-section-head">
+      <div class="checklist-section-icon">🔍</div>
+      <div class="checklist-section-title">
+        <h3>3. Review — Tự đánh giá</h3>
+        <div class="sub">Review ngay sau khi xong task. So sánh outcome thực tế với kỳ vọng. Tìm bottleneck và waste time.</div>
+      </div>
+      <div class="checklist-counter" data-counter>0/6</div>
+    </div>
+
+    <div class="checklist-items">
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Sau mỗi task đều có self-review nhanh (không cần dài, 2-3 phút)</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Trả lời được 4 câu hỏi sau mỗi task
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Self-review template</strong>
+            <ul>
+              <li>Outcome đã đạt chưa? Có đúng kỳ vọng ban đầu không?</li>
+              <li>Có hiệu quả không? (so với thời gian bỏ ra)</li>
+              <li>Tốn thời gian ở đâu nhiều nhất?</li>
+              <li>Có thể optimize gì cho lần tới?</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có ghi nhận lại mistake / rework — để không lặp lại ở task sau</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Nhận ra <strong>nguyên nhân thật</strong> của delay thay vì chỉ biết "bận quá"</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Chủ động optimize workflow trước khi bị feedback từ người khác</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Có feedback loop <strong>liên tục</strong> thay vì cuối tháng/cuối quý mới retrospective</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============ ADAPT ============ -->
+  <div class="checklist-section">
+    <div class="checklist-section-head">
+      <div class="checklist-section-icon">🔄</div>
+      <div class="checklist-section-title">
+        <h3>4. Adapt — Điều chỉnh khi có sự cố</h3>
+        <div class="sub">Sự cố xảy ra là chuyện thường. Quan trọng là cách bạn phản ứng — không panic, không im lặng tới deadline.</div>
+      </div>
+      <div class="checklist-counter" data-counter>0/8</div>
+    </div>
+
+    <div class="checklist-items">
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Khi có troubleshooting — dừng lại, đánh giá impact trước
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Tránh 2 phản ứng cảm tính phổ biến</strong>
+            <ul>
+              <li>Lao vào fix ngay mà chưa biết impact đến đâu</li>
+              <li>Panic, lan tỏa căng thẳng ra team</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Xác định được 3 thứ trước khi action
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Impact assessment 3 câu</strong>
+            <ul>
+              <li>Task nào bị ảnh hưởng?</li>
+              <li>Deadline nào sẽ thay đổi?</li>
+              <li>Stakeholder nào cần update?</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Replan lại workload trong ngày ngay lập tức — không để task dồn về cuối ngày</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Chủ động head-up stakeholder <strong>trước khi</strong> deadline bị miss — không để họ phát hiện</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Communication rõ — 4 thông tin cần đưa
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Template báo cáo sự cố</strong>
+            <ul>
+              <li>Vấn đề gì đang xảy ra</li>
+              <li>Impact cụ thể là gì</li>
+              <li>ETA mới (deadline thực tế bây giờ)</li>
+              <li>Cần support gì không (resource, người, quyết định)</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">Không "im lặng tới deadline" rồi mới báo "không kịp"</span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Có trade-off rõ ràng khi phải lùi
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>Trade-off explicit</strong>
+            <ul>
+              <li>Việc nào phải lùi / drop</li>
+              <li>Việc nào vẫn giữ priority cao bằng mọi giá</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+      <label class="checklist-item">
+        <span class="checklist-check">✓</span>
+        <span class="checklist-text">
+          Sau incident có retrospective ngắn
+          <div class="checklist-sub" onclick="event.stopPropagation()">
+            <strong>3 câu hỏi sau incident</strong>
+            <ul>
+              <li>Root cause là gì?</li>
+              <li>Lần sau có phòng tránh được không?</li>
+              <li>Cần cải thiện process/tool nào?</li>
+            </ul>
+          </div>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============ SUMMARY ============ -->
+  <div class="checklist-summary">
+    <div class="checklist-summary-label">Điểm tự chấm</div>
+    <div class="checklist-summary-score" data-score>0<span class="total">/31</span></div>
+    <div class="checklist-summary-msg" data-msg>Tick từng câu phía trên — không phải thi, là tự soi để biết tuần này nên tập trung vào đâu.</div>
+    <button class="checklist-reset" id="checklistReset" type="button">↻ Reset checklist</button>
+  </div>
+</main>
+
+<footer class="closing">
+  <div class="closing-inner">
+    <h3>Cách dùng tốt nhất: chấm tuần 1 lần</h3>
+    <p>Tick lại checklist mỗi cuối tuần. Mục không tick = thứ tuần sau cần thay đổi. Không cần điểm cao — cần thấy mình đang tiến bộ ở đâu.</p>
+    <div class="closing-actions">
+      <button class="btn-link primary" data-goto="home">☕ Về trà đá</button>
+    </div>
+  </div>
+</footer>
+
+</section>
+
 <!-- ============ CITATION MODAL ============ -->
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -3097,7 +3641,7 @@
   const topicTabCount = { topic1: 5, topic2: 3, topic3: 3 };
   const topicDefaultTab = { topic1: 's1', topic2: 't1', topic3: 'u1' };
   // Single-page topics (no tabs)
-  const singlePageTopics = new Set(['topic4', 'topic5', 'topic6']);
+  const singlePageTopics = new Set(['topic4', 'topic5', 'topic6', 'topic7']);
   function isValidTopic(name) {
     return !!topicTabCount[name] || singlePageTopics.has(name);
   }
@@ -3156,6 +3700,12 @@
   }
 
   function updateProgress() {
+    if (currentView === 'topic7') {
+      const total = document.querySelectorAll('#panel-topic7-host .checklist-item, [data-view="topic7"] .checklist-item').length;
+      const checked = document.querySelectorAll('[data-view="topic7"] .checklist-item.checked').length;
+      progressBar.style.width = (total ? (checked / total * 100) : 0) + '%';
+      return;
+    }
     if (currentView === 'home' || !topicTabCount[currentView]) {
       progressBar.style.width = '0%';
       return;
@@ -3278,6 +3828,60 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeCitation();
   });
+
+  // ============ CHECKLIST (topic 7) ============
+  const checklistItems = document.querySelectorAll('[data-view="topic7"] .checklist-item');
+  const checklistSections = document.querySelectorAll('[data-view="topic7"] .checklist-section');
+  const scoreEl = document.querySelector('[data-score]');
+  const msgEl = document.querySelector('[data-msg]');
+  const resetBtn = document.getElementById('checklistReset');
+
+  function getScoreMessage(checked, total) {
+    const pct = total ? (checked / total) : 0;
+    if (checked === 0) return 'Tick từng câu phía trên — không phải thi, là tự soi để biết tuần này nên tập trung vào đâu.';
+    if (pct < 0.35) return 'Bạn đang ở <em>chế độ cảm tính</em>. Bắt đầu từ phần Plan tuần tới — nền tảng có rồi thì 3 phần sau mới đứng được.';
+    if (pct < 0.65) return 'Có nền tảng rồi. Nhìn vào những câu chưa tick — đó là phần cần thay đổi tuần này.';
+    if (pct < 0.9) return 'Workflow <em>khá lành</em>. Tiếp tục duy trì và optimize những chỗ tinh tế còn lại.';
+    return 'Tuyệt vời. Workflow của bạn ở mức team có thể học theo — chia sẻ cho đồng đội ít kinh nghiệm hơn.';
+  }
+
+  function updateChecklist() {
+    let totalChecked = 0;
+    const total = checklistItems.length;
+    checklistSections.forEach(section => {
+      const items = section.querySelectorAll('.checklist-item');
+      const checked = section.querySelectorAll('.checklist-item.checked').length;
+      const counter = section.querySelector('[data-counter]');
+      if (counter) {
+        counter.textContent = checked + '/' + items.length;
+        counter.classList.toggle('full', checked === items.length && items.length > 0);
+      }
+      totalChecked += checked;
+    });
+    if (scoreEl) {
+      scoreEl.innerHTML = totalChecked + '<span class="total">/' + total + '</span>';
+    }
+    if (msgEl) {
+      msgEl.innerHTML = getScoreMessage(totalChecked, total);
+    }
+    if (currentView === 'topic7') updateProgress();
+  }
+
+  checklistItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Don't toggle when clicking inside expanded sub info
+      if (e.target.closest('.checklist-sub')) return;
+      item.classList.toggle('checked');
+      updateChecklist();
+    });
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      checklistItems.forEach(item => item.classList.remove('checked'));
+      updateChecklist();
+    });
+  }
 
   // ============ INIT ============
   initRoute();
